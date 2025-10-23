@@ -14,9 +14,11 @@
 
     html, body {
       margin: 0; padding: 0;
-      width: 100vw; height: 100vh;
+      width: 100vw; min-height: 100vh;
       background: #191919;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .app-frame {
@@ -135,6 +137,7 @@
   </style>
 </head>
 <body>
+  <div class="page-container">
   <div class="app-frame">
     <div class="sidebar-bg"></div>
     <div class="sidebar-logo"></div>
@@ -143,10 +146,6 @@
       <a href="#" class="sidebar-btn" id="public_btn">
         <img src="/svg/sidebar/public_btn.svg" alt="Public" />
         <span>公开篇目</span>
-      </a>
-      <a href="/page/private.html" class="sidebar-btn">
-        <img src="/svg/sidebar/private_btn.svg" alt="Private" />
-        <span>私密客单</span>
       </a>
       <a href="/page/public/render.html" class="sidebar-btn">
         <img src="/svg/sidebar/render_btn.svg" alt="Render" />
@@ -174,7 +173,7 @@
 
     <div class="bottom-mask"></div>
   </div>
-
+  </div>
   <!-- Footer自动插入点 -->
   <div id="footer-placeholder"></div>
 

@@ -11,34 +11,34 @@
     "label": "Nikto",
     "subtitle": "亚里奇伏特加\n类型｜烈酒 · 俄罗斯伏特加\n酒精度｜40% Vol\n风味｜冷杉 · 黑胡椒 · 白桦树脂 · 冰霜矿物\n藏品备注｜随身携带的小瓶伏特加\n源自亚里奇冰原的古法蒸馏工艺，纯净如镜，冷冽如刃。\n简介｜无论是战后小酌，还是严冬取暖，Nikto总会随身携带，适合在无人之境与自己捧杯。",
     "image": "../../img/public/nikto.png",
-    "link": "/reads/nikto-public.html"
+    "link": "/page/public/nikto.html"
   },
   {
     "id": "ghost",
     "label": "Simon 'Ghost' Riley",
     "subtitle": "Wild Turkey 101\n类型｜烈酒 · 波本威士忌\n酒精度｜50.5% Vol\n风味｜焦糖橡木 · 黑胡椒 · 烟草 · 蜂蜜余韵\n藏品备注｜Neat is his favorite.\n简介｜酒劲强烈，直击喉头。既是战地之间的安慰剂，也是任务之后的夜间燃料，焦香之下藏着蜂蜜的温顺，只有他知道什么时候该让它出现。",
     "image": "../../img/public/ghost.png",
-    "link": "/reads/ghost-public.html"
+    "link": "/page/public/ghost.html"
   },
   {
     "id": "keegan",
     "label": "Keegan P Russ",
     "subtitle": "长岛冰茶（Long Island Iced Tea）\n类型｜调酒 · 伏特加、龙舌兰、朗姆、琴酒、三重秒橙酒\n酒精度｜31-40% Vol\n风味｜柠檬、橙皮、轻微焦糖；入口顺滑、甜度适中，后劲极强。\n藏品备注｜看起来像茶，实际上是今晚最危险的东西。\n简介｜经典调配，以伏特加、龙舌兰、朗姆、金酒与柠檬汁调和可乐，层次复杂而不显张扬。就像他，总是温和体贴，却在不动声色间将一切掌控于心。",
     "image": "../../img/public/keegan.png",
-    "link": "/reads/keegan-public.html"
+    "link": "/page/public/keegan.html"
   },
   {
     "id": "krueger",
     "label": "Sebastian Krueger",
     "subtitle": "Ottakringer Helles\n类型｜拉格啤酒 · 奥地利淡色拉格\n酒精度｜5.2% Vol\n风味｜麦芽清香、淡淡青草与蜂蜜气息，气泡柔和、入喉轻盈\n藏品备注｜最容易被忽略的那瓶酒，也是最适合从人群中隐身的那瓶\n简介｜诞生于维也纳街头的经典拉格，口感顺滑清爽，常被误认为是夜晚最无害的饮品。可对某些人而言，它是隐身术的一部分——随手拎起，藏入背景，不留痕迹。他总能在你察觉之前消失，只留下桌边那只空瓶。",
     "image": "../../img/public/krueger.png",
-    "link": "/reads/krueger-public.html"
+    "link": "/page/public/krueger.html"
   },
   {
     "id": "commission",
     "label": "？？？",
     "subtitle": "没有中意的饮品？\n点击这里，让我们来调制你的专属饮品。",
     "image": "../../img/public/commission.png",
-    "link": "commission.html"
+    "link": "/page/public/commission.html"
   }
 ]

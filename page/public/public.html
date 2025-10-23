@@ -16,12 +16,14 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
- html, body {
+  html, body {
       margin: 0; padding: 0;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       background: #191919;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .app-frame {
       width: 100vw;
@@ -35,7 +37,6 @@
       box-shadow: none;
       background: #191919;
       padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: calc(clamp(56px, 9vh, 72px) + var(--safe-bottom) + 20px);
 
       /* 完全填充屏幕 */
       top: 0; left: 0; right: 0; bottom: 0;
@@ -472,6 +473,7 @@
     </style>
 </head>
 <body>
+  <div class="page-container">
   <div class="app-frame">
     <div class="main-bg"></div>
     <div class="title"></div>
@@ -481,13 +483,13 @@
             title="点击查看酒单">
     </button>
   </div>
+  </div>
   <!-- 如果你底部有圆角遮罩可以用 -->
   <div class="bottom-mask"></div>
 
   <!-- 提示语 -->
   <div class="instruction-tooltip" id="instructionTooltip">
     点击发光酒瓶查看文章
-    向右滑动进入图集存放
   </div>
 
   <!-- 酒单弹窗 -->
@@ -614,50 +616,50 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('Instruction tooltip not found');
   }
   
-  // 右滑跳转功能
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let touchEndX = 0;
-  let touchEndY = 0;
-  let isSwipeGesture = false;
+  // 右滑跳转功能已禁用
+  // let touchStartX = 0;
+  // let touchStartY = 0;
+  // let touchEndX = 0;
+  // let touchEndY = 0;
+  // let isSwipeGesture = false;
   
-  // 添加触摸事件监听器到整个页面
-  document.addEventListener('touchstart', function(e) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    isSwipeGesture = false;
-    console.log('Touch start - X:', touchStartX, 'Y:', touchStartY);
-  });
+  // // 添加触摸事件监听器到整个页面
+  // document.addEventListener('touchstart', function(e) {
+  //   touchStartX = e.touches[0].clientX;
+  //   touchStartY = e.touches[0].clientY;
+  //   isSwipeGesture = false;
+  //   console.log('Touch start - X:', touchStartX, 'Y:', touchStartY);
+  // });
   
-  document.addEventListener('touchmove', function(e) {
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].clientY;
-    const deltaX = currentX - touchStartX;
-    const deltaY = currentY - touchStartY;
+  // document.addEventListener('touchmove', function(e) {
+  //   const currentX = e.touches[0].clientX;
+  //   const currentY = e.touches[0].clientY;
+  //   const deltaX = currentX - touchStartX;
+  //   const deltaY = currentY - touchStartY;
     
-    // 如果水平滑动距离大于垂直滑动距离，且超过阈值，标记为滑动手势
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 20) {
-      isSwipeGesture = true;
-      console.log('Swipe gesture detected - deltaX:', deltaX, 'deltaY:', deltaY);
-    }
-  });
+  //   // 如果水平滑动距离大于垂直滑动距离，且超过阈值，标记为滑动手势
+  //   if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 20) {
+  //     isSwipeGesture = true;
+  //     console.log('Swipe gesture detected - deltaX:', deltaX, 'deltaY:', deltaY);
+  //   }
+  // });
   
-  document.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].clientX;
-    touchEndY = e.changedTouches[0].clientY;
+  // document.addEventListener('touchend', function(e) {
+  //   touchEndX = e.changedTouches[0].clientX;
+  //   touchEndY = e.changedTouches[0].clientY;
     
-    const deltaX = touchEndX - touchStartX;
-    const deltaY = touchEndY - touchStartY;
+  //   const deltaX = touchEndX - touchStartX;
+  //   const deltaY = touchEndY - touchStartY;
     
-    console.log('Touch end - deltaX:', deltaX, 'deltaY:', deltaY, 'isSwipeGesture:', isSwipeGesture);
+  //   console.log('Touch end - deltaX:', deltaX, 'deltaY:', deltaY, 'isSwipeGesture:', isSwipeGesture);
     
-    // 检测左滑手势
-    if (isSwipeGesture && deltaX < -50 && Math.abs(deltaY) < 100) {
-      console.log('Left swipe detected, navigating to render.html');
-      // 跳转到 render.html
-      window.location.href = 'render.html';
-    }
-  });
+  //   // 检测左滑手势
+  //   if (isSwipeGesture && deltaX < -50 && Math.abs(deltaY) < 100) {
+  //     console.log('Left swipe detected, navigating to render.html');
+  //     // 跳转到 render.html
+  //     window.location.href = 'render.html';
+  //   }
+  // });
   
   // 检查footer是否加载
   setTimeout(() => {

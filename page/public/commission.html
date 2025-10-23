@@ -14,9 +14,9 @@
     h1{font-size:24px;margin:18px 0 16px}
     form{display:grid;gap:14px}
 
-    /* ✅ 统一改为“单列显示” */
+    /* ✅ 改为“单列显示” */
     .row{display:grid;gap:12px}
-    .row2{display:grid;grid-template-columns:1fr;gap:12px} /* 不管里面有几个子项，都一行一个 */
+    .row2{display:grid;grid-template-columns:1fr;gap:12px}
 
     label{font-size:13px;opacity:.85}
     input,textarea,select{
@@ -28,23 +28,26 @@
     .btn{
       height:48px;border-radius:12px;background:#fff;color:#000;
       border:0;font-weight:700;cursor:pointer
-
-     }  /* ✅ 同意条款单行、垂直居中 */
-.agree-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;  /* 水平居中 */
-  gap: 8px;
-  font-size: 13px;
-  white-space: nowrap;     /* 防止换行 */
-  width: 100%;              /* 占满容器宽度 */
-}
-
-    
+    }
     .btn:disabled{opacity:.5;cursor:not-allowed}
-    .success,.error{margin-top:12px;padding:12px 14px;border-radius:10px;font-size:14px}
+
+    /* ✅ 让“同意说明”完全居中 */
+    .agree-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;   /* 水平居中 */
+      gap: 8px;
+      font-size: 13px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .success,.error{
+      margin-top:12px;padding:12px 14px;border-radius:10px;font-size:14px
+    }
     .success{background:#123f27;border:1px solid #2a7f52;color:#bff3d4}
     .error{background:#3f1212;border:1px solid #7f2a2a;color:#ffd3d3}
+
     /* 蜜罐（反机器人） */
     .hp{position:absolute;left:-9999px;visibility:hidden}
   </style>
@@ -63,8 +66,8 @@
           <input name="name" required placeholder="您的称呼" />
         </div>
         <div>
-          <label>联系方式 / contact</label>
-          <input name="contact" type="contact" required placeholder="便于沟通的联系方式" />
+          <label>联系方式 / Contact</label>
+          <input name="contact" type="text" required placeholder="便于沟通的联系方式" />
         </div>
       </div>
 
@@ -79,18 +82,19 @@
         </div>
         <div>
           <label>预算（字数范围）/ Budget</label>
-          <input name="budget" placeholder="预算与字数范围（如 500 CNY / 5000 字）" />
+          <input name="budget" placeholder="如 500 CNY / 5000 字" />
         </div>
       </div>
 
       <div class="row">
         <label>基本需求描述 / Brief</label>
-        <textarea name="message" required placeholder="如：乙女向、角色名称、偏好剧情（完整大纲非必须，提供关键信息即可）"></textarea>
+        <textarea name="message" required placeholder="如：乙女向、角色名称、偏好剧情（无需完整大纲，关键信息即可）"></textarea>
       </div>
 
-      <!-- 蜜罐字段（正常用户不会填写） -->
-      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
+      <!-- 蜜罐字段（反机器人） -->
+      <input class="hp" type="text" name="website" autocomplete="off" />
 
+      <!-- ✅ 居中对齐条款 -->
       <div class="row">
         <label class="agree-label">
           <input type="checkbox" name="agree" required />
@@ -112,7 +116,6 @@
       e.preventDefault();
       msgBox.innerHTML = '';
       btn.disabled = true;
-
       try {
         const fd = new FormData(form);
         const res = await fetch(form.action, {

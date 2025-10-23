@@ -1,38 +1,59 @@
-:root {
-  /* iOS 底部安全区（没安全区就按 0px） */
+/* ---------- 视口单位与安全区 ---------- */
+:root{
+  --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --vh: 1vh;                 /* 回退：老浏览器用 1vh */
+}
+@supports (height: 100svh) {  /* 新浏览器用更稳定的 svh */
+  :root{ --vh: 1svh; }
 }
 
-/* 悬浮导航条 */
+/* ---------- 悬浮底栏 ---------- */
+/* 背景与毛玻璃兼容写法 */
 .bottom-nav {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: calc(var(--safe-bottom) + 8px);  /* 给安全区让路 */
-  
-  width: min(92vw, 430px);                 /* 宽度自适应并限制最大 */
-  height: clamp(56px, 9vh, 72px);          /* 高度在 56~72 之间自适应 */
-  padding-bottom: var(--safe-bottom);      /* 再加一层内边距，避免贴到边 */
-  
-  background: #191919cc;                   /* 略透明更灵动，可换成不透明 */
-  backdrop-filter: blur(10px);             /* 可选：毛玻璃 */
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border-radius: 20px;                     /* 四角都圆也行，按你风格来 */
+  bottom: calc(var(--safe-bottom) + 8px);
+
+  width: min(92vw, 430px);
+  height: clamp(56px, calc(var(--vh) * 9), 72px);
+  padding-bottom: var(--safe-bottom);
+
+  /* ✅ 兜底不透明背景：即使不支持毛玻璃也能看 */
+  background: #191919;
+
+  border-radius: 20px;
   box-shadow: 0 -8px 24px rgba(0,0,0,.25);
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
+
+  /* 防止被误判为“覆盖层”阻塞点击 */
+  pointer-events: auto;
 }
 
-/* 确保页面内容不被footer遮挡 */
+/* ✅ 支持 backdrop-filter 的浏览器再启用毛玻璃 */
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .bottom-nav {
+    background: #191919cc; /* 半透明黑 */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* ---------- 给页面内容留出空间（用同一高度算法） ---------- */
+html, body { min-height: 100%; }
 body {
-  padding-bottom: calc(clamp(56px, 9vh, 72px) + var(--safe-bottom) + 20px);
+  padding-bottom: calc(clamp(56px, calc(var(--vh) * 9), 72px) + var(--safe-bottom) + 20px);
+  overflow-y: auto;              /* 允许滚动，避免全局卡死 */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* 页面容器底部间距 */
+/* 如某些页面用了容器类，也同步留出空间 */
 .page-container,
 .main-container,
 .content-container,
@@ -42,43 +63,63 @@ body {
 .render-container,
 .commission-container,
 .konig-container {
-  padding-bottom: calc(clamp(56px, 9vh, 72px) + var(--safe-bottom) + 20px);
+  padding-bottom: calc(clamp(56px, calc(var(--vh) * 9), 72px) + var(--safe-bottom) + 20px);
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* 内部容器：铺满且等间距 */
+/* 内容容器默认滚动策略：避免把滚动锁在 body 上 */
+.app-frame {
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  position: relative; /* 避免内部绝对定位元素脱离上下文 */
+}
+
+/* 底部遮罩若存在，不影响点击 */
+.bottom-mask { pointer-events: none; }
+
+/* ---------- 内部布局与按钮 ---------- */
 .bottom-nav nav {
   width: 100%;
-  max-width: 380px;                        /* 保证按钮分布好看 */
+  max-width: 380px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: clamp(8px, 3vw, 16px);
+  /* 用 vmin 替代 vw，避免横屏/宽屏放大过度 */
+  gap: clamp(8px, 3vmin, 16px);
 }
 
-/* 按钮 */
 .bottom-nav .nav-btn {
-  width: clamp(48px, 12vw, 56px);
-  height: clamp(48px, 12vw, 56px);
+  /* 用 vmin 替代 vw，并用 clamp 限制上限，避免巨屏变大 */
+  width: clamp(48px, 10vmin, 56px);
+  height: clamp(48px, 10vmin, 56px);
   border-radius: 16px;
   background: #232323;
-  display: flex; justify-content: center; align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: background .2s, transform .15s;
+  touch-action: manipulation; /* 提升触控浏览器点击响应 */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .bottom-nav .nav-btn:active,
 .bottom-nav .nav-btn.selected {
   background: #343434;
-  transform: translateY(-2px);             /* 轻微悬浮反馈 */
+  transform: translateY(-2px);
 }
 
 .bottom-nav .nav-btn img {
-  width: clamp(24px, 7vw, 32px);
-  height: clamp(24px, 7vw, 32px);
+  /* 关键修复：改用 vmin，稳定在 24~32px 之间 */
+  width: clamp(24px, 4.5vmin, 32px);
+  height: clamp(24px, 4.5vmin, 32px);
   object-fit: contain;
   display: block;
+  pointer-events: none; /* 图片不拦截点击，交互落到父按钮 */
 }
 
 @media (max-width: 390px) {
@@ -89,5 +130,14 @@ body {
   .bottom-nav nav {
     width: 90vw;
     min-width: 280px;
+  }
+}
+
+/* ---------- 附加小优化（可留可去） ---------- */
+/* 降低动画对弱机/弱网影响 */
+@media (prefers-reduced-motion: reduce) {
+  .bottom-nav,
+  .bottom-nav .nav-btn {
+    transition: none !important;
   }
 }

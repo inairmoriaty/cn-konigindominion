@@ -13,12 +13,14 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
- html, body {
+    html, body {
       margin: 0; padding: 0;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       background: #191919;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .app-frame {
       width: 100%;
@@ -143,6 +145,7 @@
   </style>
 </head>
 <body>
+  <div class="page-container">
   <div class="app-frame">
     <div class="favourite-bg"></div>
     <div class="favourite-content">
@@ -154,7 +157,7 @@
     </div>
     <div class="bottom-mask"></div>
   </div>
-
+  </div>
   <!-- Footer自动插入点 -->
   <div id="footer-placeholder"></div>
 <script src="../js/footer.js"></script>

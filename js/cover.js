@@ -14,7 +14,7 @@ const handleLogoClick = () => {
     pageAnimContainer.classList.add('page-fadeout');
     // 删掉其它 coverBg/coverTitle/logoBtn/spiderAnim 的 page-fadeout！
     setTimeout(() => {
-      window.location.href = "home.html";
+      window.location.href = "page/home.html";
     }, 1200);
   }, 1200);
 };

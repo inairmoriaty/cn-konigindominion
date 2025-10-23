@@ -308,6 +308,8 @@ body {
    .ghost-container {
      padding: 15px;
      padding-top: 60px;
+     /* 保持底部导航栏的间距，避免卡片被遮挡 */
+     padding-bottom: calc(clamp(56px, 9vh, 72px) + var(--safe-bottom) + 20px);
      /* 确保移动端全屏滚动 */
      width: 100% !important;
      height: 100% !important;
@@ -327,6 +329,8 @@ body {
      row-gap: 30px;
      column-gap: 30px;
      padding: 15px 0;
+     /* 确保最后一张卡片有足够的底部间距 */
+     margin-bottom: 20px;
    }
 
    .work-card {
@@ -383,6 +387,54 @@ body {
     #footer-placeholder {
       z-index: 10;
     }
+    
+    /* 合作提示样式 */
+    .commission-prompt {
+      text-align: center;
+      margin: 20px 0;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .commission-link {
+      color: var(--gold-plain);
+      text-decoration: underline;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: 2px solid var(--gold-plain);
+      border-radius: 8px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      background: rgba(174, 127, 98, 0.1);
+    }
+    
+    .commission-link:hover {
+      background: var(--gold-plain);
+      color: var(--bg-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(174, 127, 98, 0.3);
+    }
+    
+    .commission-link:active {
+      transform: translateY(0);
+    }
+    
+    /* 移动端合作提示样式 */
+    @media (max-width: 768px) {
+      .commission-prompt {
+        margin: 15px 0;
+        padding: 8px;
+      }
+      
+      .commission-link {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -396,6 +448,13 @@ body {
     <!-- 作品列表容器 -->
     <div id="works-container">
       <div class="loading">正在加载作品信息...</div>
+    </div>
+    
+    <!-- 合作提示 -->
+    <div class="commission-prompt">
+      <a href="commission.html" class="commission-link">
+        与写手合作以解锁更多专属内容
+      </a>
     </div>
   </div>
 

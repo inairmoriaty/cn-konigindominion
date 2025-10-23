@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KÖNIGIN - Nikto 公开篇目</title>
+  <title>KÖNIGIN - Krueger 公开篇目</title>
   <link rel="stylesheet" href="../../style/home.css">
   <link rel="stylesheet" href="../../style/footer.css">
   <link rel="stylesheet" href="../../style/mobile.css">
@@ -31,7 +31,7 @@ body {
   overflow: hidden;
 }
 
-.nikto-container {
+.keegan-container {
   position: relative;  /* 为底部遮罩提供定位参考 */
   width: 100%;
   height: 100vh;
@@ -45,7 +45,7 @@ body {
   box-sizing: border-box;
 }
 
-.nikto-container::-webkit-scrollbar {
+.keegan-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -305,7 +305,7 @@ body {
  
  /* 移动端全屏滚动优化 */
  @media (max-width: 768px) {
-   .nikto-container {
+   .keegan-container {
      padding: 15px;
      padding-top: 60px;
      /* 保持底部导航栏的间距，避免卡片被遮挡 */
@@ -360,11 +360,11 @@ body {
  }
 
     /* 滚动条样式 - 全屏滚动时隐藏 */
-    .nikto-container::-webkit-scrollbar {
+    .keegan-container::-webkit-scrollbar {
       display: none;
     }
 
-    .nikto-container {
+    .keegan-container {
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
@@ -438,10 +438,10 @@ body {
   </style>
 </head>
 <body>
-    <div class="nikto-container">
+    <div class="keegan-container">
     <!-- 页面标题 -->
     <div class="header-section">
-      <h1 class="header-title">Nikto 公开篇目</h1>
+      <h1 class="header-title">Krueger 公开篇目</h1>
       <p class="header-subtitle">KÖNIGIN系列作品集</p>
     </div>
 
@@ -524,7 +524,7 @@ body {
 
       // 添加滑动支持
       addSwipeSupport() {
-        const container = document.querySelector('.nikto-container');
+        const container = document.querySelector('.keegan-container');
         const body = document.body;
         let startX = 0;
         let startY = 0;
@@ -577,7 +577,7 @@ body {
 
       // 处理滑动
       handleSwipe(deltaY) {
-        const container = document.querySelector('.nikto-container');
+        const container = document.querySelector('.keegan-container');
         const scrollAmount = deltaY > 0 ? -300 : 300; // 向上滑动向下滚动，向下滑动向上滚动
         
         container.scrollBy({
@@ -633,7 +633,7 @@ body {
 
       // 优化滚动
       optimizeScroll() {
-        const container = document.querySelector('.nikto-container');
+        const container = document.querySelector('.keegan-container');
         
         // 启用平滑滚动
         container.style.scrollBehavior = 'smooth';
@@ -655,7 +655,7 @@ body {
     // 加载作品数据
     async function loadWorks() {
       try {
-        const response = await fetch('../../json/nikto.json');
+      const response = await fetch('../../json/krueger.json');
         const works = await response.json();
         renderWorks(works);
       } catch (error) {

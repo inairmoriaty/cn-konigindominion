@@ -22,7 +22,7 @@
     "status": "连载中",
     "copyright": "原创",
     "length": "长篇",
-    "link": "/article/private/domestication/catalog.html"
+    "link": "/article/public/domestication/catalog.html"
   },
   {
     "id": "scream",
@@ -40,23 +40,6 @@
     "copyright": "灵感来源于同名电影",
     "length": "短篇",
     "link": "/article/public/scream.html"
-  },
-  {
-    "id": "shirt",
-    "title": "男友衬衫",
-    "author": "for 麦麦",
-    "rating": "18+",
-    "warnings": [
-      "成人内容",
-      "性内容"
-    ],
-    "summary": "偷穿丈夫的衣服被发现了。",
-    "description": "BG ｜ Konig x 你（第二人称）",
-    "originalDate": "2024-06-23",
-    "status": "完结",
-    "copyright": "原创",
-    "length": "短篇",
-    "link": "/article/public/shirt.html"
   },
   {
     "id": "gooddog",
@@ -129,23 +112,6 @@
     "copyright": "原创",
     "length": "短篇",
     "link": "/article/public/valentine.html"
-  },
-
-  {
-    "id": "nun",
-    "title": "修女",
-    "author": "未知单主",
-    "rating": "Mature",
-    "warnings": [
-      "强制"
-    ],
-    "summary": "修道院秘事",
-    "description": "BG ｜ Konig x 你（第二人称）",
-    "originalDate": "2025-04-17",
-    "status": "完结",
-    "copyright": "侵权请联系删除",
-    "length": "短篇",
-    "link": "/article/public/nun.html"
   }
   
 ]

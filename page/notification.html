@@ -21,11 +21,12 @@
 
     html, body {
       margin: 0; padding: 0;
-      width: 100vw; height: 100vh;
+      width: 100vw; min-height: 100vh;
       background: #191919;
       color: var(--text-main);
-      /* 允许滚动（通知很多时） */
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .app-frame{
@@ -36,7 +37,6 @@
       position: relative;
       box-sizing: border-box;
       padding-top: var(--safe-top);
-      padding-bottom: calc(clamp(56px, 9vh, 72px) + var(--safe-bottom) + 20px);
       overflow-y: auto; /* 列表滚动 */
       background: #191919;
     }
@@ -185,6 +185,7 @@
   </style>
 </head>
 <body>
+  <div class="page-container">
   <div class="app-frame">
     <header class="page-header">
       <div class="page-title">通知 / Notifications</div>
@@ -197,7 +198,7 @@
 
     <div class="bottom-mask"></div>
   </div>
-
+  </div>
   <!-- Footer 自动插入 -->
   <div id="footer-placeholder"></div>
   <script src="../js/footer.js"></script>

@@ -13,7 +13,6 @@ function initSidebar() {
   // 统一使用根相对路径
   const iconPath       = '/svg/sidebar/';
   const publicPath     = '/page/public/public.html';
-  const privatePath    = '/page/private.html';
   const renderPath     = '/page/public/render.html';
   const commissionPath = '/page/public/commission.html'; // ★ 新增
 
@@ -27,10 +26,6 @@ function initSidebar() {
           <a href="${publicPath}" class="sidebar-btn" id="sidebarPublicLink">
             <img src="${iconPath}public_btn.svg" alt="Public" />
             <span>公开篇目</span>
-          </a>
-          <a href="${privatePath}" class="sidebar-btn">
-            <img src="${iconPath}private_btn.svg" alt="Private" />
-            <span>私密客单</span>
           </a>
           <a href="${renderPath}" class="sidebar-btn">
             <img src="${iconPath}render_btn.svg" alt="Render" />

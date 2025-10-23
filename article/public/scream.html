@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>惊声尖叫</title>
+    <link rel="stylesheet" href="../style/article.css">
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        /* 收藏按钮样式 */
+        .favourite-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .favourite-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .favourite-btn:active {
+            transform: scale(0.95);
+        }
+
+        .favourite-icon {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+    </style>
+
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">惊声尖叫</div>
+            
+            <div class="author-info">Konig & 你</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+
+        临近万圣节的几天，气温便急剧下降，尤其是夜间凉风阵阵，配合着住宅区小花园里各式各样的南瓜头和骷髅，似乎一切都阴森森的。一阵阴风吹来，你拉紧了外套，加快了脚步往公寓的方向走去。你不明白这群昂撒人为什么这么热衷于鬼节，至少在小道上无意中踩到的几个吱吱叫的骷髅爪子就让你在夜里神经紧绷，只想着怎样快些回到自己的小窝，洗个热水澡然后看一些无脑的短剧放松一下。
+        周围的世界似乎变得异常安静，你只能听见自己的脚步踩在落叶上发出的嘎吱嘎吱声响。街道空无一人，身上那种被视线追随的粘稠感却挥之不去，莫名的恐惧感涌上心头。你猛地停下脚步向视线的方向望去，发现那只是一只被住户挂在树上当作整蛊道具的大蜘蛛，暗红的玻璃眼珠一闪一闪的，或许这就是凝视的来源吧。
+        悦耳的铃声刺破了夜晚的死寂，你吓得差点没把手机掉在地上，只是看了一眼屏幕上显示的未知号码，便挂断了来电，加快脚步向不远处的路口走去。
+        铃声再次响起，你最爱的音乐此刻听起来却像是催命咒一般，你伸手进包里想要掐断电话，手指阴差阳错地按在了接听键上。
+        “Hello?”
+        电话那头一个低沉沙哑的声音似乎低低地笑了一下，“Hallo, Süße.（晚上好，宝贝）”
+        你皱了皱眉，总有种不好的预感，“Sorry?”
+        “No need to apologize. I’m glad you answered.（我很高兴你终于接电话了）”
+        你只觉得鸡皮疙瘩爬满了胳膊，抬头看了一眼还在倒计时的红灯，你有些烦躁，却听到那个声音再次开口，“Where are you heading, little mouse?（你要去哪儿，小老鼠）”
+        那种被视奸的恶心感依然紧紧地扒在你的身上，你皱了皱眉，想要挂断电话。
+        “Don’t hang up yet, love.（别挂电话）”他像是透过电波实实在在地看着她的一举一动，察觉到了她离开的意图，“I just want to have a conversation with you. Is that really so bad?（我只是想和你说说话，这样也不可以吗）”
+        “I don’t know you at all...!”你对着听筒低声骂道。
+        “Whoever I am doesn’t matter. What matter is that I’m here now. And... I have an interesting proposal for you.（我是谁不重要。重要的是，我们来玩一个小游戏怎么样？）”
+        “What？”你被一个红灯截停在路口，不得不停下脚步。此时距离你的公寓大楼只剩下一个街区不到的距离。
+        “Ah perfect. Stay still for a moment, will you?（很好，在原地呆着）”他的嗓音依然低沉柔和，但你从他微微上扬的尾音中捕捉到了流露出的兴奋，“Don’t make any sudden movements.（别乱动）”
+        “Still...（原地？）”你忽然意识到了什么，声音变得尖锐，“You’re looking at me?!(你在监视我)”
+        他的笑声通过电流传入你的耳中，像是蛇在嘶嘶地吐信，“That’s right babygirl. I’m seeing everything. You are standing in front of the traffic light, one block away from your apartment. You’re tense as a board, like a little scared rabbit.（嗯，我看得很清楚。你现在站在距离你家只有一个街区的红绿灯前，僵硬得像只受惊的兔子一样。好可爱。”
+        你僵硬地转过身子，试图寻找周围可疑的人，但视野中空无一人，只有路灯在你周围投下的长长的影子。
+        “别害怕，我不会伤害你的。我只是想和你说说话。”电话那头的男人放柔了语气安慰道，但这样的声音并不能起到安慰的作用，反而让你更加应激起来。“我不想和你说话！滚啊！”
+        你尖叫着挂断了电话，信号灯在那一刻变成了通行的白色。你释然地呼出一口气，心脏却依然怦怦直跳。就在你抬脚踩上斑马线的前一秒，你突然感觉到一只大手按住了你的肩膀。
+        “Leaving so soon?Babygirl.(这么急急忙忙就要走吗）”
+        你被一股力道强行推到一旁的墙体上，背部撞击在坚硬的水泥墙体上时你感觉自己好像被往回带了一下，当你抬起头看清了声音的主人时，尖叫卡在了喉咙里。他实在是太过高大了，像座小山似的在你的上方投下阴影，长长的面罩垂下，像是章鱼的触手。一辆汽车疾驰而过，借着一闪而过的雪白车灯，他的瞳孔在强光下微微收缩，像是危险的肉食动物。
+        他宽大的手握住了你的腰肢，把你禁锢在墙体和他的胸膛之间。他低下头，长而柔软的面罩布料磨蹭着你的脸，有些痒，亲昵的动作却也激起了你内心深处的恐惧。“你要去哪里？我们还没好好谈谈。”
+        隔着薄薄的面罩，你能感受到他若隐若现的灼热的呼吸，握住手机的那只手颤抖着移动，“我、我要……”你想报警，但奈何你的手实在是抖得厉害，手机从掌心滑落，砸在地上发出一声闷响。柯尼格当然注意到了你的小动作，他不紧不慢地弯下腰捡起你的手机，看着屏幕上尚未拨出的的“911”，他轻轻地笑了一下，声音同样轻柔低沉，“I’m hurt. I thought we could have a wonderful time.”他将你的手机放进长风衣的口袋，轻轻捏住你的下巴强迫你抬起头来，“我不希望有任何人打扰我们，我只是想和你说说话，仅此而已。“
+        你快哭出来了，见鬼的，这才几点，要是在国内你根本不用担心被拦路打劫没人出手相助，可这鸟不拉屎的地方现在却连个人影都没有，真的是叫天天不应叫地地不灵。“What... What do you want..?(你到底要干嘛啊）”
+        他靠得更近了，几乎是把你按在他的胸膛上，“shhhh, I don’t mean to hurt you... little häschen...”他俯下身，撩开你耳畔的头发，热忱地蹭着你的耳根，像是在呼吸你身上的香气，又像是在检查自己的猎物。温热的触感隔着薄薄的布料印在了脖颈处，许久未被如此亲昵地对待的身体被他挑逗得异常敏感，你从鼻腔里轻轻哼出一声模棱两可的呻吟。“You are so cute... smell so good... even much better than I imagine...”他把你抱起来，双脚离地的失重感让你回过神来，转眼间他就把你抵在墙上，强有力的膝盖分开你的双腿，作为你唯一的支撑。你下意识地抱住他，不让自己掉下去，一阵乱摸的空余你突然有些走神，心想着这个“劫匪”的身材似乎还不错。
+        干，现在不是想这个的时候，他又开始把你压在墙上到处亲了，不老实的手还自认为隐蔽地摸到了裙角，从裙摆的下沿探进去，粗糙的指尖配上那若有若无的轻抚，让你快要疯掉了。“Wait, what ... what are you doing...”
+        “I just...”他想去吻你的唇，却被你猛地躲开了，只能遗憾地隔着面罩亲了亲你的下巴，“Want to show you how much I love you...”他的手已经摸到了大腿根部，正在向柔软的蕾丝棉布包裹着的花园探去，你想夹紧双腿阻止他的前行，却被他的膝盖卡住，像是被钉在砧板上的肉，没有反抗的能力。
+        “Don’t do that here.OK?”你快哭出来了，虽然说这个鬼地方没什么人，但你真的不想像个失足女一样被这个男的就这么按在路边强上了，那真的会成为你一辈子的噩梦。
+        他注意到了你快要溢出的泪水，动作顿了顿，轻轻吻去你的眼泪，“Not here?”
+        “uh.”你吸了吸鼻子，开始做最坏的打算。他看着你在他怀中蜷缩成一小团，抽抽噎噎的样子，静默了一秒，随后把你打横抱起，“Fine. Let’s go somewhere private that nobody wont disturb us.”
+        他抱着你直接穿过马路，越是往前走，你心中的恐惧越大。这分明就是你的公寓的方向，难道说……你挣扎起来，不久前才希望他能放自己回家的期许变成了你此刻最抗拒的东西。可是他的怀抱和手臂都太有力，不管你怎么挣扎，他依然牢牢地抱着你，坚定地向公寓大楼走去。
+        随着公寓的自动门打开，你想尖叫，向前台看守的保安求助，但你只是刚刚张开嘴，你就感觉到有什么硬硬的金属的东西抵在了后腰。“宝贝，别添麻烦。我真的不想用这个。”他的声音从头顶传来，切断了你喉咙里即将爆发出的尖叫。你哆嗦着抬起头，在明亮的灯光下终于看清了他的眼睛。冰蓝色的，不带感情的双眼，像是只知道杀戮的野兽才拥有的眼睛。保安就这么平静地看着他将你抱在怀里，像是热恋期的情人一般自然而然地消失在电梯间。他在你的注视中，他不紧不慢地掏出一串钥匙，和一张熟悉的电梯卡。电梯门合上，他准确地按下你所居住的楼层，你的心沉入了谷底。他的每一个动作都像是这栋楼的住户一样，可你非常确信，自己从未见过他，更不要说在这栋楼里了。
+        你已经没有力气去纠结他到底是怎么做到这一切的，只能眼睁睁地看着他走出电梯，不带一丝犹豫地拐弯，走向你的单间，非常自然地用钥匙打开了大门。他在推开门的那一刻，你回过神来，疯了似的扭动着身体，挣扎着跳下来就要逃跑。他的大手先一步把你捞了回来，顺带捂住了你的嘴，非常强硬地就把你往家里拖。“You said you wanted somewhere private. Now here we are.”大门在你的身后合上，他顺手落了锁，那轻轻的声音像是对你的审判，你知道自己无处可逃了。
+        确实，足够private，直接private到自己家来了。
+        “你……你跟踪我……还……还偷窥……”他把你轻轻放在沙发上时，你终于勉强找回了自己的声音。他闻言，脸色一沉，“跟踪？偷窥？……不。”他轻抚着你的脸颊，“我只是……在观察你。”他半跪在沙发前，掐着你的腰，像是摆弄洋娃娃一般，把头搁在你的小腹上，深深地呼吸着你身上的香水味，“You are mine. I just look at what belongs to me.”你刚想给他一脚把他踢开，他就按住了你的双腿，把脸埋在你柔软的腹部，像只大型犬一样蹭着，在你身上留下自己的味道，“You don’t wanna be tied up, ja?”
+        你的身体僵硬了一瞬，缓缓地放下了手。
+        柯尼格咧开嘴笑了，虽然你看不见，但你确定他露出的那双眼睛在笑。他分开你的膝盖，跪在你的腿间，那双大手再次向裙底探去，“That’s my good girl...”
+        他的触摸像是带着电流一般，让被抚摸过的地方都微微颤抖。湿润的腿根自然逃不脱他的注意，他掀开了你的裙子，把你的内裤拉扯到一旁，目不转睛地盯着已经湿润一片的小穴，眼中闪过一丝惊喜。“You are so wet... for me.”
+        “Not for you!”你尖叫起来，想要踢他，却被他顺势地扯下了内裤，被强迫着大张着腿面对他的凝视。他的眼神仿佛实质性地落在你的身体上，尤其是如此私密的地方，你忍不住地颤抖着，小穴又涌出一波黏腻，随着你不自然的扭动，淫水挂在腿根拉出丝来。
+        “Liar.”他又笑了，伸出手摸上光滑的阴户，近乎痴迷地看着不断滴水的花穴，“I have been watching you for a while... You look lonely. I can fix that.”他掀开面罩的下沿，不等你看清他的脸，便饥渴地覆了上去。火热的舌勾走了溢出的淫液，他故意吃得很大声，让你听到他是如何一滴不剩地将你吃干抹净，响亮的水声让你一下子软了腰，瘫倒在沙发上，被他顺势往自己的方向一拖，柔软的穴就这么压在他的唇上，让他的声音也变得闷闷的。“你流了好多水……滴的到处都是……不过没关系，我会……帮你清理干净的。”他一下下地顺着肉缝舔弄，抬起眼观察着你的反应，看到你快舒服得闭上眼，被他舔得压抑不住喉间的呻吟，他舔得越发卖力起来。舌尖快速拨动着两瓣肉花，将敏感的阴蒂从小阴唇内勾出来后便是大力而迅疾的舔弄，温暖、湿润、酥麻的感觉同时顺着你的小腹一路蔓延上大脑，你情不自禁地喘息着，本能地往他的嘴上坐，却被他更加卖力地吃干抹净。他看着你忍不住含着指节，想要压抑那些羞耻的声音，这让他有些不高兴了，忽然停下了动作，把你从云端一下子拉了下来。你委屈地看着他，不明白这是什么意思。
+        他褪下你的裙子，将你的双腿架在肩上，让你不得不仰躺在沙发上，微微垂下眼帘却能看见他的脸躲藏在面罩之下，贪婪地吃着你的小穴。舌尖挑逗着阴蒂，让你抽搐着扭动着身子，感觉小穴里更加空虚，那种感觉像是无数个夜里你孤身一人的感觉，让你快要哭出来了。“I know you are so hungry... always starving... but nobody feeds you, right?”他探入一根手指，缓缓地抽插着，粗糙的枪茧欺负着娇嫩的软肉，剐蹭着带来痛感和莫名的快感，“You can only spend time with your little toys... How pathetic...”他狠狠地吸了一口涌出的蜜水，吮吸感配合着他在穴内抽送的手指，你尖叫着，感觉自己快要高潮了。“But don’t worry... I will make all your wish come true tonight...”他注意到了你的反应，沉沉地笑着，加大了力度挑逗你的花核，曲起的手指在穴内这戳戳那碰碰，很快找到了你的敏感点，让你的小腹剧烈地收缩起伏，眼睛快翻到后脑勺去了，他便知道自己找到了开门的钥匙。“Come on... Cum on my face... babygirl. Just do like you always imagine... Let me drink every drop of your juices...”
+        你被他下流的荤话刺激得再也承受不住，完全没想到这样的词句被一个男人用低沉的声音如此切切实实地说出来是多么具有感官刺激。随着他加入第二根手指，一个劲儿地戳弄着内壁上的敏感点，你的腿根微微抽搐，一波波甜腻的淫液从甬道深处喷溅出来，被他一滴不落地卷入口中，贪婪地尽数咽下。
+        “So sweet... I can feast you for a whole day...”他趴在你的腿间痴痴地笑着，依依不舍地舔了舔颤抖的花瓣，直起身子来开始解自己的衣服。
+        你在高潮的余韵中喘息着，眼前还是凌乱飞舞的光斑，待他把你轻轻扶起来靠着沙发时，你赫然发现他已经剥干净了自己的衣服。那些遍布在肌肉上的伤痕在可怖中增添了诡异的性感，随着他的呼吸，伤疤似乎也在收缩与舒展，几乎挑不出一丝错误的肌肉线条一路向下，一直到……
+        你一下子脸红了，不敢出声，也不知道该说什么好。只能呆呆地看着他缓缓地撸动着那根尺寸惊人的性器，肿胀的龟头从包皮顶出来，就这么对着你滴出前液，连接着根部鼓鼓囊囊的囊袋，似乎随时准备发射满满当当的种子。
+        “You don’t like it?”柯尼格听上去有些失落，他原本对自己的性器还算自信，但是看你一直盯着他的鸡不说话也没什么反应，他有些怀疑自己了，甚至有些委屈，“你明明每天都在推特上看那些男人的……”
+        你猛地惊醒过来，尖叫着就要去捂住他的嘴，“你他妈偷窥我就算了，怎么还视奸我的浏览器啊？！”
+        你的手腕无意中擦过性器的头部，他颤抖了一下，似乎没想到你这样应激。“我只是想多了解了解你。”他把你重新轻轻地按回沙发上，在你的小腹上落下一吻，“我以为你会喜欢……我知道你经常看那些……”
+        你抬起腿踢了他一脚，刚好踹在他结实的腹肌上，好像有些软软的，“那种东西不要说出来啊！”
+        他看出了你的难堪和羞愤，忽然觉得很可爱，只是低低地哼了一声，便撸动着性器靠近了你再次洇出水的小穴，龟头一下下蹭着甜蜜的汁液，贴着肉缝滑动。
+        “我们真的要……”你咽了咽口水，虽然你知道自己的收藏夹里都不是些什么好东西，光是强制爱都能翻上一页了，但是真的在现实中遇到这种情况，被一个覆面肌肉男尾随，还被他口了，接下来就是本子剧情了。箭在弦上，你突然不知道如何是好。
+        柯尼格看着你纠结的小表情若有所思，开始用他那粗大的肉棒在花穴外蹭弄。每一次龟头都擦过张合的穴口却没有进去，而是贴着肉缝的形状磨蹭着，肿胀的蘑菇头都恰好顶在凸起的花核上，带来微妙的快感，却也放大了穴内深处的空虚感。“You don’t want it?”他故意问道，继续压着你的腿蹭弄着外面的花瓣，狰狞的茎身很快就被你的淫水涂抹得湿漉漉的，似乎一个不小心，他的性器就能滑进你的身体。
+        你快被他折磨哭了，这种“只蹭蹭不进去”的游戏你真的受够了，难受的不止有他，同时也在折磨着你。“Don’t you wanna try what you watch in those video?”他看着你快要昏过去的表情，拍了拍你的脸，故意用青筋暴起的肉棒抽打穴口，你甚至能听到轻微的水声和肉体碰撞的声音，让你羞愤欲死。“Fine...! Just, not too much !”
+        “Not too much?”他似乎听到了什么好笑的事，将勃发的性器对准了你不断翕动的小穴，就着你的淫水缓缓往里挺动，“I think you can take the whole... God damn you are so fucking tight...”他很快笑不出来了，巨大的体型差给他的工作增添了麻烦，面对梦寐以求的小穴，他不肯就此放弃。他握住了你的乳房，拇指灵巧地绕着乳晕打转，挑逗着挺立的乳头，“放松些，你会喜欢的……”他轻声哄着，下身却已经失去耐心地开始轻轻抽送。硕大的柱头在穴道的浅处抽插着，光是用龟头操你的小穴你就已经感觉到了丝丝缕缕的快感，不由自主地放松了身体，想要吃下更多。他爱惨了你这副温顺饥渴的模样，在黏腻的水声中，他终于一口气挺到了最深处。内壁上每一处细小的褶皱都被粗大抚平，小小的穴被塞得满满当当，他却还有一部分留在体外。你从来没有吃过这么大的，被他的尺寸塞得有些不适，小穴却又本能地收缩着去适应着他。
+        他的视线撞上你的，从你的眼中读出了渴望与期待，便掐着你的腰开始操弄。他想温柔一点，温柔地对待他觊觎已久的珍宝，那口嫩穴内部却像是无数张小嘴一样热情地亲吻着他的性器，将他拖向欲望的深渊。他的理智在一点点崩溃，忍不住加大了力度往最深处顶撞着。你娇媚的呻吟仿佛是效果最好的催情剂，鼓励着他更快更狠地操弄你的小穴，每一次青筋和龟头的刮蹭都让你忍不住翻着眼睛游走在高潮的边缘。他的鸡巴实在是太大了，又粗又长，快赶得上你的手腕粗细，每一次缓慢地抽插都能把穴道内的褶皱给熨得平整光滑，让你有一种自己要被捅穿的错觉，但是真的爽得你眼眶发酸，浓缩着快感的泪水从眼角溢出，却忍不住索取更多。
+        你的小穴在他疯狂的鞭挞下被操开了，舒展着适应他的尺寸，怪物般的鸡巴在你的体内肆意冲撞着，顶得你的下腹一鼓一鼓的，他拉着你的手去摸，你甚至能感受到那根在你身体里兴奋地跳动的性器，羞耻得你差点没昏过去。
+        他真的把你生生操成了他的形状。
+        “Oh my little Häschen...”他忍不住俯下身，把你从沙发上捞起来，紧紧地拥住你，“你里面好暖……好湿，咬得我好紧……“他亲吻着你的脸颊，像是热情的大狗，却又赞美你的穴对他来说是多么胜过于天堂的存在。你被他顶撞得如同在暴风雨的大海中颠簸的小船，只能抱着他的脖子无力地哼哼着。你想说些什么，那些字句却全部被他的操弄给顶碎成了粘稠的呻吟和娇喘，成为他最佳的兴奋剂。
+        你的手探入他的面罩下方，描摹着他的脸部的轮廓。他颤抖了一下，没有反抗，“You want to see my face?”
+        “uh...to know who you are...”
+        “Negative.”
+        他把头埋在你的脖颈处，身下的动作更加凶猛，一次次狠狠地撞在你的敏感点上，用这种方式阻止着你摘下他的面罩。柔软的唇，粗硬而细小的胡茬，棱角分明的脸，还有微微颤抖的喉结，你不得不承认这是个性感的偷窥狂，虽然他做的事非常不齿。你的手指胡乱地摸到了一根链子，上面似乎坠着一个扁平的金属牌子。柯尼格能感觉到你勾住了他的狗牌，动作猛地一僵。
+        “这是什么……”
+        “……”他的眼珠转了转，轻声道，“项链。”他忽然庆幸自己的面罩足够长，让你没办法把他的狗牌拉出来仔细研究那是什么，他暂时还不想让你知道他的身份。“Focus on me, darling.”
+        他用面罩遮住了你的头，在黑暗中和你交换了第一个真真切切的吻。
+                
+                
+                        
+                
+                
+                
+                                
+</div>
+</div>
+</div>
+
+<!-- 收藏按钮 -->
+<div id="favourite-button-container"></div>
+
+    <script src="../../js/favourite-manager.js"></script>
+    <script src="../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 初始化收藏按钮
+            const articleInfo = {
+                title: '惊声尖叫',
+                url: window.location.href,
+                author: 'Inair',
+                category: 'public'
+            };
+            
+            const favouriteContainer = document.getElementById('favourite-button-container');
+            if (favouriteContainer && window.createFavouriteButton) {
+                const favouriteBtn = createFavouriteButton(articleInfo);
+                favouriteContainer.appendChild(favouriteBtn);
+            }
+    
+    // 添加右滑返回手势支持（兼容iOS和Android）
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+    let startTime = 0;
+    
+    // 防止页面滚动冲突
+    document.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+        isSwiping = false;
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (!startX || !startY) return;
+        
+        let currentX = e.touches[0].clientX;
+        let currentY = e.touches[0].clientY;
+        let diffX = startX - currentX;
+        let diffY = startY - currentY;
+        
+        // 检测是否为水平滑动（水平距离大于垂直距离）
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+            isSwiping = true;
+            // 如果是边缘滑动，阻止页面滚动
+            if (startX < 50) {
+                e.preventDefault();
+            }
+        }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+        
+        let endX = e.changedTouches[0].clientX;
+        let diffX = startX - endX;
+        let endTime = Date.now();
+        let duration = endTime - startTime;
+        
+        // 从左边缘开始向右滑动（返回手势）
+        // 支持iOS和Android的返回手势
+        if (startX < 50 && diffX < -80 && duration < 500) {
+            window.history.back();
+        }
+    }, { passive: true });
+});
+</script>
+</body>
+</html>
+
+
+
+

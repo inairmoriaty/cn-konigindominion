@@ -1,23 +1,5 @@
 [
     {
-      "id": "nurse",
-      "title": "好好照顾中尉吧",
-      "author": "for 送我黑鸦片的老师",
-      "rating": "18+",
-      "warnings": [
-        "角色扮演",
-        "护士", 
-        "医务室"
-      ],
-      "summary": "Ghost的专属小护士",
-      "description": "BG ｜ Ghost x 你（第二人称）",
-      "originalDate": "2024-07-04",
-      "status": "完结",
-      "copyright": "原创",
-      "length": "短篇",
-      "link": "/article/public/nurse.html"
-    },
-    {
       "id": "magicmike",
       "title": "魔力麦克",
       "author": "for 麦麦",
@@ -34,5 +16,6 @@
       "length": "短篇",
       "link": "/article/public/magicmike1.html"
     }
+    
   ]
   

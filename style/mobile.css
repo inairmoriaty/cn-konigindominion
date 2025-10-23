@@ -50,9 +50,8 @@ a,
   -webkit-backface-visibility: hidden;
 }
 
-/* 防止iOS橡皮筋效果 */
+/* 防止滚动被锁死：不要禁止全局 overscroll；仅保持惯性滚动 */
 html, body {
-  overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
 }
 
