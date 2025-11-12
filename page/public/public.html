@@ -469,6 +469,31 @@
       opacity: 0.3;
       pointer-events: none;
     }
+/* 上层 subtitle 纯展示、禁交互 */
+.wine-top {
+  pointer-events: none;
+}
+
+/* 中层 image 只用于拖动，不触发点击跳转 */
+.wine-image {
+  cursor: grab;
+}
+.wine-image:active { cursor: grabbing; }
+
+/* 下层 label 可点击跳转 */
+.wine-bottom, .wine-label {
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 防止图片拖拽出现浏览器默认拖动影像 */
+.wine-image img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* 关闭区域：overlay 之外的空白已经可点关闭，这里不改 */
 
     </style>
 </head>
@@ -676,3 +701,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+

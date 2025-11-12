@@ -1,9 +1,19 @@
-// 酒单功能 - 左右滑动滚轮
+// 酒单功能（点击 label/底部优先 + 修复首卡不跳转）
+// 1) subtitle 仅展示；2) image 只滑动；3) label/底部点击跳转；
+// 4) 点击遮罩空白关闭；5) 先滑后点短暂冷却。
+
 class WineMenu {
   constructor() {
     this.drinksData = [];
     this.currentIndex = 0;
-    this.isAnimating = false; // 防止动画期间重复触发
+    this.isAnimating = false;
+
+    this.justSwiped = false;
+    this.swipeCooldownMs = 300;
+
+    // label/底部按下期间抑制滑动
+    this.suppressSwipe = false;
+
     this.init();
   }
 
@@ -12,127 +22,86 @@ class WineMenu {
     this.bindEvents();
   }
 
-  // 加载酒单数据
   async loadDrinksData() {
     try {
-      const response = await fetch('../../json/drinks.json');
-      this.drinksData = await response.json();
-      console.log('Drinks data loaded:', this.drinksData);
-    } catch (error) {
-      console.error('Error loading drinks data:', error);
-      // 如果加载失败，使用默认数据
+      const res = await fetch('../../json/drinks.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('drinks.json not found');
+      this.drinksData = await res.json();
+    } catch (e) {
+      console.error('Load drinks failed, fallback:', e);
       this.drinksData = [
-        {
-          "id": "konig",
-          "label": "König",
-          "subtitle": "男主人珍藏",
-          "image": "../../img/public/konig.png",
-          "link": "/reads/konig-public.html"
-        },
-        {
-          "id": "konigin",
-          "label": "Königin",
-          "subtitle": "女主人精选",
-          "image": "../../img/public/konig.png",
-          "link": "/reads/konigin-public.html"
-        },
-        {
-          "id": "guest",
-          "label": "Guest",
-          "subtitle": "客人专享",
-          "image": "../../img/public/konig.png",
-          "link": "/reads/guest-public.html"
-        }
+        { id: 'konig',   label: 'König',   subtitle: '男主人珍藏', image: '../../img/public/konig.png',   link: '/reads/konig-public.html' },
+        { id: 'konigin', label: 'Königin', subtitle: '女主人精选', image: '../../img/public/konig.png',   link: '/reads/konigin-public.html' },
+        { id: 'guest',   label: 'Guest',   subtitle: '客人专享',   image: '../../img/public/konig.png',   link: '/reads/guest-public.html' },
       ];
     }
   }
 
-  // 绑定事件
   bindEvents() {
-    // 点击遮罩关闭
     const overlay = document.getElementById('wineMenuOverlay');
     if (overlay) {
       overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-          this.closeWineMenu();
-        }
+        if (e.target === overlay) this.closeWineMenu();
       });
     }
-
-    // 绑定滑动事件
     this.bindSwipeEvents();
   }
 
-  // 绑定滑动事件 - 循环滚动
   bindSwipeEvents() {
     const overlay = document.getElementById('wineMenuOverlay');
     if (!overlay) return;
 
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
-    let startTime = 0;
-    let velocity = 0;
+    let startX = 0, currentX = 0, isDragging = false;
+    let startTime = 0, velocity = 0;
     let currentItem = null;
 
-    // 触摸事件 - 循环滚动
+    const allowSwipeFrom = (target) => {
+      if (this.suppressSwipe) return false;
+      if (target.closest && (target.closest('.wine-label') || target.closest('.wine-bottom'))) {
+        return false;
+      }
+      return true;
+    };
+
+    // Touch
     overlay.addEventListener('touchstart', (e) => {
-      // 找到被触摸的item
       const item = e.target.closest('.wine-item');
-      if (!item) return;
-      
+      if (!item || !allowSwipeFrom(e.target)) return;
       currentItem = item;
       startX = e.touches[0].clientX;
       startTime = Date.now();
       isDragging = true;
       velocity = 0;
-    }, { passive: false });
+    }, { passive: true });
 
     overlay.addEventListener('touchmove', (e) => {
       if (!isDragging || !currentItem) return;
-      e.preventDefault();
       currentX = e.touches[0].clientX;
-      
-      // 计算滑动速度
-      const currentTime = Date.now();
-      const timeDiff = currentTime - startTime;
-      if (timeDiff > 0) {
-        velocity = (startX - currentX) / timeDiff;
-      }
-      
-      // 添加拖拽时的视觉反馈
+      const dt = Date.now() - startTime;
+      if (dt > 0) velocity = (startX - currentX) / dt;
       const diffX = startX - currentX;
       currentItem.style.transform = `translateX(${diffX * 0.3}px) scale(0.95)`;
-    }, { passive: false });
+    }, { passive: true });
 
-    overlay.addEventListener('touchend', (e) => {
+    overlay.addEventListener('touchend', () => {
       if (!isDragging || !currentItem) return;
       isDragging = false;
-      
-      // 重置item样式
       currentItem.style.transform = '';
-      
       const diffX = startX - currentX;
-      const timeDiff = Date.now() - startTime;
-      
-      // 根据滑动距离和速度判断 - 支持循环滚动
-      if (Math.abs(diffX) > 30 || Math.abs(velocity) > 0.5) {
-        if (diffX > 0 || velocity > 0) {
-          this.nextDrink(); // 向右滑动，下一个
-        } else {
-          this.prevDrink(); // 向左滑动，上一个
-        }
+
+      if (Math.abs(diffX) >= 50 || Math.abs(velocity) >= 0.6) {
+        if (diffX > 0 || velocity > 0) this.nextDrink();
+        else this.prevDrink();
+        this.justSwiped = true;
+        setTimeout(() => (this.justSwiped = false), this.swipeCooldownMs);
       }
-      
       currentItem = null;
     }, { passive: true });
 
-    // 鼠标事件 - 循环滚动
+    // Mouse
     overlay.addEventListener('mousedown', (e) => {
-      // 找到被点击的item
       const item = e.target.closest('.wine-item');
-      if (!item) return;
-      
+      if (!item || !allowSwipeFrom(e.target)) return;
       currentItem = item;
       startX = e.clientX;
       startTime = Date.now();
@@ -143,242 +112,185 @@ class WineMenu {
     overlay.addEventListener('mousemove', (e) => {
       if (!isDragging || !currentItem) return;
       currentX = e.clientX;
-      
-      // 计算滑动速度
-      const currentTime = Date.now();
-      const timeDiff = currentTime - startTime;
-      if (timeDiff > 0) {
-        velocity = (startX - currentX) / timeDiff;
-      }
-      
-      // 添加拖拽时的视觉反馈
+      const dt = Date.now() - startTime;
+      if (dt > 0) velocity = (startX - currentX) / dt;
       const diffX = startX - currentX;
       currentItem.style.transform = `translateX(${diffX * 0.3}px) scale(0.95)`;
     });
 
-    overlay.addEventListener('mouseup', (e) => {
+    const endMouseDrag = () => {
       if (!isDragging || !currentItem) return;
       isDragging = false;
-      
-      // 重置item样式
       currentItem.style.transform = '';
-      
       const diffX = startX - currentX;
-      const timeDiff = Date.now() - startTime;
-      
-      // 根据滑动距离和速度判断 - 支持循环滚动
-      if (Math.abs(diffX) > 30 || Math.abs(velocity) > 0.5) {
-        if (diffX > 0 || velocity > 0) {
-          this.nextDrink(); // 向右滑动，下一个
-        } else {
-          this.prevDrink(); // 向左滑动，上一个
-        }
-      }
-      
-      currentItem = null;
-    });
 
-    // 防止拖拽时选中文本
-    overlay.addEventListener('selectstart', (e) => {
-      e.preventDefault();
-    });
+      if (Math.abs(diffX) >= 50 || Math.abs(velocity) >= 0.6) {
+        if (diffX > 0 || velocity > 0) this.nextDrink();
+        else this.prevDrink();
+        this.justSwiped = true;
+        setTimeout(() => (this.justSwiped = false), this.swipeCooldownMs);
+      }
+      currentItem = null;
+    };
+
+    overlay.addEventListener('mouseup', endMouseDrag);
+    overlay.addEventListener('mouseleave', endMouseDrag);
+    overlay.addEventListener('selectstart', (e) => e.preventDefault());
   }
 
-  // 打开酒单
   openWineMenu() {
     const overlay = document.getElementById('wineMenuOverlay');
+    if (!overlay) return;
     overlay.classList.add('show');
-    
-    // 添加背景模糊效果
     document.body.classList.add('wine-menu-open');
-    
-    // 延迟渲染，确保动画流畅
-    setTimeout(() => {
-      this.renderWineList();
-    }, 100);
+    setTimeout(() => this.renderWineList(), 100);
   }
 
-  // 关闭酒单
   closeWineMenu() {
     const overlay = document.getElementById('wineMenuOverlay');
+    if (!overlay) return;
     overlay.classList.remove('show');
-    
-    // 移除背景模糊效果
     document.body.classList.remove('wine-menu-open');
   }
 
-  // 渲染酒单列表
   renderWineList() {
     const viewport = document.getElementById('wineListViewport');
     if (!viewport) return;
-
     viewport.innerHTML = '';
-    
-    this.drinksData.forEach((drink, index) => {
-      const item = this.createWineItem(drink, index);
-      viewport.appendChild(item);
+
+    this.drinksData.forEach((drink, i) => {
+      viewport.appendChild(this.createWineItem(drink, i));
     });
 
-    // 确保第一个item（男主人珍藏）在屏幕正中
     this.currentIndex = 0;
     this.updateScrollPosition();
   }
 
-  // 创建酒水选项
   createWineItem(drink, index) {
     const item = document.createElement('div');
     item.className = 'wine-item';
     item.dataset.index = index;
-    
+
     item.innerHTML = `
-      <div class="wine-top">
-        ${drink.subtitle}
-      </div>
+      <div class="wine-top">${drink.subtitle || ''}</div>
       <div class="wine-image">
-        <img src="${drink.image}" alt="${drink.label}" />
+        <img src="${drink.image}" alt="${drink.label}" draggable="false" />
       </div>
       <div class="wine-bottom">
-        <div class="wine-label">${drink.label}</div>
+        <div class="wine-label" role="button" aria-label="进入 ${drink.label}" style="touch-action:manipulation;">
+          ${drink.label}
+        </div>
       </div>
     `;
 
-    // 点击事件 - 同时支持点击和触摸
-    item.addEventListener('click', (e) => {
+    const bottomEl = item.querySelector('.wine-bottom');
+    const labelEl  = item.querySelector('.wine-label');
+
+    // —— 桌面：label 或整块底部都可点
+    const handleClick = (e) => {
       e.preventDefault();
       e.stopPropagation();
+      if (this.justSwiped) return;
       this.selectDrink(index);
-    });
+    };
+    bottomEl.addEventListener('click', handleClick);
+    labelEl.addEventListener('click', handleClick);
 
-    // 触摸事件 - 确保移动端也能正确响应
-    let touchStartTime = 0;
-    let touchStartY = 0;
-    
-    item.addEventListener('touchstart', (e) => {
-      touchStartTime = Date.now();
-      touchStartY = e.touches[0].clientY;
-      // 添加触摸状态样式
-      item.classList.add('touch-active');
-      console.log('Touch start for item:', index, drink.label);
-    });
-    
-    item.addEventListener('touchend', (e) => {
-      const touchEndTime = Date.now();
-      const touchDuration = touchEndTime - touchStartTime;
-      const touchEndY = e.changedTouches[0].clientY;
-      const touchDistance = Math.abs(touchEndY - touchStartY);
-      
-      // 移除触摸状态样式
-      item.classList.remove('touch-active');
-      
-      // 只有短触摸且移动距离小才认为是点击
-      if (touchDuration < 300 && touchDistance < 10) {
+    // —— 移动端：按下期间抑制滑动；短按视作点击
+    let tStart = 0, tStartY = 0;
+    const touchStart = (e) => {
+      this.suppressSwipe = true;
+      tStart = Date.now();
+      tStartY = e.touches[0].clientY;
+      labelEl.classList.add('touch-active');
+    };
+    const touchEnd = (e) => {
+      const dur = Date.now() - tStart;
+      const dy = Math.abs(e.changedTouches[0].clientY - tStartY);
+      labelEl.classList.remove('touch-active');
+      requestAnimationFrame(() => (this.suppressSwipe = false));
+      if (dur < 300 && dy < 10) {
+        if (this.justSwiped) return;
         e.preventDefault();
         e.stopPropagation();
-        console.log('Touch click detected for item:', index, drink.label);
         this.selectDrink(index);
       }
-    });
-    
-    // 触摸取消事件
-    item.addEventListener('touchcancel', () => {
-      item.classList.remove('touch-active');
-    });
+    };
+    const touchCancel = () => {
+      labelEl.classList.remove('touch-active');
+      this.suppressSwipe = false;
+    };
+
+    bottomEl.addEventListener('touchstart', touchStart, { passive: true });
+    bottomEl.addEventListener('touchend', touchEnd, { passive: false });
+    bottomEl.addEventListener('touchcancel', touchCancel);
 
     return item;
   }
 
-  // 选择酒水
+  // ★ 修复点：不再因 isAnimating 拦截点击（仅阻止滑动后的 justSwiped）
   selectDrink(index) {
-    // 防止重复点击
-    if (this.isAnimating) return;
-    
-    this.currentIndex = index;
-    this.updateScrollPosition();
-    
-    // 立即跳转，提高移动端响应性
+    if (this.justSwiped) return;
+
     const drink = this.drinksData[index];
     if (drink && drink.link) {
-      // 添加视觉反馈
-      const item = document.querySelector(`[data-index="${index}"]`);
+      const item = document.querySelector(`.wine-item[data-index="${index}"]`);
       if (item) {
-        item.style.transform = 'scale(0.95)';
-        item.style.transition = 'transform 0.1s ease';
+        item.style.transition = 'transform 0.12s ease';
+        item.style.transform = 'scale(0.96)';
       }
-      
-      // 短暂延迟后跳转，让用户看到反馈
       setTimeout(() => {
         window.location.href = drink.link;
-      }, 150);
+      }, 120);
     }
   }
 
-  // 下一个酒水
   nextDrink() {
-    if (this.isAnimating) return; // 防止动画期间重复触发
+    if (this.isAnimating) return;
     this.currentIndex = (this.currentIndex + 1) % this.drinksData.length;
     this.updateScrollPosition();
   }
 
-  // 上一个酒水
   prevDrink() {
-    if (this.isAnimating) return; // 防止动画期间重复触发
+    if (this.isAnimating) return;
     this.currentIndex = this.currentIndex === 0 ? this.drinksData.length - 1 : this.currentIndex - 1;
     this.updateScrollPosition();
   }
 
-  // 更新滚动位置 - 循环滚动和完美居中
   updateScrollPosition() {
     const viewport = document.getElementById('wineListViewport');
     if (!viewport) return;
 
-    this.isAnimating = true; // 开始动画
+    this.isAnimating = true;
 
     const items = viewport.querySelectorAll('.wine-item');
-    const itemWidth = 340; // 每个选项的宽度（包含间距）
+    const itemWidth = 340;
     const viewportWidth = viewport.offsetWidth;
-    
-    // 计算完美居中的滚动位置
     const centerOffset = viewportWidth / 2 - itemWidth / 2;
-    let scrollPosition = this.currentIndex * itemWidth - centerOffset;
-    
-    // 确保滚动位置不为负数，并且考虑padding
-    scrollPosition = Math.max(0, scrollPosition);
-    
-    // 使用更丝滑的滚动动画
-    viewport.scrollTo({
-      left: scrollPosition,
-      behavior: 'smooth'
-    });
 
-    // 更新选中状态
-    items.forEach((item, index) => {
-      const isActive = index === this.currentIndex;
-      item.classList.toggle('active', isActive);
-      
-      // 添加缩放动画
-      if (isActive) {
-        item.style.transform = 'scale(1.05)';
-        setTimeout(() => {
-          item.style.transform = 'scale(1)';
-        }, 200);
+    let left = this.currentIndex * itemWidth - centerOffset;
+    left = Math.max(0, left);
+
+    viewport.scrollTo({ left, behavior: 'smooth' });
+
+    items.forEach((el, i) => {
+      el.classList.toggle('active', i === this.currentIndex);
+      if (i === this.currentIndex) {
+        el.style.transform = 'scale(1.05)';
+        setTimeout(() => { el.style.transform = 'scale(1)'; }, 200);
       }
     });
 
-    // 动画结束后重置状态
-    setTimeout(() => {
-      this.isAnimating = false;
-    }, 500);
+    setTimeout(() => { this.isAnimating = false; }, 500);
   }
 }
 
-// 全局函数，供HTML调用
+// 全局函数
 function openWineMenu() {
-  if (window.wineMenu) {
-    window.wineMenu.openWineMenu();
-  }
+  if (window.wineMenu) window.wineMenu.openWineMenu();
 }
 
 // 初始化
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   window.wineMenu = new WineMenu();
 });
