@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -182,6 +185,8 @@
       .notice-title .title{ font-size: 14px; }
       .notice-title .summary{ font-size: 12px; }
     }
+
+    
   </style>
 </head>
 <body>
@@ -202,6 +207,8 @@
   <!-- Footer 自动插入 -->
   <div id="footer-placeholder"></div>
   <script src="../js/footer.js"></script>
+<!-- 放在有“通知”按钮的页面，建议加 defer -->
+<script defer src="/js/notice-badge.js"></script>
 
   <script>
     (function(){
@@ -221,34 +228,13 @@
             {
               id: '2024-10-01',
               date: '2024-10-01',
-              title: '10/01 更新 · 新增渲染图集与委托表单',
-              summary: '上线渲染图集页；新增 Commission 表单；修复移动端滑动手势。',
+              title: '10/01 更新 · 读取notification失败,使用内置示例数据',
+              summary: '读取notification失败,使用内置示例数据',
               detail: `
 <p>本次更新包含：</p>
 <ul class="changes">
-  <li>新增 <strong>渲染图集 / Render</strong> 页面，支持点击图片看大图、点击文字跳转文章。</li>
-  <li>新增 <strong>合作联系 / Commission</strong> 表单，提交后会发送到作者邮箱。</li>
-  <li>移动端优化：修复若干滑动手势和遮挡问题。</li>
+  <li>读取notification失败,使用内置示例数据</li>
 </ul>
-<p>可前往以下入口体验：</p>
-<p>
-  • <a href="./public/render.html">渲染图集</a><br/>
-  • <a href="./public/commission.html">合作联系</a>
-</p>
-              `
-            },
-            {
-              id: '2024-09-25',
-              date: '2024-09-25',
-              title: '09/25 更新 · 私密客单页面细节优化',
-              summary: '滚动选项样式优化；遮罩层修正；若干交互细节微调。',
-              detail: `
-<p>优化内容：</p>
-<ul class="changes">
-  <li>修复最后一项被遮罩遮挡问题。</li>
-  <li>滚动条与滚轮联动体验更顺滑。</li>
-</ul>
-<p>相关入口：<a href="./private.html">私密客单</a></p>
               `
             }
           ];
@@ -365,3 +351,4 @@
   </script>
 </body>
 </html>
+

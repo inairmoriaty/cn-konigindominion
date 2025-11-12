@@ -1,7 +1,7 @@
 // /api/commission.js  —— Edge-friendly（直接调用 Resend REST API）
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RECIPIENT = process.env.COMMISSION_INBOX;      // 你的收件邮箱
-const FROM = process.env.COMMISSION_FROM || 'KONIGIN <onboarding@resend.dev>';
+const FROM = process.env.COMMISSION_FROM || 'KONIGIN <commission@konigindominion.com>';
 // ↑ 域名验证后，把 Vercel 的 COMMISSION_FROM 改成：'KONIGIN <commission@konigindominion.com>'
 
 export const config = {

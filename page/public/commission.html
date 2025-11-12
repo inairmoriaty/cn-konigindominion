@@ -50,13 +50,39 @@
 
     /* 蜜罐（反机器人） */
     .hp{position:absolute;left:-9999px;visibility:hidden}
+
+    /* --- 修复“同意条款”被竖排的问题 + 居中 --- */
+.row .agree-label,
+.row .agree-label * {
+  writing-mode: horizontal-tb !important;   /* 强制横排 */
+  text-orientation: mixed !important;
+  transform: none !important;               /* 防止被旋转 */
+  white-space: normal !important;
+}
+
+.row .agree-label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;       /* 水平居中 */
+  gap: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* 让复选框更清晰（可选） */
+.agree-label input[type="checkbox"]{
+  width: 18px; height: 18px;
+  accent-color: #fff; /* iOS/现代浏览器 */
+}
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>合作联系 / Commission</h1>
-    <p class="hint">请尽可能完整地描述您的需求，不限定乙女或梦女性质，提交后表单会单向发送到写手邮箱（静态个人站不具备交互功能，不会披露您的个人信息）。</p>
+    <p class="hint">请尽可能完整地描述您的需求，不限定乙女或梦女性质，提交后表单会单向发送到写手邮箱（静态个人站不具备交互功能，不会披露您的个人信息。</p>
     <p class="hint">写手在绝大多数情况下会接受委托，仅在预算不符，或内容题材超出擅长范围时（如BL、生理GB取向等特殊题材）会婉拒。如在提交表单后三天内未收到写手的回复，请理解为该委托尚不适合展开，视为婉拒。</p>
+    <p class="hint">2025年11月档期已满，请于2025年12月1日后再联系。</p>
     <p class="hint">非常感谢您的理解与尊重，期待与您合作！</p>
 
     <form id="commissionForm" method="post" action="/api/commission" novalidate>

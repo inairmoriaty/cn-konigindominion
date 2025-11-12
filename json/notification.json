@@ -1,6 +1,14 @@
 {
     "items": [
       {
+        "id": "2025-11-12",
+        "date": "2025-11-12 16:00",
+        "title": "11/12 更新 · 新功能更新",
+        "summary": "新增了小红点提醒功能；新增《驯化》章节11；修复了合作委托投递失败的问题，并更新委托状态。",
+        "badge": "更新",
+        "detail": "<p>本次更新包含：</p><ul class=\"changes\"><li>新增 <strong>小红点提醒功能</strong>。</li><li>新增 <strong>《驯化》新章节</strong>。</li><li>修复了 <strong>合作委托投递失败的问题</strong>，并更新委托状态。</li></ul><p>入口：<a href=\"./notification.html\">通知公告</a> · <a href=\"./article/public/domestication/catalog.html\">Konig公开篇目</a> · <a href=\"./page/public/commission.html\">委托中心</a></p>"
+      },
+      {
         "id": "2025-10-17",
         "date": "2025-10-19 21:02",
         "title": "10/17 更新 · 内部测试",
