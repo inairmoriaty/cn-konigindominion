@@ -134,34 +134,28 @@
   </div>
 
   <script>
-    const form = document.getElementById('commissionForm');
-    const msgBox = document.getElementById('msgBox');
-    const btn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msgBox.innerHTML = '';
-      btn.disabled = true;
-      try {
-        const fd = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: fd
-        });
-        const data = await res.json();
-        if (res.ok) {
-          msgBox.innerHTML = '<div class="success">已收到！我会尽快与您取得联系～</div>';
-          form.reset();
-        } else {
-          msgBox.innerHTML = '<div class="error">' + (data.error || '提交失败，请稍后再试。') + '</div>';
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("commissionForm");
+      const msgBox = document.getElementById("msgBox");
+      const btn = document.getElementById("submitBtn");
+    
+      if (!form) return;
+    
+      // 🔥 拦截提交 —— 关闭稿件入口
+      form.addEventListener("submit", (e) => {
+        e.preventDefault(); // 阻止真正提交
+    
+        alert("当前 2025 年档期已满，暂不接受新委托。\n请于 2026 年 1 月 1 日后再联系，期待为您造梦！");
+    
+        // 可选：让按钮变灰 + 显示消息
+        if (msgBox) {
+          msgBox.innerHTML = '<div class="error">当前不开放委托提交。</div>';
         }
-      } catch (err) {
-        msgBox.innerHTML = '<div class="error">网络异常，请稍后再试。</div>';
-      } finally {
-        btn.disabled = false;
-      }
+        if (btn) {
+          btn.disabled = true;
+        }
+      });
     });
-  </script>
-</body>
+    </script>
+    </body>
 </html>
