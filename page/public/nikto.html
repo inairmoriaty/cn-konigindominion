@@ -8,8 +8,11 @@
   <link rel="stylesheet" href="../../style/footer.css">
   <link rel="stylesheet" href="../../style/mobile.css">
   <style>
-/* Redesigned color scheme using red-black-gold tones */
+/* =========================================
+   König 公開篇目  — 完整样式（最终修正版）
+   ========================================= */
 
+/* ===== 颜色主题 ===== */
 :root {
   --bg-deep: #19171b;
   --bg-dark: #2b0307;
@@ -22,49 +25,51 @@
   --font-base: 'Arial', sans-serif;
 }
 
+/* ===== 整体背景 ===== */
 body {
   font-family: var(--font-base);
   background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-dark) 100%);
   color: var(--gold-light);
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
-.nikto-container {
-  position: relative;  /* 为底部遮罩提供定位参考 */
+/* ===== 主容器：可滚动内容区域 ===== */
+.konig-container {
+  position: relative;
   width: 100%;
-  height: 100vh;
+  height: auto;              /* 重要：允许页面撑开 */
+  min-height: 100vh;         /* 防止页面太短 */
   padding: 20px;
   padding-top: 80px;
-  padding-bottom: calc(clamp(56px, 9vh, 72px) + var(--safe-bottom) + 20px);
-  overflow-y: auto;
+
+  /* 底部空间：避免被 footer 遮挡 */
+  padding-bottom: calc(120px + var(--safe-bottom));
+
+  overflow-y: auto;          /* 保证可滚动 */
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
   box-sizing: border-box;
 }
 
-.nikto-container::-webkit-scrollbar {
+.konig-container::-webkit-scrollbar {
   display: none;
 }
 
- .header-section {
-   text-align: center;
-   margin-bottom: 40px;
-   padding: 40px 20px;
-   background: transparent;
-   border-radius: 0;
-   box-shadow: none;
-   border: none;
- }
+/* ===== 标题区 ===== */
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px 20px;
+}
 
 .header-title {
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 20px;
   color: var(--gold-plain);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .header-subtitle {
@@ -73,160 +78,34 @@ body {
   opacity: 0.85;
 }
 
- .works-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-   gap: 40px;
-   row-gap: 40px;
-   column-gap: 40px;
-   max-width: 1200px;
-   margin: 0 auto;
-   padding: 20px 0;
- }
+/* ===== 作品宫格 ===== */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
 
- .work-card {
-   background: rgba(255, 255, 255, 0.02);
-   border-radius: 0;
-   padding: 30px;
-   margin: 20px 0;
-   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-   border: 1px solid rgba(255, 255, 255, 0.08);
-   transition: all 0.3s ease;
-   cursor: pointer;
-   position: relative;
-   overflow: hidden;
-   /* 触摸优化 */
-   -webkit-tap-highlight-color: transparent;
-   touch-action: manipulation;
- }
+/* ===== 作品卡片 ===== */
+.work-card {
+  background: rgba(255,255,255,0.02);
+  border-radius: 0;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
 
+  /* 触摸优化 */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
 
-
- .work-header {
-   margin-bottom: 20px;
- }
-
- .work-author {
-   font-size: 16px;
-   color: var(--gray-muted);
-   margin-bottom: 15px;
- }
-
- .work-meta {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 10px;
-   margin-bottom: 20px;
- }
-
- .rating-badge {
-   padding: 4px 12px;
-   border-radius: 20px;
-   font-size: 12px;
-   font-weight: bold;
-   text-transform: uppercase;
- }
-
- .rating-mature {
-   background: var(--gold-plain);
-   color: var(--bg-deep);
- }
-
- .rating-teen {
-   background: var(--gold-light);
-   color: var(--bg-deep);
- }
-
- .rating-18+ {
-   background: #75020f;
-   color: white;
- }
-
- .status-badge {
-   padding: 4px 12px;
-   border-radius: 20px;
-   font-size: 12px;
-   font-weight: bold;
- }
-
- .status-progress {
-   background: var(--gold-plain);
-   color: var(--bg-deep);
- }
-
- .status-planned {
-   background: var(--gray-muted);
-   color: white;
- }
-
- .work-summary {
-   font-size: 16px;
-   color: var(--gray-muted);
-   margin-bottom: 20px;
-   font-style: italic;
-   line-height: 1.5;
- }
-
- .work-description {
-   font-size: 14px;
-   color: var(--gray-muted);
-   margin-bottom: 20px;
-   padding: 15px;
-   background: rgba(255, 255, 255, 0.02);
-   border-radius: 8px;
-   border-left: 3px solid var(--red-main);
- }
-
- .tags-section {
-   margin-bottom: 20px;
- }
-
- .section-title {
-   font-size: 14px;
-   font-weight: bold;
-   color: var(--gold-plain);
-   margin-bottom: 10px;
-   text-transform: uppercase;
- }
-
- .tags-list {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 6px;
- }
-
- .tag {
-   padding: 4px 8px;
-   background: rgba(182, 157, 157, 0.05);
-   border: 1px solid rgba(255, 255, 255, 0.1);
-   border-radius: 12px;
-   font-size: 12px;
-   color: var(--gold-light);
- }
-
- .warning-tag {
-   background: rgba(255, 0, 0, 0.1);
-   border-color: rgba(255, 0, 0, 0.2);
-   color: white;
- }
-
- .work-footer {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-top: 20px;
-   padding-top: 20px;
-   border-top: 1px solid rgba(255, 255, 255, 0.1);
- }
-
- .work-meta-info {
-   font-size: 12px;
-   color: var(--gray-muted);
- }
-
-
-
-
+.work-header { margin-bottom: 20px; }
 
 .work-title {
   font-size: 28px;
@@ -234,207 +113,153 @@ body {
   color: var(--gold-light);
 }
 
-.work-summary,
+.work-author {
+  font-size: 16px;
+  color: var(--gray-muted);
+  margin-bottom: 15px;
+}
+
+.work-summary {
+  font-size: 16px;
+  color: white;
+  font-style: italic;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
 .work-description {
+  font-size: 14px;
+  color: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid var(--red-main);
+  border-radius: 8px;
+}
+
+/* ===== 标签 ===== */
+.tags-section { margin-bottom: 20px; }
+.section-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--gold-plain);
+  margin-bottom: 10px;
+}
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag {
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: rgba(182,157,157,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  color: var(--gold-light);
+}
+.warning-tag {
+  background: rgba(255,0,0,0.1);
+  border-color: rgba(255,0,0,0.2);
   color: white;
 }
 
-.rating-explicit {
-  background: var(--red-main);
+/* ===== 底部 ===== */
+.work-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.read-button {
+  background: linear-gradient(45deg, var(--red-main), var(--red-dark));
+  padding: 5px 15px;
+  font-size: 12px;
+  font-weight: bold;
   color: white;
+  border-radius: 0;
+  transition: 0.3s ease;
+  text-decoration: none;
 }
-
-.status-completed {
-  background: var(--gold-plain);
-  color: var(--bg-deep);
-}
-
- .read-button {
-   background: linear-gradient(45deg, var(--red-main), var(--red-dark));
-   color: white;
-   border: none;
-   padding: 5px 15px;
-   font-size: 12px;
-   font-weight: bold;
-   border-radius: 0;
-   cursor: pointer;
-   text-decoration: none;
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   line-height: 1;
-   /* 触摸优化 */
-   -webkit-tap-highlight-color: transparent;
-   touch-action: manipulation;
-   transition: all 0.3s ease;
- }
-
-
-
- .read-button:active {
-   transform: translateY(0);
-   box-shadow: 0 2px 8px rgba(255, 0, 0, 0.1);
- }
 
 .read-button:hover {
-  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255,0,0,0.2);
+}
+
+/* ===== 合作提示按钮 ===== */
+.commission-prompt {
+  text-align: center;
+  margin: 30px 0 10px 0;
+  padding: 10px 0;
+}
+
+.commission-link {
+  color: var(--gold-plain);
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: 2px solid var(--gold-plain);
+  border-radius: 8px;
+  transition: 0.3s ease;
+  background: rgba(174,127,98,0.1);
+}
+
+.commission-link:hover {
+  background: var(--gold-plain);
+  color: var(--bg-deep);
   transform: translateY(-2px);
 }
 
+/* =========================================================
+   关键修复补丁：防止合作提示被 bottom-nav 遮住
+   ========================================================= */
 
+/* 移除 overflow hidden、fixed 定位 */
+html, body {
+  overflow: visible !important;
+  height: auto !important;
+  position: static !important;
+}
 
- /* 触摸反馈样式 */
- .touch-active {
-   transform: scale(0.95) !important;
-   transition: transform 0.1s ease !important;
- }
+/* 允许内容撑开，底部留足空间 */
+.konig-container {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
+  padding-bottom: calc(140px + var(--safe-bottom)) !important;
+}
 
- .loading {
-   text-align: center;
-   padding: 40px;
-   color: var(--gray-muted);
- }
+/* 移除底部遮罩 */
+.bottom-mask {
+  display: none !important;
+}
 
- .error {
-   text-align: center;
-   padding: 40px;
-   color: var(--red-main);
- }
+/* ===== 移动端额外保险（避免 Safari 100vh bug） ===== */
+@media (max-width: 768px) {
+  html, body {
+    overflow: visible !important;
+    height: auto !important;
+    position: static !important;
+  }
 
+  .konig-container {
+    padding-bottom: calc(150px + var(--safe-bottom)) !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    overflow-y: auto !important;
+  }
 
- 
- /* 移动端全屏滚动优化 */
- @media (max-width: 768px) {
-   .nikto-container {
-     padding: 15px;
-     padding-top: 60px;
-     /* 保持底部导航栏的间距，避免卡片被遮挡 */
-     padding-bottom: calc(clamp(56px, 9vh, 72px) + var(--safe-bottom) + 20px);
-     /* 确保移动端全屏滚动 */
-     width: 100% !important;
-     height: 100% !important;
-   }
-
-   .header-title {
-     font-size: 32px;
-   }
-
-   .header-subtitle {
-     font-size: 16px;
-   }
-
-   .works-grid {
-     grid-template-columns: 1fr;
-     gap: 30px;
-     row-gap: 30px;
-     column-gap: 30px;
-     padding: 15px 0;
-     /* 确保最后一张卡片有足够的底部间距 */
-     margin-bottom: 20px;
-   }
-
-   .work-card {
-     padding: 20px;
-   }
-
-   .work-title {
-     font-size: 24px;
-   }
-
-
-
-   /* 移动端触摸优化 */
-   .work-card {
-     -webkit-touch-callout: none;
-     -webkit-user-select: none;
-     user-select: none;
-   }
-   
-   /* 移动端全屏滚动优化 */
-   html, body {
-     overflow: hidden !important;
-     position: fixed;
-     width: 100% !important;
-     height: 100% !important;
-   }
- }
-
-    /* 滚动条样式 - 全屏滚动时隐藏 */
-    .nikto-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nikto-container {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    /* 底部遮罩样式 */
-    .bottom-mask {
-      position: absolute;
-      left: 0; 
-      bottom: 0;
-      width: 100%;
-      height: 92px;  /* 可覆盖footer高度+阴影 */
-      background: #19171b;  /* 使用与页面背景一致的颜色 */
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* 确保底部导航栏在遮罩之上 */
-    #footer-placeholder {
-      z-index: 10;
-    }
-    
-    /* 合作提示样式 */
-    .commission-prompt {
-      text-align: center;
-      margin: 20px 0;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-    
-    .commission-link {
-      color: var(--gold-plain);
-      text-decoration: underline;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 12px 24px;
-      border: 2px solid var(--gold-plain);
-      border-radius: 8px;
-      display: inline-block;
-      transition: all 0.3s ease;
-      background: rgba(174, 127, 98, 0.1);
-    }
-    
-    .commission-link:hover {
-      background: var(--gold-plain);
-      color: var(--bg-deep);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(174, 127, 98, 0.3);
-    }
-    
-    .commission-link:active {
-      transform: translateY(0);
-    }
-    
-    /* 移动端合作提示样式 */
-    @media (max-width: 768px) {
-      .commission-prompt {
-        margin: 15px 0;
-        padding: 8px;
-      }
-      
-      .commission-link {
-        font-size: 14px;
-        padding: 10px 20px;
-      }
-    }
+  .header-title { font-size: 32px; }
+  .header-subtitle { font-size: 16px; }
+  .work-card { padding: 20px; }
+  .work-title { font-size: 24px; }
+  .commission-link { font-size: 14px; padding: 10px 20px; }
+}
   </style>
 </head>
 <body>
