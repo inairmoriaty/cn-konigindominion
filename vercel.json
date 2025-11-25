@@ -1,0 +1,10 @@
+{
+    "rewrites": [
+      { "source": "/konig", "destination": "/pages/konig.html" },
+      { "source": "/commission", "destination": "/commission.html" },
+      { "source": "/guest", "destination": "/reads/guest-public.html" },
+      { "source": "/public/konig", "destination": "/reads/konig-public.html" },
+      { "source": "/:path*", "destination": "/:path*.html" }
+    ]
+  }
+  
