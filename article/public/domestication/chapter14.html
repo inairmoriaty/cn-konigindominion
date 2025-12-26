@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>第十四章 - 驯化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第十四章 - 过家家（1）</div>
+            
+            <div class="author-info">哈尔施塔特篇</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        温泉一日游结束的第二天清晨，山庄逐渐恢复清冷。
+        圣诞将至，KorTac高层下达短暂的节假日轮休通知，部分外派行动暂停，允许中高层雇佣兵择地休整。对大多数人来说，这是一年中难得的宽赦。
+        对于身为CSO的Arachnid来说，这是近几年来他第一次申请并亲手安排的年假。
+        清晨，薄雪刚落，一切都在悄然分流。Viper小队的成员三三两两拎着战术包，在管控区外抽烟、闲聊，准备就地解散。按照合同条款，能抢到节前最近的一班飞机的人可以就地滚蛋回家，抢不到的，就跟Hans一起回总部再离开——或者留在基地和其他人吃一顿比常规口粮更像食物的节日晚餐。
+        你拎着前夜留下的斗篷，脚步虚浮地站在雪地里，眼睛还没睁开一半。宿醉带来的钝痛和他昨晚那场粗暴、几近发泄的性爱混合成一种低沉的炸裂感，腰像断了几节，腿站不稳，又不敢坐下，只能在心里暗自发誓再也不喝酒，或者喝了酒就离那个男人远一点。
+        当然你也不记得昨晚具体发生了什么，自己又说了什么，只觉得Arachnid看你的频率比以前更高，停留时间更久，压抑又沉默。
+        Hans沿廊下走来，冲你点了点头，视线落在你垂着的头，唇动了动，欲言又止。他背着包，看向Arachnid，最终只是对你们俩低声道了一句“圣诞快乐”，便和其他一道回基地的成员向停机坪走去。
+        现在还没有到圣诞节呢。
+        你按着太阳穴，努力抽了抽鼻子，试图用清晨的冷空气唤醒大脑，终于想起来现在是几月几日，身处何地。你很不高兴，尤其是现在当你看到Hans就这样离开，而Arachnid什么也不解释时，你终于忍不住开口了，“他不和我们一起走吗？”
+        “你想让我带着他一起陪你过圣诞节？”
+        “？”酒一下子醒了，你脸上的表情极为诡异，像是吃到了饭菜里的一根头发。
+        Arachnid没什么耐心等你想出一些刻薄的词句来反驳他，也不打算过多解释自己方才那话的含义，径直揽住你的腰，把你像一只不听话的小动物一样提着往后院的停机坪方向拖。
+        停在那里的，不是你们来时的大型运输机，而是一架狭小、低调、涂装干净的军用直升机。舱内已热好，机翼上的霜冻被清理干净，螺旋桨转动缓慢，卷起一点点迟来的日出与破碎的云。
+        你跌坐在金属座椅上，整个人像被扔进一个不明目的地的铁盒子，本能地环顾四周，想找个熟脸，但整个机舱空空荡荡，没有其他PMC成员。驾驶室里的飞行员是个皮肤黝黑的拉美大男孩，皮肤晒得发亮，他回头看了你一眼，嘴里嚼着口香糖，露出整齐白牙，冲你比了个大拇指。
+        “Señorita，系好安全带——你‘男朋友’脾气不太好啊。”他像是根本没意识到你是某种意义上的“人质”，又或许在这个系统里，你只是某种高优先级的“货物”，被运送、被转移、被安置在他决定你该去的位置上。
+        你还没来得及回嘴，Arachnid就坐到了你旁边，拉下你的安全带扣，低声说，“别跟他废话。”
+        你瞪了他一眼，但他只是抬手将你的围巾重新系了系，掩住你半边脸，像是随手给宠物盖毛毯那样命令道，“睡一觉。到了再说。”
+        
+        直升机一路向西，穿越厚重的云层与日光边界。你不知睡了多久，窗外的天空由冷蓝褪成雪白，再慢慢沉入苍灰。你的头靠着座椅，耳朵被轰鸣的螺旋桨声震得发麻，直到那一瞬——
+        一次轻微的下坠感从腰椎涌上来，飞机稳稳地落地。你睁开眼，第一眼看向窗外，却完全没看到熟悉的钢筋与铁栏，没有灰扑扑防暴墙，没有熟悉的军犬和岗哨。
+        雪。是铺天盖地、没有尽头的雪。
+        群山静默地矗立在远方，如古老而沉思的巨人，将被冰晶覆裹的身影缓缓倾向湖面。山脊线被雪覆盖，苍白的轮廓在灰蓝天幕下模糊了边界，天与地在这一刻没有分明的界线，只剩下冷寂的连绵与永恒的肃穆。
+        落雪一层一层地堆积在山脚、屋脊与湖岸之间，像是时间亲手织就的白毯，将一切尖锐都抚平。积雪压弯了山腰的云杉，枝桠垂落下来，在微光中凝结出一串串透明的冰铃，随风轻响。冻结后的空气静谧到足以吞噬任何声响，只留下呼吸与心跳的回音。
+        雪花飘落入湖中轨迹也清晰可见。翠绿色的水色在冬日里被稀释到几乎透明，与岸边冰层的交界处泛起一圈圈水光，深渊在呼吸。远处，小教堂的钟声被风裹挟而来，抚起水面涟漪，层层叠叠，穿越湖心，宛若哈尔施塔特心脏上的褶皱。
+        一只水鸟从岸边飞起，破开湖面，雪被它惊起一撮，如一片飘落的羽毛。俯瞰这山水景色，你几乎能听见自己在这片山湖间显得多么微小、多么安静，仿佛这世界从未为谁驻足，但也从不拒绝谁的沉溺。
+        你回过头，Arachnid就站在你身后不远的地方，倚靠着一辆低调的黑色SUV，沉默地等待着你花一点时间适应目及的一切。
+        你看风景，他也看属于他的风景。
+        你拉了拉围巾，迟疑地向他走去，钻入副驾驶，不知是手在低温中冻得没有知觉，还是你的心尚未从震惊中恢复，你动作缓慢地系上安全带，看向身侧的男人。他坐上驾驶位，不需看导航、不需问路，点火、转动方向盘，熟门熟路地沿着湖边公路驶向小镇。
+        他领着你，带你回“某个属于他”的地方。
+        越是靠近镇中心，交通也渐渐拥堵，本就狭窄的车道上挤满了白天接踵而至的各路游客，车每行驶两三米就要停下，你忍不住降下车窗，向外张望，颤抖的呼吸化作白雾从你微张的口中飘出，寻找着想象中被金与红填满的圣诞场景——
+        在真正的哈尔施塔特，圣诞气氛淡得近乎节制，整座袖珍如玩具般的镇子被连绵不绝的阿尔卑斯山压低了呼吸，湖泊像镜子般贴着山脚与村落延展，雪光之下安静得近乎冻结。
+        阳光终于刺破苍雾，却只眷顾无限接近穹顶的雪峰，自山巅向下的整个湖区都仿佛被天光遗忘了一般，笼罩在一层淡淡的透蓝色阴影之中。穿过喧哗的游客，见证他们在白日里窥探这象征天堂的一角，各种语言交汇在一起，如雨夹雪般扑面而来。你甚至看见许多与自己面貌相似的年轻女性，在人群中闪现、消失、又重叠。
+        你只需要推门下车，便可以混入他们，彻底消失在人潮之中。你甚至能想象自己沿着湖边小径逃走的样子——可你最终没有动，就只是坐在那里，静静望着窗外，像隔着玻璃看着别人的人生。
+        或许是因为，那些压迫你的，不止是这座山。是他。是你身边这个沉默坐着的男人。
+        Arachnid的肩膀就像山一样高耸、僵硬、不可逾越。
+        你逃不出这座山，就像你逃不出他的身边。
+        “下车。”他忽然开口。
+        你这才发现车无声无息地停下，已经到了你们的目的地。你打开车门，脚踏在湿滑的鹅卵石小路上轻微打滑，一切似乎真实到有些不真实。风带着雪粉飘落，灌进你的大衣里，像是一只看不见的手在探测你的体温。
+        那是一栋看上去有些年头的房子，立在湖岸边，独栋，结构紧凑，灰白色石墙与尖顶黑瓦的屋檐没有一丝迎客的意味。后院被几棵挺拔苍翠的冷杉守卫着，从掩映的松枝间能模糊地看到延伸出来的，被玻璃与黑铁架构的阳光房，两三张铺着雪白软垫的藤椅围绕着一只空空如也的矮桌。
+        那上面应该摆一只茶壶，还有三层高的放满马卡龙和薄荷巧克力的银制点心架。
+        你这么想着。
+        Arachnid领着你从车库绕到通向湖岸的石阶，前院的围栏上，一圈圈扭曲交错的玫瑰枝条早已枯萎，枯叶依然落尽，薄霜凝结在纠缠的枝干上，几乎越过围栏，像是某种沉默的誓言，在冬日里也不肯彻底凋零，向深不见底的哈尔施塔特湖而去。
+        你站在那里，甚至不敢问他这是谁的家？你要带我拜访谁？我们要干什么？
+        是他某个退役战友的宅邸？是临时借住的基地？还是某个不愿你知晓的私人空间，属于另一个他，属于你无法涉足的那个世界？
+        他走过你身边，从大衣口袋里掏出一串钥匙，低头在门锁上转动几下，动作干脆、熟稔。温暖的光从推开的门倾泻而出时，他高大的身影被廊灯切出一道剪影，你也终于隐隐猜到了他前些日子“失踪”的来龙去脉。
+        “Was stehst du denn da rum? （还站着干什么）”
+        “Komm rein, mein kleiner Fuchs.（进来，我的小狐狸）”
+        国王（König）看着你，如是说。
+        
+        "Good morning," said the roses.
+        “早上好呀。”玫瑰们说。
+        The little prince gazed at them. They all looked like his flower.
+        小王子愣在原地，怔怔地望向她们——每一朵看上去都像他曾以为是唯一的那一朵，他的。
+        "Who are you?" he demanded, thunderstruck.
+        “你们是谁？”他脱口而出，目瞪口呆。
+        "We are roses," the roses said.
+        “我们是玫瑰。”她们回答。
+        And he was overcome with sadness. His flower had told him that she was the only one of her kind in all the universe. And here were five thousand of them, all alike, in one single garden!
+        巨大的悲伤席卷了他的心。
+        他的玫瑰曾告诉他，她是整个宇宙中独一无二的存在——可是这里竟然有五千朵和她一模一样的花，整整五千朵，齐聚于这一个花园！
+        "She would be very much annoyed," he said to himself, "if she should see that . . . She would cough most dreadfully, and she would pretend that she was dying, to avoid being laughed at. And I should be obliged to pretend that I was nursing her back to life--for if I did not do that, to humble myself also, she would really allow herself to die..."
+        “要是她看见这一幕……”他暗自思忖着，“肯定会气疯吧。她会剧烈地咳嗽，还会假装快要死了，只为避免被人嘲笑。而我不得不配合她，装作一副拼命抢救的样子，哄她回心转意——如果我不这么做，不跟着自贬身份，她真会放任自己死去……”
+        Then he went on with his reflections: "I thought that I was rich, with a flower that was unique in all the world; and all I had was a common rose. A common rose, and three volcanoes that come up to my knees--and one of them perhaps extinct forever ... That doesn't make me a very great prince...."
+        “我原以为自己拥有一朵独一无二的花，以为那就足够我骄傲一生，可她不过是寻常的玫瑰罢了。我也只不过是个守着三座矮火山的小男孩——其中一座可能早已熄灭……这哪算什么了不起的王子。”
+        
+        你听见自己的心脏在胸腔中一下下撞击着胸骨，却听不到自己的脚步声，就这么着了魔一般走向他，门“咔哒”一声在你身后关上，彻底隔绝了节日的钟声与那一地灯火。
+        鞋跟落地，脚底还沾着些没化开的雪水，踏入屋内、进入起居室的那一瞬间你真有些怔住了。
+        柔和昏黄的灯光下，一张不大的餐桌上放着驼色织毯和两套闪着银光的餐具。最夸张的是窗边那棵圣诞树——不是塑料的，是一整棵被砍下来的真树，尚未被装点上那些可爱的节日装饰。货真价实的壁炉角落堆着一小捆木柴，上方悬挂的完整鹿首睁着无神的双眼，粗壮的雄角如枝叶般散开来，不怒自威。
+        你曾在那段被囚禁于他的房间的时候在纸上画过类似的场景，简陋的线条，潦草的装饰，唯一不同的是那一整面替换了墙体的落地窗被深色的木纹框架切割成一个个的整齐的格子，正对湖畔，能看见雪山、树影、鸟鸣与晨光，但推不开、踏不出去——你忍不住向窗外望去，希望能看到幻想中的天鹅。
+        那窗太大了，大到像是一面展示玻璃，把你整个人封在一个供人观赏的空间里。它教你什么叫“看见自由”和“得不到自由”之间的差距。
+        情绪在嗓子眼哽了一下，你下意识想说什么，却突然觉得这样很傻。 
+        所以你板起脸，用力跺了跺门口的地毯，“……天鹅呢？” 
+        Arachnid的声音从你背后传来，低沉，似笑非笑，“在这种温度？冻死了。”他停了一下，轻易就看穿你找茬的心思，淡淡补上一句，“而且就算有，你也惹不起。它们会咬人。” 
+        “从今天开始，你就是这里的女主人了。”                                 
+                
+                
+                                                
+</div>
+</div>
+</div>
+
+<!-- 章节导航按钮 -->
+<div class="chapter-navigation">
+<a href="chapter13.html" class="nav-btn">
+    <span>←</span>
+    <span>上一章</span>
+</a>
+<a href="chapter15.html" class="nav-btn">
+    <span>下一章</span>
+    <span>→</span>
+</a>
+</div>
+
+
+
+<script>
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('文章页面加载完成');
+    
+    // 添加右滑返回手势支持（兼容iOS和Android）
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+    let startTime = 0;
+    
+    // 防止页面滚动冲突
+    document.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+        isSwiping = false;
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (!startX || !startY) return;
+        
+        let currentX = e.touches[0].clientX;
+        let currentY = e.touches[0].clientY;
+        let diffX = startX - currentX;
+        let diffY = startY - currentY;
+        
+        // 检测是否为水平滑动（水平距离大于垂直距离）
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+            isSwiping = true;
+            // 如果是边缘滑动，阻止页面滚动
+            if (startX < 50) {
+                e.preventDefault();
+            }
+        }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+        
+        let endX = e.changedTouches[0].clientX;
+        let diffX = startX - endX;
+        let endTime = Date.now();
+        let duration = endTime - startTime;
+        
+        // 从左边缘开始向右滑动（返回手势）
+        // 支持iOS和Android的返回手势
+        if (startX < 50 && diffX < -80 && duration < 500) {
+            window.history.back();
+        }
+    }, { passive: true });
+});
+</script>
+</body>
+</html>
+
+
