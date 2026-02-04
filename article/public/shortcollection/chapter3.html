@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>边检官系列 · 🇷🇺Nikto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">边检官系列 · 🇷🇺Nikto</div>
+            
+            <div class="author-info">俄罗斯海关</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        好安静。
+        真的好安静。
+        你盯着柜台后把自己包成一个安卓头的男人，沉默在你们之间弥漫开来，空气安静到显得四周格挡的入境手续办理区域都逼仄，无形的压迫感让你更加局促不安。
+        你攥紧了手心，在脑海里反复排练刚刚从翻译软件学来的“Паспорт（护照）”“авиабилет（机票）”“Туризм（旅游）”几个词，以便随时准备在Nikto开口时以命搏命。
+        ……结果他看都没看你一眼。
+        只是淡淡扫了你一眼后，低头翻起你递过来的一沓资料，指尖敲击键盘，噼里啪啦像是在录入坦克调度命令。
+        用不了一会儿，一旁的打印机便吐出一张小白条，他也终于正眼看向你。
+        “Fingerprint.”
+        他用斯拉夫口音极重的英语对你道，又对你面前的指纹录入机器扬了扬下巴，连“Please”都省了。
+        你在原地呆若木鸡，面前的机器用中文报出“请将手指按压在表面，双手拇指优先”，你才回过神来。
+        为什么俄罗斯的录指纹机器说中文？！
+        但你还是低头照做，在心里发誓回国就要写一篇“中俄友好关系亲历记”。
+        录完指纹，Nikto将夹着小白条的护照还给你，挥了挥手，像是迫不及待地赶你走似的，按下了栅栏门的按钮。
+        你像梦游一样走出柜台。
+        就这样……过了？！
+        这他妈可是长期签证邀请函诶！他连你是男是女都没问一句！——哦哦不过没关系，俄罗斯人恐同，这里只有二元性别。
+        ——但是不是说俄罗斯边检很难缠的吗？怎么连俄语都没用上？！嗯……还准备好了“贿赂”用的现金？！
+        “Move. Don’t block the queue.”
+        真正的中俄互惠，连一句多余的话都不需要。                
+                    </div>
+        </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="chapter2.html" class="nav-btn">
+            <span>←</span>
+            <span>上一章</span>
+        </a>
+        <a href="chapter4.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+
+    <script src="../../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+</body>
+</html>

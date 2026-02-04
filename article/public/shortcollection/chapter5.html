@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>边检官系列 · 🇦🇹Krueger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">边检官系列 · 🇦🇹Krueger</div>
+            
+            <div class="author-info">奥地利海关</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        奥地利的特产是什么？
+        古典音乐、国王煎饼、被强行拉郎销售的茜茜公主与莫扎特的新概念cp……还有，某个落榜的美术生。
+        ——扯远了。
+        你盯着眼前的入境边检官，有些出神。
+        他的肩膀宽阔，穿着最普通不过的淡蓝色衬衫，领带打得规规矩矩，却仍难掩肌肉撑起布料的清晰线条。墨绿色的伪装网低垂，遮住了他大半张脸，只露出那双深埋在阴影中的眼睛。睫毛意外地长而翘，浓密得像是两把玫瑰金镶边的皇家小扇，在灯光下微微颤动，引得人忍不住去猜这双眼睛的颜色，会是怎样柔和的金棕？会不会像曾经的奥匈帝国落日时分的琥珀？
+        ——你的意思是，奥地利的特产或许还有覆面男。
+        你再次咽了口唾沫，提醒自己别出戏。
+        别忘了，这是在入境大厅，不是在奥斯卡颁奖典礼，也不是在你某段脑补激情戏码的高潮段落。如果太失态，好不容易才批下来的奥地利签证可就要被当场作废——到时候机票得你自己买，遣返也不包餐。
+        Krueger懒洋洋地翻看你的护照，骨节分明的手指在照片页上缓慢而随意地打着圈，像是在认真比对，又像是在故意打发时间。他早已注意到你那副藏不住的花痴脸，甚至有点享受你的神魂颠倒，打算继续吊着你玩。
+        “嗯……”他忽然念出你的名字，把你从对他手指的色情幻想中猛然拽回现实。
+        异国的口音让汉语听起来微微走样，却意外温柔低沉，如同一团羽毛擦过耳畔。你胸口忽然有些涨涨的，像是有什么即将破土而出，蠢蠢欲动得让你想伸手挠两下，却碍于摄像头和身后排得密密麻麻的人群，强行按捺住微微发痒的手指。
+        “你来奥地利做什么？”
+        “旅……旅游，体验圣诞氛围。”
+        “可以告诉我你的安排吗，小姐？”
+        那双浅琥珀色的眼睛抬起来看向你。有了面罩的遮掩，你的所有注意力都被他上半张脸牢牢钉死：浓密的眉、略窄的眼裂、微微上挑的眼角……典型的中欧式轮廓。沉稳而克制，却在下眼睑那道若隐若现的卧蚕里藏着某种令人生怜的、说不清的情绪。
+        你心跳漏了一拍，大脑短路。
+        “今晚吗？”你脱口而出。
+        ……你完了。
+        这句话说出口的瞬间，你就知道完蛋了。
+        大庭广众之下，你居然对一名边检官放电？！而且还自以为他要约你晚饭？！你疯了吗？但……如果他真的答应了呢？刚好你今晚订了那家非常难预约的Figlmüller，说不定这是命运的安排——
+        “……”Krueger的眼角抽了抽，哪怕每天对着成百上千个入关者，他也很少遇到你这样毫不遮掩、脑内剧场直接投影到脸上的女人。
+        “不是。”男人似乎刻意压低了嗓音，循循善诱，“我指的是你所有行程。”
+        你猛然回神，尴尬得快要当场去世，赶紧低头，一五一十报出每日安排。
+        可没想到下一句，仿佛一颗冰雹正中你的脑门——
+        “你的申根签为什么这么短？才七天，能做完这么多事吗？”
+        “……”你脸上的表情有些绷不住了，拳头不自觉握紧，几乎是一个字一个字地从牙缝里挤出来，“我也想知道为什么这么短。”
+        “嗯，为什么呢？”他重复你那句反问，语调温柔，眼神却微微眯起，审视意味浓重，像是在等你犯一个小错误，好顺势把你请去小黑屋喝茶。
+        你深吸一口气，几乎是爆发式地开口，“因为我的护照是猪！肝！红！”
+        ……白男的问题真的很白男。如果你能随便找一个奥地利人结婚——不，随便一个欧盟国家的男人也行——哦不对不对，甚至不需要是男的也可以——那你早就是永久居民，谁还在这里被七天的短签羞辱？
+        七天！圣诞季的七天难道不是黄金时间吗？！
+        这叫短？这叫被歧视！
+        你一边气鼓鼓地瞪他，一边把那句“我黑下来你们就知道了”硬生生咽回肚子。
+        Krueger却像是看穿了你心里的骂骂咧咧，在面罩底下轻轻笑了一声。
+        像河豚，拱得鼓鼓的，却不敢炸刺，只敢气呼呼地憋着。
+        他莫名觉得好玩，但还是抬起手，拿起那枚沉甸甸的入境章，在指尖转了半圈，懒洋洋地悬在你申根签页上空。那一刻你心跳突然停顿——
+        “……等等！”你下意识喊了一声。
+        你只是想说一句“不要盖在脸上”。
+        想留个纪念而已。
+        谁知你话还没说完，Krueger手腕一压，印章干脆利落地落下，却没有盖在照片上。你急得倒吸一口气，却下一秒看见他居然把章盖在了旁边的空白页上——贴着页边，整整齐齐，位置精准得像用尺子量过一样。
+        一瞬间，你愣住了。
+        那双金琥珀色的眼睛朝你挑了一下，“嗯？”
+        他是不是早就知道你心里在想什么？
+        “怎么，不想入境吗？”他收起印章，抬眼看你，一本正经地问。
+        “没、没有没有！”你慌乱地摇头，脸颊烧得滚烫，“我是想……想让你盖得……好看点……”
+        Krueger盯着你那副欲言又止的样子，声音压得低低的，“是吗？”
+        你又点了点头，嘴巴张了张，却连自己都不知道要说什么。
+        他瞥了你一眼，“我知道。你们中国人喜欢收集这个。”
+        你耳朵瞬间一红。
+        “本来，我可以直接盖你脸上的。”这句话被Krueger说得轻描淡写，像是在陈述天气，可他语气里分明带着点调侃似的笑，“但既然你求我了。”他将护照合上，指腹在封面上轻轻一抹，随手递还给你，眼神却没收回来，一直盯着你没放。
+        你伸手接过护照，指尖刚碰到他的那一瞬仿佛被烫了一下，赶紧收回来。那点余温像是还烙在皮肤上，心跳跟着乱了一拍。
+        “祝你旅途愉快。”
+        你捏着护照跌跌撞撞离开窗口，一直走进暖气腾腾的到达大厅时，心还在狂跳不止。
+        那枚奥地利入境章贴着纸页边缘印得清清楚楚；旁边，正好是你的签证页，而照片上的笑脸被完好无损地保留下来了。
+                
+                        </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="chapter4.html" class="nav-btn">
+            <span>←</span>
+            <span>上一章</span>
+        </a>
+        <a href="chapter6.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+
+    <script src="../../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+</body>
+</html>

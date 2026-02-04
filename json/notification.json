@@ -1,6 +1,14 @@
 {
     "items": [
       {
+        "id": "2026-02-04",
+        "date": "2026-02-04 16:00",
+        "title": "02/04 更新 · 内容更新",
+        "summary": "新增《驯化》章节16，新增短篇合集。",
+        "badge": "更新",
+        "detail": "<p>本次更新包含：</p><ul class=\"changes\"><li>新增 <strong>《驯化》新章节16</strong>。</li><li>新增 <strong>短篇合集</strong>。</li></ul><p>入口： <a href=\"../article/public/domestication/catalog.html\">Konig公开篇目</a> · <a href=\"../article/public/shortcollection/catalog.html\">短篇合集</a></p>"
+      },
+      {
         "id": "2025-12-26",
         "date": "2025-12-26 16:00",
         "title": "12/26 更新 · 内容更新",

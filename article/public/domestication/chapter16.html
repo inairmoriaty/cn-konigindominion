@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>第十六章 - 驯化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第十六章 - 过家家（3）</div>
+            
+            <div class="author-info">哈尔施塔特篇</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        500ml苹果酒，90ml姜汁，45ml百香果利口酒，出锅前再加入一小杯白兰地和适量蜂蜜，最后再撒上一小撮细细的肉桂粉。酒还未滚沸，香气却已被壁炉的热浪拢住，轻柔地在木屋的天花板下盘旋、蔓延，仿佛整间屋子都在悄无声息地温热起来。
+        Arachnid站在厨房的一角，眉头紧锁地守着那口小锅。电磁炉显示屏上跳动着数字，他低头反复核对手机屏幕上的食谱与手边那几个玻璃瓶对应的剂量，神情像是在拆解某种需要精准控制的爆破装置。他的手太大，脱离了战术终端回归日常生活，操作起这台不常用的手机显得多少有些笨拙，仿佛那是一块随时会误触的砖头。
+        而这杯酒的真正主人——你，正跪坐在电视柜前，像只被放养的好奇小动物，忙着挖掘属于这个空间的秘密。
+        木质柜体的表面显然被人重新漆过，松脂味清晰可辨，漆层下还透着几道烧焦修补过的裂纹。你一手撑住上方的柜沿，另一手握住把手往反方向用力，试了好几次，可滑轨早已锈死，发出吱呀的悲鸣声抵抗着你的好奇心。
+        越是如此，就越让人怀疑里面是不是藏着什么不愿被人触碰的东西。你试了几次，终于在某个角度用力一扯，整个抽屉猛地松动，你也差点因为用力过猛一屁股坐在地上。你下意识地侧过头想要确认Arachnid是否看到你狼狈的一面，视线刚好和他的撞了个结结实实。面罩下的眼尾压着一点笑意，他压根不打算帮你，也不打算放过你狼狈的样子。
+        你尴尬地捋了捋头发，装作什么都没发生，也没听到他那轻轻的嗤笑般，看向抽屉里的内容物。
+        里面的木板早已被烙上不规则的焦痕，变形的边角处还有微微的烟熏痕迹，大概经历过一次悄然发生的火灾。三分之一的格口依然卡在里面，怎么也拔不出来，你越发不想放弃，干脆伸手把里面的碟片全部掏出来，放在地上挑选。你用手指拨拉着几个边角发黑的碟片盒，烟熏味似乎还残留在塑料封面里。《赎罪》的盘已经看不出封面的绿色，你掰开盒子，举起来比了比，“还能看吗？”
+        Arachnid走过来，扫了一眼你地上的“战利品”，语气懒洋洋的，“能放，至少能活着撑到结尾。”
+        “什么叫——”你话音还没落下，他伸手捻起那张《小鬼当家》，晃了晃。Kevin的笑脸在他手指间翻转，像是附和他一起嘲笑你。
+        你忍不住翻个白眼，“可是这些都是圣诞节必看啊。说不定你小时候也学过他，在厨房门口设陷阱捉坏人？”
+        他“嗯”了一声，意外地接了你的话，“……确实试过。但我们是对着敌人的货车来。”
+        你顿了顿，反应过来，“所以是地雷不是陷阱？”
+        “精致一点的陷阱。”
+        你嗤笑一声，坐回地上继续翻找碟片，“好吧，那……《查理的巧克力工厂》？有雪、有糖果，够圣诞了吧？”
+        看着封面上画风诡异的约翰尼·德普，Arachnid突然问道，“你到底是想看电影，还是想模仿谁的生活方式？”
+        “我看大家都是这么做的啊。”
+        “大家？”
+        “就是——普通人。那种……点着壁炉，桌上有火鸡、香料苹果酒和姜饼屋的‘家’。屋子暖洋洋的，电视里放着那种全世界都会哭的桥段。你知道的，假装很幸福的感觉。”你双腿盘起，把那一叠旧盘片堆成小山，抬头仰视他，“我只是在努力为我们营造节日氛围。”
+        他挑了挑眉，似乎接受了你的说法，又似乎在思考别的什么，语气不置可否，“我宁愿看《现代启示录》。”
+        你的动作顿住了，像是瞬间被人从圣诞集市上拽进了越南丛林里。“……你有事吗？”你直起身，用一种看见小作坊老板用脚炒外卖的表情瞪着他，“你真的会在这种日子里，一边喝热cider一边看战争片？”
+        男人耸耸肩，“这是我的放松方式之一。”
+        “你放松的方法是火箭弹外加烧树林？”你不假思索地接道，皱起眉，“放松是给身体放个假，不是让脑子继续打仗。你是不是根本没试过放下警惕？”
+        壁炉里的一块木头轻轻炸开，跳动的火焰映得他半边被面罩覆盖的轮廓忽明忽暗。似乎是你的问题太过锋利，Arachnid没有立即回答，倒是偏过头望向壁炉上的那只鹿首。
+        “放松不是放下警惕。”他说。
+        “I enjoy hunting as well.（狩猎是另一种享受方式）”又是那种带着熟悉的侵略性的语气，他想到了什么，阴沉沉地笑了，目光从墙上的鹿首滑下来，视点顿在你脖颈细嫩的皮肤上，“等、看、判断。让目标以为安全，让它自己走进你预判好的距离。”
+        “那才是我放松的时候。”
+        你被他盯得有些心烦意乱，扯了扯毛衣领口，搪塞道，“……你放松的方式需要警方介入。”
+        Arachnid懒得回应你这种表面玩笑，只是把那张《小鬼当家》扔回地上，回到灶台前去盛煮好的苹果酒。“那看什么？还是《真爱至上》？你真喜欢这类东西？”
+        “我……”你愣了一下，干巴巴地说，“我没说喜欢，只是……大家不都这么看吗？”
+        “那就《孤胆特工》吧，或者《老男孩》——你们亚洲的那种。”他说的时候没有丝毫嘲讽，好像他真觉得这比Kevin在厨房里放捕鼠夹更能解压。
+        你呆滞了几秒，瞪大眼睛看着他，“那他妈还不是黑色电影？就不能选一部不会死人、不会断指、不会最后在雪地里抛尸的片子吗？”
+        金黄的酒汁顺着勺子倾斜落入杯中，在暖黄的灯光下像是一道小小的金色瀑布，发出的声音悦耳动听，却没能缓和你们之间的气氛。“至少不扯淡。”
+        你抖着指着那盘DVD，仿佛在指证他选的不是电影，而是谋杀，“圣诞节诶。能不能……做点正常人圣诞节会做的事？”你的语气开始收紧，变得有些咄咄逼人，“点蜡烛、吃点甜的、看点能让人舒服的东西，不是这种阴郁、报复、互相伤害的狗屎现实。”
+        “我没有那种时间，也没有那种需要。”顿了顿，像是怕你没听懂，他又重复了一次，“我不喜欢浪费时间在幻想上。”
+        你怒极反笑，忽然有点喘，“你到底想从电影里看见什么？全世界都死光才是你理想的大结局？”
+        “世界上哪有那么多好受的事。”Arachnid的语气平淡，却透着让你不舒服的说教意味，“你想放松，就别试图用电影来麻痹你自己。”
+        “你是说我逃避？”你像是被踩了尾巴的猫，声音也忍不住跟着拔高，“你不也是？你看的那些电影，就不是在逃避你这辈子过得像人渣的事实吗？”
+        他一动不动，眼神安静得过分，上上下下地打量你，从头到脚。那种高高在上的审视感让你攥紧了拳头，想一拳挥在他被黑布遮盖的脸上，“You want the answers? You can’t handle the truth.（你想听我的回答？我怕你根本没准备好面对）”
+        “我看电影是看‘真实’。”他说得很慢，在面罩下咀嚼着每一个字，“我不喜欢那种设定——主角什么都不干，情节推着他走，然后靠奇迹和浪漫结尾。没有代价、没有决策、没有真相。那不叫叙事，那是逃避。”
+        “Oh? ”你眯了眯眼，敏锐地捕捉到了他话里的内容，脸上的表情忽然由愤怒转向一种难以言喻的讽刺与挑衅，缓缓吐出这句台词，“Then, we live in a world that has walls, doesn’t it?”你轻笑一声，“真相是什么？我看到的真相就只是你现在像个家庭主夫一样在屋子里煮苹果酒。”
+        Arachnid没料到你这样回答，面罩下的表情微微有些松动，但露出的那双眼仍不肯罢休，用一种让人发冷的平静地看你，眼神像在看一个犯迷糊的孩子，“你只是不愿意承认外面的现实而已。”
+        “You know what I noticed? Nobody panics when things go according to plan. Even if the plan is horrifying.”
+        “It's not personal,”他低声说道。两杯热气腾腾的苹果酒被“砰”的一声放在茶几上，他停了一下，给你一点时间反应，又像是在终结这场争辩，“It's strictly business.”
+        “Frankly, my dear, I don't give a damn.”所有的愤怒在胸腔里无处发泄，你意识到冲他大吼大叫是没有结果的，只能从鼻子里哼出一声冷冷的音调，觉得自己还暗自期许他有所改观实在是可笑，“I'm just a girl, standing in front of a boy, asking him to love her.”
+        看着你那副故意装可怜的表情中，语调又带了几分讥诮的嘴角，他的心情忽然没有那么糟糕了，反而像是妥协般地将碟片随手扔回你怀里，自己往沙发上一坐，“I don’t argue with little girls. They don’t know what they want anyway. I was in Marikijeh at your age, fighting to stay alive.（随便吧。我不和小女孩吵架。我像你这么大时，正在马利基耶跟人死磕。）”
+        你挑眉，语气轻快，“Wow. Lucky you.（哇哦，那你好幸运哦）”
+        说得好像你不是被他从战场上俘回来的一样。“嗯？”
+        “At least you didn’t get dragged off the battlefield by a two-meter-tall enemy commander and kept as a trophy boy.（至少没有敌方的两米高女指挥官把你从战场上绑回去做男宠）”
+        “……”冰冷的事实一下子被你摔到了桌面上，精准攻击他那种高高在上的“我活得比你更现实”的论调。他再开口时，顺着你的荒谬玩笑下去，又像是真心话忽然脱口，“If you were one of the Ash, I wouldn’t have minded it.(你如果是灰烬族的那位，我也不介意)”
+        “Only if you play fire with me.”你抬头看他，语气轻得几乎没有重量，“I just don’t want it from someone who keeps pretending he knows better.(我知道我想要什么，不需要另一个人来假装很懂我)”
+        “Wrong.”他坐在沙发里，懒洋洋地撑着头，语气慢得像是故意逗你，“You just want a man who can wrap you like a gift—”他停了一下，补上一刀，“and still leave the bow on, right?（错了，你还是期待着有人把你打包成圣诞礼物，再系上个小蝴蝶结）”
+        “那你是想让我乖乖待在盒子里，还是想让我觉得自己是主动钻进去的？”
+        Arachnid没有立刻回话，换了个靠坐姿势，一只手落在膝上，眼神暗下来半分，“You don’t like romance?（你不喜欢这种浪漫？）”他的语气忽然变得有些刻意地轻描淡写，“I thought you were waiting for a Christmas miracle.（我以为你们女人不是都在等个圣诞奇迹之类的东西）”
+        “I like being seen as a person.(我喜欢有人把我当人看，而不是忽略我的意见)”你哼了一声，摆弄着手里的碟片，“I thought you were someone different—God, I can’t believe I have to know you forever.（我以为你和其他人不一样——救命，我真的难以想我以后的每一天我都要和你一起度过）”
+        他的眉骨轻轻跳了跳，被遮掩的表情几乎是被你噎了一下。他的唇在你看不见的黑暗中动了动，最终什么都没说，只是缓缓往后仰靠在沙发上。
+        过了一会儿，他才握着酒杯，低声开口，“You make me want to be a better man.”
+        那声音不高，语调轻得不太自然，又带着些你听不懂的情绪，不太像他会说的台词。
+        你愣了一下，眼神一瞬间变得很复杂，微微眯起眼，无奈的笑意盛在饱满的双颊，学着片中的语气模仿道，“That’s quite the best compliment for me. But it’s still your job.（好感动——但那还是你的分内的事）”
+        “You think it’s that easy? That I could just change... for you?（你难道就不信我会为了你……改变？）”
+        过于用力的几个字音听上去说话人有些愠怒了，好不容易借着电影之夜半真半假地向你低头，你却依然对他不依不饶，这让日耳曼男人的自尊心大受打击——又或许就连他自己说出这话时都没什么底气。
+        “I just didn’t want to be another thing you had to break to keep safe.（我只是不想成为你为了你的安全感而不得不摧毁的另一个东西）”
+        你抿了一口他为你煮的苹果酒，错觉般的馥郁让你差点夸出口，话到了舌尖却又被你咽了回去。
+        空气再一次陷入一种诡异的沉默，只剩下壁炉里燃烧的木材噼啪作响，像是你们之间看不见的火花在不断争夺这场选片的主动权，火光映在你们之间那张小茶几上，像两只试图争夺地盘的兽，光与暗在玻璃杯沿上角力。Arachnid的沉默似乎代表了他懒得辩驳，无声的拉锯战在你们之间逐渐升温，谁也不肯先低头。
+        良久，他才低声吐出一句，“You’re not a wolf. And this is a land of wolves now. (你不是狼。现在，这里只属于狼)”
+        “Maybe this isn’t a land of wolves. Maybe it’s just a land of men pretending not to be lonely.（也许这不是狼的领地。只是有些老男人，用凶狠来掩饰孤独）”你本能地以冷幽默回应，嘴角的那一抹笑却不是因为愉快，更近似于是一种疲惫的嘲讽，“You’re gonna find the top is a lot like the bottom.(你会发现，站在上面的人，和站在下面的人，其实一样孤独)”你咬住杯沿，嗓音低下来，怕自己说得太重，“How about something we both can relate to?（所以……要不要看点我们都能看懂的东西？）”
+        “That’s the difference between us.(我和你不同)”他终于开口，语气低沉而克制，像是在陈述一条早已被反复验证的结论，“You still think there’s a choice—in life, in movies and—（你总是在幻想，对所有事抱有期望，从生活，到电影，到——）”
+        “Isn’t there?（难道没有吗？）”你不等他说完便反问，语气比刚才轻了许多。
+        他抬眼看你，那目光第一次不带审视，也不带控制，没有被你打断节奏地顺着你的话继续，“You think you’re standing outside the system.But the moment you choose, you’re already inside it.（你以为你站在体系之外，但你一开口，就已经被它吞下去了，连骨头都不剩）”
+        你 垂下眼，盯着手里的杯子，指腹沿着杯沿打着圈，“你是不是一直都觉得我会离开？”
+        “我知道你会跑。”
+        “可我还没跑。”
+        “Yet.”他说得像是陈述天气，不带一丝情绪。	
+        “Back home, we say—things don’t taste sweet when you force them.(你知道我们那儿的一句老话吗？‘强扭的瓜不甜’)”
+        他静了一下，忽然也笑了，有点讽刺，有点释然，又似乎彻底放弃了什么理智，“喝酒吧，电影随你挑。”
+        “Don’t look at me like I’m a riddle to solve.（别用那种探究的眼神看我）”他站起身，背对你望向窗外漫无边际的雪影，“We will never be free.”
+        炉火还在燃烧，光影在天花板上摇晃，如同缓慢溃散的浪潮，试图把你们之间的断层轻轻覆盖。你眨了眨眼，深吸一口气，终于默许这场无解的休战。
+        
+        你放下杯子，低头看着那一地的DVD盘，彩色的、鲜亮的、节日气息浓得发腻的封面彼此叠压着，像一场失败的投票。手指在塑料边缘来回摩挲，那些名字从你眼前滑过：太甜的、太吵的、太熟悉的……每一张都像在替你做决定，而你忽然不想再被任何一方推着走，试图在其中找出一件不致命的。
+        一张黑白盘安静地躺在最下面，封面几乎没有装饰，人物的目光直直地望向你。心口某个位置被轻轻敲响，像被某种东西召唤。
+        你把它抽出来，灰白的纸面在灯下显得克制而清醒。
+        “这个……”你抬头，看向他，“La Strada。你看过吗？”
+        Arachnid的目光在你手里的封面上停留了片刻，像雪地里的捕食者在仔细辨认某种气味，“没有。”
+        “我也没有。”你摇了摇头，嘴角扬起一点点，“Well. Then at least we’ll be confused together.”
+        “放吧。”他说。
+        你把盘放进播放器，画面缓缓亮起，黑白的光影落在脸上，将观众逐渐抽离出现实。似乎所有电影刚刚开始时，总会给观众一点点相信“这不是结局”的空间。
+        壁炉的火焰吐着柔光，把客厅染上一层昏黄的旧时光气息。你把遥控器放回茶几上，身子往沙发里一沉，肩膀不动声色地向他那边靠近一点，只是为了看得更清楚银幕。Arachnid没有说话，只轻轻往椅背一靠，双臂交叠，并不排斥你的亲近的小动作。
+        开场，是广阔荒凉的意大利乡村，车马缓慢穿越黄沙漫天的路途，镜头一如记忆里老电影的节奏，沉静、克制、不讨好。《La Strada（大路）》，一部1954年的黑白意大利电影，由费里尼执导，讲述一个卖艺小丑和一个心智迟缓的女孩在荒芜世界中漂泊的故事。
+        你看着银幕里那个笨拙而柔软的女孩，她像极了走失的风筝，被家人卖给粗暴的马戏艺人，陪他走南闯北，卖艺为生。她总是傻乎乎地笑，却又总是在深夜里偷偷抹眼泪。你侧过头，偷偷瞥了Arachnid一眼。
+        他正凝视着屏幕，神情没太多波澜，只有眉间似乎多了一道极浅的折痕。他的脸在火光和荧光间交错，像被从雕塑中凿出的沉默。你知道他不会轻易对电影表态，但他的眼神已经泄了底——他在意。
+        但当电影临近尾声。女孩终于被男人遗弃，几年后，他从路人口中得知她已经死了。那一刻，她不再在海边吹小号，也不再像影子一样跟在他身后，只剩一句轻描淡写的“她死了”。
+        Arachnid忽然动了。
+        他站起身，动作不快却决绝，走到窗边，背对着你，拿起杯子，甚至没有等那一幕演完，像是早就计划好的撤离。
+        “你不想看完？”你轻声问。
+        “后面没什么意思了。”他的语气带着轻描淡写的倦意，“我大概已经猜到结局了。”
+        你抬头看他，那一瞬间他背对着光，整个人被壁炉拉长的影子笼罩，表情难以看清。可你心里清楚——他不是不懂，而是不敢看下去。
+        因为太像他了。
+        Zampano，这部电影的男主角，并不是那种会洗心革面的角色，他只是忽然失去了唯一的连结，才终于意识到自己曾是一个什么都不懂的野兽。Arachnid显然不想看到自己在银幕上流泪的模样——即使那不是他，也像是在预演他未来的结局。
+        Arachnid转身上楼，你没有追上去，而是把他刚刚放下的那杯凉透的苹果酒捧在手心，把注意力转回银幕。男人独自倒在海边的沙滩上，终于为她的死哭了出来，撕心裂肺的哭号如同一只终于认输的野兽。黑白的画面上看不到他的眼泪，你却能清楚听到他被海浪淹没的哭声。
+        在你们都不愿承认的地方，那部老电影其实已经说出了所有你们不敢说出口的东西。                
+                                                
+</div>
+</div>
+</div>
+
+<!-- 章节导航按钮 -->
+<div class="chapter-navigation">
+<a href="chapter15.html" class="nav-btn">
+    <span>←</span>
+    <span>上一章</span>
+</a>
+<a href="chapter17.html" class="nav-btn">
+    <span>下一章</span>
+    <span>→</span>
+</a>
+</div>
+
+
+
+<script>
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('文章页面加载完成');
+    
+    // 添加右滑返回手势支持（兼容iOS和Android）
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+    let startTime = 0;
+    
+    // 防止页面滚动冲突
+    document.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+        isSwiping = false;
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (!startX || !startY) return;
+        
+        let currentX = e.touches[0].clientX;
+        let currentY = e.touches[0].clientY;
+        let diffX = startX - currentX;
+        let diffY = startY - currentY;
+        
+        // 检测是否为水平滑动（水平距离大于垂直距离）
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+            isSwiping = true;
+            // 如果是边缘滑动，阻止页面滚动
+            if (startX < 50) {
+                e.preventDefault();
+            }
+        }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+        
+        let endX = e.changedTouches[0].clientX;
+        let diffX = startX - endX;
+        let endTime = Date.now();
+        let duration = endTime - startTime;
+        
+        // 从左边缘开始向右滑动（返回手势）
+        // 支持iOS和Android的返回手势
+        if (startX < 50 && diffX < -80 && duration < 500) {
+            window.history.back();
+        }
+    }, { passive: true });
+});
+</script>
+</body>
+</html>
+
+

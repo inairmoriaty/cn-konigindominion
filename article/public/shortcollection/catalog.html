@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>KÖNIGIN - 覆面男有点阴招全使我身上了·目录</title>
+  <link rel="stylesheet" href="../../../style/home.css">
+  <style>
+:root{
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+ html, body {
+      margin: 0; padding: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .app-frame {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
+      position: relative;
+      margin: 0;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: none;
+      background: #ffffff;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+
+      /* 完全填充屏幕 */
+      top: 0; left: 0; right: 0; bottom: 0;
+      box-sizing: border-box;
+    }
+    
+    .catalog-bg {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      z-index: 1;
+    }
+            /* 收藏按钮样式 */
+            .favourite-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .favourite-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .favourite-btn:active {
+            transform: scale(0.95);
+        }
+
+        .favourite-icon {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+
+    .catalog-title {
+      position: absolute;
+      top: 10%; left: 50%;
+      transform: translateX(-50%);
+      color: #000;
+      font-family: "SimSun", "宋体", serif;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .chapter-list {
+      position: absolute;
+      top: 25%; left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 320px;
+      height: 480px; /* 固定高度，大约显示7个按钮 */
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 2;
+      overflow-y: auto; /* 添加垂直滚动 */
+      padding-right: 8px; /* 为滚动条留出空间 */
+    }
+    
+    /* 自定义滚动条样式 */
+    .chapter-list::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .chapter-list::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+    
+    .chapter-list::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+    }
+    
+    .chapter-list::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+    
+    /* Firefox滚动条样式 */
+    .chapter-list {
+      scrollbar-width: thin;
+      scrollbar-color: #c1c1c1 #f1f1f1;
+    }
+    
+    /* 收藏按钮样式 */
+    .favourite-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .favourite-btn:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.1);
+    }
+
+    .favourite-btn:active {
+      transform: scale(0.95);
+    }
+
+    .favourite-icon {
+      width: 24px;
+      height: 24px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Firefox滚动条样式 */
+    .chapter-list {
+      scrollbar-width: thin;
+      scrollbar-color: #c1c1c1 #f1f1f1;
+    }
+    
+    .chapter-btn {
+      padding: 16px 20px;
+      background: #f5f5f5;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-family: "SimSun", "宋体", serif;
+      font-size: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .chapter-btn:hover {
+      background: #e8e8e8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .chapter-btn:active {
+      transform: translateY(0);
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="app-frame">
+    <div class="catalog-bg"></div>
+    <div class="catalog-title">
+      <div>《覆面男有点阴招全使我身上了》</div>
+      <div>章节目录</div>
+    </div>
+    
+    <div class="chapter-list">
+      <button class="chapter-btn" data-chapter="1">边检官系列 · 🇺🇸Keegan</button>
+      <button class="chapter-btn" data-chapter="2">边检官系列 · 🇩🇪Konig</button>
+      <button class="chapter-btn" data-chapter="3">边检官系列 · 🇷🇺Nikto</button>
+      <button class="chapter-btn" data-chapter="4">边检官系列 · 🇬🇧Ghost</button>
+      <button class="chapter-btn" data-chapter="5">边检官系列 · 🇦🇹Krueger</button>
+    </div>
+    
+  </div>
+
+  <!-- 收藏按钮 -->
+  <div id="favourite-button-container"></div>
+
+  <!-- Footer自动插入点 -->
+  <div id="footer-placeholder"></div>
+<script src="../../../js/footer.js"></script>
+<script src="../../../js/favourite-manager.js"></script>
+<script src="../../../js/password-protection.js"></script>
+<script>
+// 返回按钮功能
+document.addEventListener('DOMContentLoaded', function() {
+  // 初始化收藏按钮
+  const articleInfo = {
+    title: '驯化',
+    url: window.location.href,
+    author: 'Inair',
+    category: 'public'
+  };
+  
+  const favouriteContainer = document.getElementById('favourite-button-container');
+  if (favouriteContainer && window.createFavouriteButton) {
+    const favouriteBtn = createFavouriteButton(articleInfo);
+    favouriteContainer.appendChild(favouriteBtn);
+  }
+  
+  
+  // 章节按钮点击事件
+  const chapterBtns = document.querySelectorAll('.chapter-btn');
+  chapterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const chapter = this.getAttribute('data-chapter');
+      console.log('Chapter clicked:', chapter);
+      
+      // 跳转到具体章节页面
+      if (chapter === '1') {
+        window.location.href = 'chapter1.html';
+      } else if (chapter === '2') {
+        window.location.href = 'chapter2.html';
+      } else if (chapter === '3') {
+        window.location.href = 'chapter3.html';
+      } else if (chapter === '4') {
+        window.location.href = 'chapter4.html';
+      } else if (chapter === '5') {
+        window.location.href = 'chapter5.html';
+      } else if (chapter === '6') {
+      } else {
+        alert(`第${chapter}章 - ${this.textContent} 正在开发中...`);
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

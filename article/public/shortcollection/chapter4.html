@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>边检官系列 · 🇬🇧Ghost</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">边检官系列 · 🇬🇧Ghost</div>
+            
+            <div class="author-info">英国海关</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        Heathrow Airport, London.
+        正值开学季高峰，就像英国有世界上做得最好的法国菜，过关队伍长得像前菜的法棍面包。你踮起脚尖，隔着层层拉索（？应该不是叫这个，反正就是调整排队路线的那种线）努力向近在咫尺又远在天边的海关柜台望去，终究还是选择了一个夹在两个三哥中间的柜台——中间那个戴骷髅面罩、身形魁梧，隔着面罩都能感觉到面色比英国天还阴的男人。
+        他看起来不太好惹。
+        但比起咖喱味英语，你坚信自己能听懂地道英伦腔。
+        你默默想着，走上前去，却忍不住多打量了几眼他的骷髅面罩——鼻梁高挺，眼睛还是很漂亮的。
+        第一秒：好吓人。
+        第二秒：有点帅。
+        “Passport.（护照）”
+        Ghost例行公事而冷冰冰地吐出一句。
+        第三秒：妈的他好凶。
+        你对边检官的滤镜碎了一地。
+        乖乖呈上护照，你努力用面无表情维持表面上的平静，但是捏着小红本的手微微颤抖，早已暴露了你紧张的心理活动。
+        不要看我，不要挑我，不要查我……
+        “来干什么的。”
+        “学习。”
+        “哪个城市哪个学校，学什么？”
+        你早就把这些答案滚瓜烂熟记于心，嘴上还算流畅地回答了他的问题。
+        “CAS number(*注：针对学生签证的长期邀请函，证明学生身份) 和肺结核报告（*注：英国留学生需要提交肺结核检查证明，通常可以线上上传，但是首次入境可能需要提供）？”
+        “第一次来？”他翻了翻你递过去的小文件袋，扫了两眼，冷静而锋利的栗色双眼便再次锁定你的脸，“体检报告怎么是复印件？”
+        “找不到原件了。”你开始后悔自己怎么没去隔壁那个三哥的柜台，虽然大概率你需要用最原始的方式打手势沟通，但是原本排在你身后的好几个人都过关了，你还在原地接受他的盘问。
+        “噢，是啊，当然是复印件，你们都喜欢复印件。”他的语气听上去不太友善，还带着浓浓的嘲讽和怀疑，似乎在犹豫要不要把你丢小黑屋。
+        “……”你盯着自己的鞋尖，努力不让翻白眼的动作那么明显，“我很抱歉。”
+        “你住哪儿？”
+        “学校宿舍。”
+        “合同呢？”
+        “付了定金。”
+        他打字的动作一顿，“为什么不一次性付完？”
+        “我没钱。”
+        “……”Ghost终于正眼看向你，但是被你那副生无可恋又无所谓、“我穷我骄傲”的表情噎了一下，从鼻子里哼出一声，找到了新的笑料，“真聪明，万一海关没过还能退款。”
+        “……”
+        Ghost耸耸肩，对你的尴尬熟视无睹，像是发现了新玩具似的，突然冷不丁来一句，“Bank statement.”
+        “啊？”你怀疑自己听错了，“这个也要？”
+        他冷笑一声，“怎么没有必要？谁知道你是真的来读书，还是黑在这里？”
+        你气得哆嗦，联想到当初自己递交签证材料时，他们这些该死的流程非但没能防住偷渡和黑户，反而差点把你们这些正经留学生拒之门外——你一边指着offer letter，语气不善，却又一边乖乖掏手机，“我有Offer！有CAS！还有宿舍合同！流水在这，自己看！”
+        Ghost瞄了一眼你的屏幕，懒洋洋地划了划，慢条斯理地点评，“嗯……撑不到圣诞节。”
+        你被气得差点骂出来，“你管得着吗？！”
+        啪——
+        他给你盖了章，把护照推回来，“当然管得着。我就是要管你能不能留在这。”
+        你拎起行李落荒而逃，留学生活还没正式开始就被这么个边检官蒙上了一层阴影。                    </div>
+        </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="chapter3.html" class="nav-btn">
+            <span>←</span>
+            <span>上一章</span>
+        </a>
+        <a href="chapter5.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+
+    <script src="../../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+</body>
+</html>

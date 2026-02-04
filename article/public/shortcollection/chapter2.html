@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>边检官系列 · 🇩🇪Konig</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">边检官系列 · 🇩🇪Konig</div>
+            
+            <div class="author-info">德国海关</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        八月中下旬，德国机场的边检队伍异常的漫长，你拖着登机箱站在队伍中，越是靠近海关的那个小柜台，手心越是紧张得冒汗。
+        终于轮到你，抬头一看，柜台后坐着的边检官是个2米高的德国男人，肩膀宽得像能挡下一排飞机座椅，制服笔挺，面罩严实，眼睛蓝得像阿尔卑斯湖区的湖水。
+        你脑子里第一个闪过的念头是——天哪德国人都这么高吗？好帅好壮……
+        正暗自幻想着浪漫欧洲邂逅，他一把接过你的护照，啪地展开，目光锐利得像要射穿纸张。
+        五秒，十秒，一分钟……他的视线反复在护照首页和你脸上游移，手指死死捏在封皮上，像是怕你把证件抢回去。
+        你被他盯得有些毛骨悚然，最初的“和边检官艳遇一场”的幻想也被现实打碎得差不多了。
+        三分钟后，Konig终于开口，声音低沉沙哑，“去哪儿？”
+        “科隆……游戏展。”
+        他抬眼，冷冷上下扫了你一眼，“做什么？”
+        “……参观，游客。”
+        空气僵硬。你小心翼翼地笑笑，一股脑地把酒店预订单和返程机票一起递上去，证明自己没有理由非法滞留德国，祈祷审查就这样差不多结束。
+        结果下一秒，他眉头皱得更紧了，指节在护照上重重敲了敲，“这张照片……不是最近拍的吧？”
+        “……”
+        “你整过容？”
+        “？？？”
+        “怎么不像。”
+        你整个人僵住，幻想瞬间破灭，表情像是发现外卖里有根卷曲的毛发一样难受。你黑着脸，咬牙切齿地从鼻腔里挤出一句，“照片三年前拍的，我只是长开了。”
+        Konig低头再盯了几眼，沉默，最后缓缓点头，“……那长得挺快的。”
+        啪。入境许可盖下。
+        你拎起行李，扭头就走，心里暗骂德国人直男得离谱。*的。能投诉这人吗。操，冒不冒犯啊！
+        Konig看着你愤愤离去的背影，不明白你情绪起伏为什么这么大，然而他只是想表达“你真人比护照好看”。
+        算了。
+        “Next.”
+                
+                    </div>
+        </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="chapter1.html" class="nav-btn">
+            <span>←</span>
+            <span>上一章</span>
+        </a>
+        <a href="chapter3.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+
+    <script src="../../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+</body>
+</html>
