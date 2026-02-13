@@ -48,7 +48,10 @@
     .lightbox-image { max-width:100%; max-height:80vh; object-fit:contain; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,.5); }
     .lightbox-close { position:absolute; top:-50px; right:0; background:rgba(255,255,255,.2); border:none; color:#fff; font-size:24px; width:40px; height:40px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .3s; }
     .lightbox-close:hover { background:rgba(255,255,255,.3); }
-    .lightbox-info { margin-top:15px; color:#fff; text-align:center; font-size:16px; }
+    .lightbox-info { margin-top:12px; color:#fff; text-align:center; font-size:16px; }
+    .lightbox-variants { margin-top:10px; display:none; gap:8px; justify-content:center; align-items:center; }
+    .lightbox-variant-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.35); }
+    .lightbox-variant-dot.active { background:#fff; }
 
     @media (max-width:768px){
       .gallery-grid{ gap:16px; padding:0 16px; }
@@ -118,6 +121,7 @@
     <div class="lightbox-content">
       <button class="lightbox-close" id="lightboxClose">&times;</button>
       <img class="lightbox-image" id="lightboxImage" alt="">
+      <div class="lightbox-variants" id="lightboxVariants"></div>
       <div class="lightbox-info" id="lightboxInfo"></div>
     </div>
   </div>
@@ -130,8 +134,11 @@
         this.lightboxImage = document.getElementById('lightboxImage');
         this.lightboxInfo  = document.getElementById('lightboxInfo');
         this.lightboxClose = document.getElementById('lightboxClose');
+        this.lightboxVariants = document.getElementById('lightboxVariants');
         this.images = [];
         this.currentIndex = 0;
+        this.touchStartX = 0;
+        this.touchStartY = 0;
         this.init();
       }
 
@@ -154,6 +161,8 @@
           this.images = (manifest.items || []).map(it => ({
             src: it.src,
             thumb: it.thumb || it.src,
+            variants: Array.isArray(it.variants) && it.variants.length ? it.variants : null,
+            variantIndex: 0,
             alt: it.title || this.generateAltText(it.id || it.src),
             title: it.title || "",
             caption: it.caption || "",
@@ -290,15 +299,75 @@
           if (e.key === 'ArrowLeft') this.previousImage();
           else if (e.key === 'ArrowRight') this.nextImage();
         });
+
+        // 在大图上右键切换同一条目的下一张图（如果有多张）
+        this.lightboxImage.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          const image = this.images[this.currentIndex];
+          if (!image || !image.variants || image.variants.length <= 1) return;
+          image.variantIndex = (image.variantIndex + 1) % image.variants.length;
+          this.lightboxImage.src = image.variants[image.variantIndex];
+          this.updateVariantDots(image);
+        });
+
+        // 触摸左右滑动切换当前条目的不同版本（仅对有 variants 的图片）
+        this.lightboxImage.addEventListener('touchstart', (e) => {
+          const t = e.touches[0];
+          this.touchStartX = t.clientX;
+          this.touchStartY = t.clientY;
+        }, { passive: true });
+
+        this.lightboxImage.addEventListener('touchend', (e) => {
+          const t = e.changedTouches[0];
+          const dx = t.clientX - this.touchStartX;
+          const dy = t.clientY - this.touchStartY;
+          if (Math.abs(dx) < 40 || Math.abs(dx) <= Math.abs(dy)) return;
+          const image = this.images[this.currentIndex];
+          if (!image || !image.variants || image.variants.length <= 1) return;
+
+          if (dx < 0) {
+            // 向左滑，下一张版本图
+            image.variantIndex = (image.variantIndex + 1) % image.variants.length;
+          } else {
+            // 向右滑，上一张版本图
+            image.variantIndex = (image.variantIndex - 1 + image.variants.length) % image.variants.length;
+          }
+          this.lightboxImage.src = image.variants[image.variantIndex];
+          this.updateVariantDots(image);
+        });
+      }
+
+      updateVariantDots(image) {
+        if (!this.lightboxVariants) return;
+        if (!image || !image.variants || image.variants.length <= 1) {
+          this.lightboxVariants.style.display = 'none';
+          this.lightboxVariants.innerHTML = '';
+          return;
+        }
+        this.lightboxVariants.style.display = 'flex';
+        this.lightboxVariants.innerHTML = '';
+        image.variants.forEach((_, idx) => {
+          const dot = document.createElement('span');
+          dot.className = 'lightbox-variant-dot' + (idx === image.variantIndex ? ' active' : '');
+          this.lightboxVariants.appendChild(dot);
+        });
       }
 
       openLightbox(index) {
         if (index < 0 || index >= this.images.length) return;
         const image = this.images[index];
         this.currentIndex = index;
-
-        this.lightboxImage.src = image.src;
+        
+        // 如果该条目标记了多张图，则从第一张开始展示
+        if (image.variants && image.variants.length > 0) {
+          image.variantIndex = 0;
+          this.lightboxImage.src = image.variants[0];
+        } else {
+          this.lightboxImage.src = image.src;
+        }
         this.lightboxImage.alt = image.alt;
+
+        this.updateVariantDots(image);
 
         const parts = [image.title || image.alt];
         if (image.author) parts.push(`by ${image.author}`);
