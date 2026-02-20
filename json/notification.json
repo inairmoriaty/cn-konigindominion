@@ -1,6 +1,14 @@
 {
     "items": [
       {
+        "id": "2026-02-20",
+        "date": "2026-02-20 02:00",
+        "title": "02/20 更新 · 内容更新",
+        "summary": "新增了渲染图Name。",
+        "badge": "更新",
+        "detail": "<p>本次更新包含：</p><ul class=\"changes\"><li>新增了渲染图Name。</li></ul><p>入口：<a href=\"/page/public/render.html\">Name</a></p>"
+      },
+      {
         "id": "2026-02-14",
         "date": "2026-02-14 00:00",
         "title": "02/14 更新 · 内容更新",

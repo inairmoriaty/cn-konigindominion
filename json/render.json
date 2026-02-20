@@ -30,7 +30,18 @@
       "nsfw": false,
       "articleUrl": "../../article/public/domestication/catalog.html"
     },
-
+    {
+      "id": "name",
+      "src": "../../img/render/name.png",
+      "thumb": "../../img/render/name.png",
+      "title": "Name",
+      "caption": "已合作过的单主可私信免费加购无字原图色纸和其他相关周边（2026.5月后）",
+      "author": "inair",
+      "tags": ["König"],
+      "width": 2048,
+      "height": 2048,
+      "nsfw": false
+    },
     {
       "id": "domestication-chapter1",
       "src": "../../img/render/domestication-chapter1.png",
