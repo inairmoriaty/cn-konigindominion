@@ -254,7 +254,9 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Chapter clicked:', chapter);
       
       // 跳转到具体章节页面
-      if (chapter === '1') {
+      if (chapter === '0') {
+        window.location.href = 'chapter0.html';
+      } else if (chapter === '1') {
         window.location.href = 'chapter1.html';
       } else if (chapter === '2') {
         window.location.href = 'chapter2.html';
