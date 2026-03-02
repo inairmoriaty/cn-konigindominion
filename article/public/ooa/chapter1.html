@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>第一章 - 中年毛子王会不会梦见老中主理人</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        /* --- 聊天体互动区域样式 --- */
+        .chat-interactive-area {
+            width: 100%;
+            background-color: #f5f5f5; 
+            border-radius: 12px;
+            padding: 16px;
+            margin: 10px 0 20px 0;
+            cursor: pointer;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.03);
+            position: relative;
+            user-select: none; 
+            -webkit-user-select: none;
+            transition: background-color 0.2s;
+        }
+
+        .chat-interactive-area:active {
+            background-color: #eeeeee;
+        }
+
+        .chat-tip {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            font-family: sans-serif;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .chat-msg {
+            display: none; 
+            width: 100%;
+            animation: fadeInSlideUp 0.3s ease forwards;
+        }
+
+        .chat-msg.active {
+            display: flex;
+        }
+
+        /* 头像样式 */
+/* 头像基础样式（保留了你原有的设置，增加了 overflow） */
+.chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: #555;
+            flex-shrink: 0;
+            overflow: hidden; /* 关键新增：把超出 6px 圆角的图片边缘裁切掉 */
+        }
+
+        /* --- 新增：当头像里插入真实图片时的样式 --- */
+        .chat-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 关键设置：保证无论原图是长方形还是正方形，都会完美等比填满，不会被压扁或拉伸 */
+            display: block;
+        }
+        /* --- 新增：包裹名字和气泡的容器 --- */
+        .chat-content {
+            display: flex;
+            flex-direction: column;
+            max-width: 75%;
+        }
+
+        /* --- 新增：说话人名字的样式 --- */
+        .chat-name {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 4px;
+            font-family: sans-serif;
+        }
+
+        /* 气泡内容基础样式 */
+        .chat-bubble {
+            max-width: 100%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            line-height: 1.5;
+            font-family: sans-serif;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        /* 左侧消息（接收） */
+        .chat-left {
+            flex-direction: row;
+        }
+        .chat-left .chat-avatar {
+            margin-right: 12px;
+            background-color: #E2E2E2;
+        }
+        /* 左侧对齐设置 */
+        .chat-left .chat-content {
+            align-items: flex-start;
+        }
+        .chat-left .chat-name {
+            margin-left: 4px; /* 让名字和气泡左边缘对齐更自然 */
+        }
+        .chat-left .chat-bubble {
+            background-color: #ffffff;
+            color: #000;
+            border: 1px solid #ebebeb;
+            border-top-left-radius: 0;
+        }
+
+        /* 右侧消息（发送） */
+        .chat-right {
+            flex-direction: row-reverse;
+        }
+        .chat-right .chat-avatar {
+            margin-left: 12px;
+            background-color: #4a4a4a;
+            color: #fff;
+        }
+        /* 右侧对齐设置 */
+        .chat-right .chat-content {
+            align-items: flex-end;
+        }
+        .chat-right .chat-name {
+            margin-right: 4px; /* 让名字和气泡右边缘对齐更自然 */
+        }
+        .chat-right .chat-bubble {
+            background-color: #95ec69;
+            color: #000;
+            border-top-right-radius: 0;
+        }
+
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* --- 聊天体样式结束 --- */
+
+        /* --- 精神深渊（多重人格）效果 --- */
+        .mental-abyss {
+            background-color: #0a0a0a; 
+            border-radius: 8px;
+            padding: 30px 20px;
+            margin: 20px 0 30px 0;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid #222;
+        }
+
+        .voice {
+            opacity: 0;
+            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+
+        .mental-abyss.active .voice {
+            animation: voiceFadeIn 1.5s ease forwards;
+        }
+
+/* 1. 人格基础样式：只负责隐藏和基础排版，绝对不要写任何关于 animation 的东西 */
+.voice {
+            opacity: 0;
+            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+
+        /* 3. 具体样式排版（保持不变） */
+        .voice-mocking { text-align: left; color: #888; font-size: 14px; margin-right: 20%; }
+        .voice-lust { text-align: right; color: #d32f2f; font-size: 18px; font-weight: bold; margin-left: 10%; }
+        .voice-sadist { text-align: center; color: #9c27b0; font-size: 15px; font-style: italic; }
+        .voice-hunter { text-align: right; color: #e65100; font-size: 14px; margin-right: 15%; }
+        .voice-cold { text-align: left; color: #5c6bc0; font-size: 14px; margin-left: 15%; }
+        .voice-provoke { text-align: left; color: #aaa; font-size: 15px; }
+        .voice-defend { text-align: right; color: #ffb829; font-size: 16px; font-weight: bold; }
+        
+        .voice-core { 
+            text-align: center; 
+            color: #ffffff; 
+            font-size: 18px; 
+            font-weight: bold; 
+            margin-top: 20px; 
+            border-top: 1px dashed #444; 
+            padding-top: 20px;
+        }
+        .voice-core span { 
+            display: block; 
+            font-size: 14px; 
+            color: #a10606; 
+            margin-top: 10px; 
+            font-weight: normal; 
+        }
+
+        /* 4. 终极修复方案：当盒子被激活时，根据排列顺序，直接赋予【完整】的动画指令 */
+        .mental-abyss.active .voice:nth-child(1) { animation: voiceFadeIn 1.5s ease 0.5s forwards; }
+        .mental-abyss.active .voice:nth-child(2) { animation: voiceFadeIn 1.5s ease 2.0s forwards; }
+        .mental-abyss.active .voice:nth-child(3) { animation: voiceFadeIn 1.5s ease 3.5s forwards; }
+        .mental-abyss.active .voice:nth-child(4) { animation: voiceFadeIn 1.5s ease 5.0s forwards; }
+        .mental-abyss.active .voice:nth-child(5) { animation: voiceFadeIn 1.5s ease 6.5s forwards; }
+        .mental-abyss.active .voice:nth-child(6) { animation: voiceFadeIn 1.5s ease 8.0s forwards; }
+        .mental-abyss.active .voice:nth-child(7) { animation: voiceFadeIn 1.5s ease 9.5s forwards; }
+        .mental-abyss.active .voice:nth-child(8) { animation: voiceFadeIn 1.5s ease 11.0s forwards; }
+        .mental-abyss.active .voice:nth-child(9) { animation: voiceFadeIn 1.5s ease 12.5s forwards; }
+        .mental-abyss.active .voice:nth-child(10) { animation: voiceFadeIn 1.5s ease 14.0s forwards; }
+                
+        @keyframes voiceFadeIn {
+            0% { opacity: 0; transform: translateY(10px) scale(0.95); filter: blur(5px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="article-container">
+        <div class="chapter-title">我去，二次元</div>
+        <div class="separator"></div>
+        
+        <div class="content-area">
+            俄罗斯。
+            这个国度除了军事实力，在世界上数一数二的，居然还有二次元文化。
+            上到中年上班族，下到不良少年，就连身穿军装的人，也热衷于在自己的武器上贴满花里胡哨的美少女贴纸，打造成一把把独一无二的“痛枪”。
+            可Nikto却从不敢向任何人透露，自己也是这群“死宅”中的一员。尤其是当他加入KorTac之后，来自世界各地的战士聚在一起，稍有风吹草动就能成为取笑的话题。他可不想听见那种半开玩笑、半瞧不起的嘲讽，类似于“没想到啊，俄罗斯硬汉，居然是死宅男？”之类的话——又是一个被刻板印象困住的人罢了。
+            因此，他只能坐在角落里，清理着AK，动作一丝不苟，像一台失去感情的机器。可实际上他的目光却时不时地扫向膝盖下藏着的手机屏幕，Discord聊天群组疯狂刷新着新信息，Horangi和Oni又在分享新的周边上新推送，还有一堆掺杂着擦边黄色内容的hentai或者本子：巨乳、NTR、体型差……
+            Nikto盯着屏幕，面罩下的喉结微微滚动，感觉有点心烦意乱。
+    
+            <div class="mental-abyss">
+                <div class="voice voice-lust">点进去看看，不然下载了干什么？</div>
+                <div class="voice voice-cold">……傻瓜。现在不是时候。万一被人看到？</div>
+                <div class="voice voice-provoke">怕什么，他们只会觉得是Oni那个鬼子发的。再说了……</div>
+            </div>
+    
+            Nikto咽了咽，像是不太舒服地调整了一下坐姿，捏着步枪的手指紧了几分，骨节因为用力而发白。
+    
+            <div class="mental-abyss">
+                <div class="voice voice-mocking">别装模作样了。谁不知道你们这群怪胎最喜欢这种东西。</div>
+                <div class="voice voice-lust">不对！巨乳才是正义！软软的，大大的，埋进去多舒服！</div>
+                <div class="voice voice-sadist">哈？白痴。明明是SM才对。哭着挣扎的样子才性感。</div>
+                <div class="voice voice-hunter">体型差才是终极猎物感，一手能提起来，啃一口，小得可怜。</div>
+                <div class="voice voice-cold">……哼。就知道你们这些低级趣味。</div>
+                <div class="voice voice-provoke">怎么？你又想说平胸好吗？"小小的，骨感的，像是受伤的小兽，抱起来刚刚好"？</div>
+                <div class="voice voice-defend">平胸怎么了？平胸才是真理！紧实，纤细，利落，一只手就能托住，揉起来都不累！</div>
+                <div class="voice voice-core">
+                    ……够了。女孩子，什么样子都是好的。
+                    <span>她们愿意存在，就已经是世界上最美好的事情了。</span>
+                </div>
+            </div>
+    
+            ——当然，现实中的他什么都没说，只是默默地点开了下载链接，又迅速锁屏，仿佛自己从未关注过。
+            正当他准备若无其事地继续清理枪械时，群组聊天界面忽然跳出一条亮红的提示。</div>        
+            <div class="chat-interactive-area">
+                <div class="chat-tip">【点击此处查看聊天内容】</div>
+                <div class="chat-container">
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">H</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Horangi</div>
+                            <div class="chat-bubble">@Nikto</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">H</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Horangi</div>
+                            <div class="chat-bubble">哟？没想到啊</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">H</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Horangi</div>
+                            <div class="chat-bubble">一直以为你是那种只爱清规戒律的闷骚佬。结果一口气把全部黄色资源包都下载了？</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">O</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Oni</div>
+                            <div class="chat-bubble">真是……令人尊敬的多样化兴趣</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">O</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Oni</div>
+                            <div class="chat-bubble">我这里还有很多，你需要吗？</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">Nikto的动作僵住了，这才发现不知道是谁把“文件下载提醒”给打开了，现在整个群聊都知道毛子王一口气把所有的本子资源都转存了。
+面罩下的脸绷紧到近乎抽搐，内心不同的声音疯狂争吵着该不该拔枪扫射所有人清场，另一个人格却冷笑着低语“别急。他们笑得越大声，死得就越快”。
+就在他狠狠地把弹匣捅进枪膛里时，他收到了Krueger单独发来的私信。</div>
+
+            <div class="chat-interactive-area">
+                <div class="chat-tip">【点击此处查看聊天内容】</div>
+                <div class="chat-container">
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">别介意，他们不过是嘴上厉害</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">顺便告诉你个好消息</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">我刚抢到了那个很火的梦向工作室的稿位——你懂的，就是那个一条龙服务的OOA Studio</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">想要的话，加点钱当手续费，我可以转给你，怎么样？😏</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">N</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Nikto</div>
+                            <div class="chat-bubble">你调查我？</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">我只是碰巧翻到你的小号，又碰巧给你的集赞转发点了个赞</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">别紧张，兄弟。我又不是Horangi，不会在群里说</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">你要是不要这单，我还有其他人排着队要</div>
+                        </div>
+                    </div>
+                    <div class="chat-msg chat-left">
+                        <div class="chat-avatar">K</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Krueger</div>
+                            <div class="chat-bubble">嘿，没想到你还喜欢这个</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">Krueger发来一串消息，最后附了一张图。
+Nikto本没打算点开。尤其是在这种事上，他不想在Krueger面前表现得像条发情的狗。
+但他还是瞥见了缩略图的轮廓。水手服，双马尾，唇角挂着带点挑衅的笑。只是一张cos照片，却足以让他一眼认出那个熟得不能再熟的脸。
+——他最喜欢的cosplay主播。
+该死的Krueger，他怎么连这都扒得出来。
+可最糟的并不是Krueger知道得太多，而是Nikto确实很想要她——或者说，你。
+他不是没有给你投入过，光是双人互动插图他就约了不下十几张——这要是真让同事们知道他拿出生入死换来的血汗钱去给自己的幻想画画，他肯定要被挂在基地各大群组中笑上一年半载——但那又如何呢？Nikto已经不满足于你只存在于那一张张只能看但摸不着的画上了，他想要更多，想要活灵活现的你……
+如果能把你变成一个手办，做成只属于他的模型，放在桌面上，你是不是就不会离开他了？每天他睁眼，你就会站在那儿注视着他；他累了，你也会陪着他沉默地存在。不会抱怨，不会逃走，只会永远停留。
+他不想要一个你的替代品，他想要的是彻底占有你。
+Nikto不是善于表达情感的人。他更习惯与动物、机械，或者死物共处。人类对他来说太复杂、太不可控，他想要的，是那个只活在他屏幕里、梦里、欲望里的你。
+这不是什么工厂能产的大货，不是量产角色，只有定制可以解决问题。那就意味着他只能接受Krueger的转单，委托那个最近被炒得火热又神神秘秘的工作室来做这件事，哪怕覆面肌肉男卑躬屈膝地求梦向作品的过程荒唐得像个笑话，他还是面无表情地在对话框内敲下一行回复：</div>
+
+            <div class="chat-interactive-area">
+                <div class="chat-tip">【点击此处查看聊天内容】</div>
+                <div class="chat-container">
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">N</div>
+                        <div class="chat-content">
+                            <div class="chat-name">Nikto</div>
+                            <div class="chat-bubble">邮箱发来</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">Krueger几乎是秒发了一串数字和英文组合的邮箱，像是早有准备，笃定他会接受自己的转单，等的就是他开口的那一瞬。
+Nikto意识到自己中计了，却又别无选择，只能咬牙切齿地打开手机银行，给Krueger转了三倍的金额过去。</div>
+            
+        <div class="chapter-navigation">
+            <a href="catalog.html" class="nav-btn">
+                <span>←</span>
+                <span>目录</span>
+            </a>
+            <a href="chapter2.html" class="nav-btn">
+                <span>下一章</span>
+                <span>→</span>
+            </a>
+        </div>
+        
+        <div style="height: 40px; width: 100%;"></div>
+
+    </div>
+
+    <script src="../../../js/password-protection.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let startX = 0; let startY = 0; let isSwiping = false; let startTime = 0;
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+                startTime = Date.now(); isSwiping = false;
+            }, { passive: true });
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                let diffX = startX - e.touches[0].clientX;
+                let diffY = startY - e.touches[0].clientY;
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true; if (startX < 50) e.preventDefault();
+                }
+            }, { passive: false });
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                let diffX = startX - e.changedTouches[0].clientX;
+                if (startX < 50 && diffX < -80 && (Date.now() - startTime) < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+
+            const chatAreas = document.querySelectorAll('.chat-interactive-area');
+            chatAreas.forEach(area => {
+                const chatMsgs = area.querySelectorAll('.chat-msg');
+                const chatTip = area.querySelector('.chat-tip');
+                let currentMsgIndex = 0;
+
+                area.addEventListener('click', function() {
+                    if (currentMsgIndex < chatMsgs.length) {
+                        chatMsgs[currentMsgIndex].classList.add('active');
+                        currentMsgIndex++;
+                        
+                        if (currentMsgIndex >= chatMsgs.length) {
+                            chatTip.innerText = "【聊天记录已全部加载】";
+                            area.style.cursor = "default";
+                        } else {
+                            chatTip.innerText = "【点击继续查看】";
+                        }
+                    }
+                });
+            });
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -25% 0px', 
+                threshold: 0.1
+            };
+
+            const abyssObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const abyssElements = document.querySelectorAll('.mental-abyss');
+            abyssElements.forEach(el => {
+                abyssObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
