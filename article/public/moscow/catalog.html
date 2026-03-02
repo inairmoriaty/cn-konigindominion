@@ -79,10 +79,47 @@
             transition: all 0.3s ease;
         }
 
+    /* 返回按钮样式 */
+    .back-btn{
+      position:fixed;
+      top:20px;
+      left:20px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:none;
+      background:rgba(255,255,255,0.9);
+      color:#000;
+      font-size:14px;
+      font-family:"SimSun","宋体",serif;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      text-decoration:none;
+      box-shadow:0 2px 8px rgba(0,0,0,0.2);
+      z-index:1000;
+      cursor:pointer;
+      transition:all 0.3s ease;
+    }
+
+    .back-btn:hover{
+      background:rgba(255,255,255,1);
+      transform:translateY(-1px);
+      box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .back-btn:active{
+      transform:translateY(0);
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .back-btn-icon{
+      font-size:16px;
+    }
+
     .catalog-title {
-      position: absolute;
-      top: 10%; left: 50%;
-      transform: translateX(-50%);
+      position: relative; /* 改为相对定位，顺应正常的文档流排列 */
+      margin-top: 12vh; /* 使用视口高度控制顶部距离，替代原先的 top: 10% */
+      margin-bottom: 8px; /* 关键点：让外部间距精确等于内部 gap 的 8px */
       color: #000;
       font-family: "SimSun", "宋体", serif;
       font-size: 28px;
@@ -91,16 +128,16 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 8px; /* 书名和章节目录之间的内部间距 */
     }
     
     .chapter-list {
-      position: absolute;
-      top: 25%; left: 50%;
-      transform: translateX(-50%);
+      position: relative; /* 改为相对定位，自然紧跟在标题下方 */
+      margin: 0 auto; /* 实现水平居中，替代原先的 left: 50% 和 transform */
       width: 80%;
       max-width: 320px;
-      height: 480px; /* 固定高度，大约显示7个按钮 */
+      height: 480px; /* 固定高度 */
+      max-height: 60vh; /* 增加最大高度限制，确保在小屏幕上也能良好显示不越界 */
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -126,46 +163,6 @@
     
     .chapter-list::-webkit-scrollbar-thumb:hover {
       background: #a8a8a8;
-    }
-    
-    /* Firefox滚动条样式 */
-    .chapter-list {
-      scrollbar-width: thin;
-      scrollbar-color: #c1c1c1 #f1f1f1;
-    }
-    
-    /* 收藏按钮样式 */
-    .favourite-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
-      border: none;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-
-    .favourite-btn:hover {
-      background: rgba(255, 255, 255, 1);
-      transform: scale(1.1);
-    }
-
-    .favourite-btn:active {
-      transform: scale(0.95);
-    }
-
-    .favourite-icon {
-      width: 24px;
-      height: 24px;
-      transition: all 0.3s ease;
     }
     
     /* Firefox滚动条样式 */
@@ -201,6 +198,7 @@
   </style>
 </head>
 <body>
+  <a class="back-btn" href="../../../page/public/nikto.html"><span class="back-btn-icon">←</span><span>返回</span></a>
   <div class="app-frame">
     <div class="catalog-bg"></div>
     <div class="catalog-title">
@@ -220,10 +218,8 @@
     
   </div>
 
-  <!-- 收藏按钮 -->
   <div id="favourite-button-container"></div>
 
-  <!-- Footer自动插入点 -->
   <div id="footer-placeholder"></div>
 <script src="../../../js/footer.js"></script>
 <script src="../../../js/favourite-manager.js"></script>
@@ -268,16 +264,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'chapter5.html';
       } else if (chapter === '6') {
         window.location.href = 'chapter6.html';
-      } else if (chapter === '7') {
-        window.location.href = 'chapter7.html';
-      } else if (chapter === '8') {
-        window.location.href = 'chapter8.html';
-      } else if (chapter === '9') {
-        window.location.href = 'chapter9.html';
-      } else if (chapter === '10') {
-        window.location.href = 'chapter10.html';
-      } else if (chapter === '11') {
-        window.location.href = 'chapter11.html';
       } else {
         alert(`第${chapter}章 - ${this.textContent} 正在开发中...`);
       }
