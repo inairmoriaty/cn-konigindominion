@@ -117,7 +117,19 @@
       "width": 2048,
       "height": 2048,
       "nsfw": false
-        }
+    },
+    {
+     "id": "poster",
+    "src": "../../img/render/poster.png",
+    "thumb": "../../img/render/poster.png",
+    "title": "《驯化》非正式海报版设计",
+    "author": "inair",
+    "tags": ["König", "render"],
+    "width": 2048,
+    "height": 2048,
+    "nsfw": false
+      }
+
 
     ]
 }
