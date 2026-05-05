@@ -1,262 +1,555 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    <title>边检官系列 · 🇬🇧Ghost</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            font-family: "SimSun", "宋体", serif;
-        }
+<title>第四章 - 中年毛子王会不会梦见老中主理人</title>
 
-        .app-frame {
-            width: 100vw;
-            height: 100vh;
-            max-width: 100vw;
-            max-height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        .article-container {
-            width: 100%;
-            height: 100%;
-            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            padding-top: 20%;
-        }
+html,body{
+width:100%;
+background:#fff;
+font-family:"SimSun","宋体",serif;
+}
 
-        .article-container::-webkit-scrollbar {
-            display: none;
-        }
+/* ✅ 不再使用 100vh，不再内部滚动 */
+.article-container{
+width:100%;
+padding:20% 8.2% 0 8.2%;
+display:flex;
+flex-direction:column;
+}
 
-        .article-container {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
+/* ---------- 标题 ---------- */
+.chapter-title{
+width:80%;
+height:80px;
+border:1px solid #000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:bold;
+margin:0 auto 40px auto;
+}
 
-        .chapter-title {
-            width: 80%;
-            height: 80px;
-            border: 1px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 40px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.separator{
+border-top:3px solid #000;
+margin:15px 0;
+}
 
-        .author-info {
-            width: 60%;
-            height: 40px;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            color: #000;
-            margin-bottom: 15px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+/* ---------- 正文 ---------- */
+.content-area{
+font-size:16px;
+line-height:1.8;
+white-space:pre-wrap;
+word-wrap:break-word;
+margin-bottom:20px;
+}
 
-        .separator {
-            width: 100%;
-            height: 0;
-            border-top: 3px solid #000;
-            margin-bottom: 15px;
-            margin-top: 15px;
-            display: block;
-        }
+/* ---------- 聊天气泡互动区域（参考第二章样式） ---------- */
+.chat-interactive-area{
+width:100%;
+background-color:#f5f5f5;
+border-radius:12px;
+padding:16px;
+margin:10px 0 20px 0;
+cursor:pointer;
+box-shadow:inset 0 0 8px rgba(0,0,0,0.03);
+position:relative;
+user-select:none;
+-webkit-user-select:none;
+transition:background-color .2s;
+}
 
-        .content-area {
-            width: 100%;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            font-family: "SimSun", "宋体", serif;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #000;
-            padding: 0;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin-bottom: 20px;
-        }
+.chat-interactive-area:active{
+background-color:#eee;
+}
 
-        .chapter-navigation {
-            position: relative;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 20px 8.2%;
-            margin-top: 50px;
-        }
+.chat-tip{
+text-align:center;
+font-size:14px;
+color:#888;
+font-family:sans-serif;
+margin-bottom:8px;
+font-weight:bold;
+}
 
-        .nav-btn {
-            padding: 12px 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-family: "SimSun", "宋体", serif;
-            font-size: 14px;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: background-color 0.2s;
-        }
+.chat-container{
+display:flex;
+flex-direction:column;
+gap:16px;
+margin-top:10px;
+}
 
-        .nav-btn:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-        }
+.chat-msg{
+display:none;
+width:100%;
+animation:fadeInSlideUp .3s ease forwards;
+}
 
-        .nav-btn:active {
-            background-color: rgba(0, 0, 0, 1);
-        }
+.chat-msg.active{
+display:flex;
+}
 
-        .nav-btn.disabled {
-            background-color: rgba(0, 0, 0, 0.3);
-            cursor: not-allowed;
-        }
+.chat-avatar{
+width:40px;
+height:40px;
+border-radius:6px;
+background-color:#ddd;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+font-family:sans-serif;
+font-weight:bold;
+color:#555;
+flex-shrink:0;
+overflow:hidden;
+}
 
+.chat-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
 
+.chat-content{
+display:flex;
+flex-direction:column;
+max-width:75%;
+}
 
-    </style>
+.chat-name{
+font-size:12px;
+color:#888;
+margin-bottom:4px;
+font-family:sans-serif;
+}
+
+.chat-bubble{
+max-width:100%;
+padding:10px 14px;
+border-radius:8px;
+font-size:15px;
+line-height:1.5;
+font-family:sans-serif;
+word-wrap:break-word;
+position:relative;
+}
+
+.chat-left{
+flex-direction:row;
+}
+
+.chat-left .chat-avatar{
+margin-right:12px;
+background-color:#e2e2e2;
+}
+
+.chat-left .chat-content{
+align-items:flex-start;
+}
+
+.chat-left .chat-name{
+margin-left:4px;
+}
+
+.chat-left .chat-bubble{
+background-color:#fff;
+color:#000;
+border:1px solid #ebebeb;
+border-top-left-radius:0;
+}
+
+.chat-right{
+flex-direction:row-reverse;
+}
+
+.chat-right .chat-avatar{
+margin-left:12px;
+background-color:#4a4a4a;
+color:#fff;
+}
+
+.chat-right .chat-content{
+align-items:flex-end;
+}
+
+.chat-right .chat-name{
+margin-right:4px;
+}
+
+.chat-right .chat-bubble{
+background-color:#95ec69;
+color:#000;
+border-top-right-radius:0;
+}
+
+@keyframes fadeInSlideUp{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* ===============================
+   精神深渊（稳定版）
+================================ */
+.mental-abyss{
+background:#0a0a0a;
+border-radius:8px;
+padding:30px 20px;
+margin:20px 0 30px 0;
+box-shadow:inset 0 0 20px rgba(0,0,0,0.8);
+display:flex;
+flex-direction:column;
+gap:12px;
+border:1px solid #222;
+
+/* ✅ 关键修复 */
+overflow:visible;
+will-change:opacity,transform;
+}
+
+/* 基础隐藏 */
+.voice{
+opacity:0;
+transform:translateY(12px);
+transition:all .5s ease;
+line-height:1.6;
+letter-spacing:1px;
+}
+
+/* 激活 */
+.mental-abyss.active .voice{
+opacity:1;
+transform:translateY(0);
+}
+
+/* 顺序延迟（更稳写法）*/
+.mental-abyss.active .voice:nth-child(1){transition-delay:.15s}
+.mental-abyss.active .voice:nth-child(2){transition-delay:.35s}
+.mental-abyss.active .voice:nth-child(3){transition-delay:.55s}
+.mental-abyss.active .voice:nth-child(4){transition-delay:.75s}
+.mental-abyss.active .voice:nth-child(5){transition-delay:.95s}
+.mental-abyss.active .voice:nth-child(6){transition-delay:1.15s}
+.mental-abyss.active .voice:nth-child(7){transition-delay:1.35s}
+.mental-abyss.active .voice:nth-child(8){transition-delay:1.55s}
+.mental-abyss.active .voice:nth-child(9){transition-delay:1.75s}
+.mental-abyss.active .voice:nth-child(10){transition-delay:1.95s}
+
+/* 人格样式 */
+.voice-mocking{ text-align:left;color:#888;font-size:14px;margin-right:20%;}
+.voice-lust{ text-align:right;color:#d32f2f;font-size:18px;font-weight:bold;margin-left:10%;}
+.voice-sadist{ text-align:center;color:#9c27b0;font-size:15px;font-style:italic;}
+.voice-hunter{ text-align:right;color:#e65100;font-size:14px;margin-right:15%;}
+.voice-cold{ text-align:left;color:#5c6bc0;font-size:14px;margin-left:15%;}
+.voice-provoke{ text-align:left;color:#aaa;font-size:15px;}
+.voice-defend{ text-align:right;color:#ffb829;font-size:16px;font-weight:bold;}
+
+.voice-core{
+text-align:center;
+color:#fff;
+font-size:18px;
+font-weight:bold;
+margin-top:40px;
+border-bottom:1px dashed #444;
+padding-top:20px;
+}
+
+.voice-core span{
+display:block;
+font-size:14px;
+color:#a10606;
+margin-top:10px;
+font-weight:normal;
+}
+
+/* ---------- 翻页按钮 ---------- */
+.chapter-navigation{
+display:flex;
+justify-content:space-between;
+padding:20px 0;
+margin-top:50px;
+}
+
+.nav-btn{
+padding:12px 20px;
+background:rgba(0,0,0,.85);
+color:#fff;
+border:none;
+border-radius:6px;
+font-size:14px;
+text-decoration:none;
+display:flex;
+align-items:center;
+gap:6px;
+}
+</style>
 </head>
-<body>
-        <div class="article-container">
-            <div class="chapter-title">边检官系列 · 🇬🇧Ghost</div>
-            
-            <div class="author-info">英国海关</div>
-            
-            <div class="separator"></div>
-            
-            <div class="content-area">
-        Heathrow Airport, London.
-        正值开学季高峰，就像英国有世界上做得最好的法国菜，过关队伍长得像前菜的法棍面包。你踮起脚尖，隔着层层拉索（？应该不是叫这个，反正就是调整排队路线的那种线）努力向近在咫尺又远在天边的海关柜台望去，终究还是选择了一个夹在两个三哥中间的柜台——中间那个戴骷髅面罩、身形魁梧，隔着面罩都能感觉到面色比英国天还阴的男人。
-        他看起来不太好惹。
-        但比起咖喱味英语，你坚信自己能听懂地道英伦腔。
-        你默默想着，走上前去，却忍不住多打量了几眼他的骷髅面罩——鼻梁高挺，眼睛还是很漂亮的。
-        第一秒：好吓人。
-        第二秒：有点帅。
-        “Passport.（护照）”
-        Ghost例行公事而冷冰冰地吐出一句。
-        第三秒：妈的他好凶。
-        你对边检官的滤镜碎了一地。
-        乖乖呈上护照，你努力用面无表情维持表面上的平静，但是捏着小红本的手微微颤抖，早已暴露了你紧张的心理活动。
-        不要看我，不要挑我，不要查我……
-        “来干什么的。”
-        “学习。”
-        “哪个城市哪个学校，学什么？”
-        你早就把这些答案滚瓜烂熟记于心，嘴上还算流畅地回答了他的问题。
-        “CAS number(*注：针对学生签证的长期邀请函，证明学生身份) 和肺结核报告（*注：英国留学生需要提交肺结核检查证明，通常可以线上上传，但是首次入境可能需要提供）？”
-        “第一次来？”他翻了翻你递过去的小文件袋，扫了两眼，冷静而锋利的栗色双眼便再次锁定你的脸，“体检报告怎么是复印件？”
-        “找不到原件了。”你开始后悔自己怎么没去隔壁那个三哥的柜台，虽然大概率你需要用最原始的方式打手势沟通，但是原本排在你身后的好几个人都过关了，你还在原地接受他的盘问。
-        “噢，是啊，当然是复印件，你们都喜欢复印件。”他的语气听上去不太友善，还带着浓浓的嘲讽和怀疑，似乎在犹豫要不要把你丢小黑屋。
-        “……”你盯着自己的鞋尖，努力不让翻白眼的动作那么明显，“我很抱歉。”
-        “你住哪儿？”
-        “学校宿舍。”
-        “合同呢？”
-        “付了定金。”
-        他打字的动作一顿，“为什么不一次性付完？”
-        “我没钱。”
-        “……”Ghost终于正眼看向你，但是被你那副生无可恋又无所谓、“我穷我骄傲”的表情噎了一下，从鼻子里哼出一声，找到了新的笑料，“真聪明，万一海关没过还能退款。”
-        “……”
-        Ghost耸耸肩，对你的尴尬熟视无睹，像是发现了新玩具似的，突然冷不丁来一句，“Bank statement.”
-        “啊？”你怀疑自己听错了，“这个也要？”
-        他冷笑一声，“怎么没有必要？谁知道你是真的来读书，还是黑在这里？”
-        你气得哆嗦，联想到当初自己递交签证材料时，他们这些该死的流程非但没能防住偷渡和黑户，反而差点把你们这些正经留学生拒之门外——你一边指着offer letter，语气不善，却又一边乖乖掏手机，“我有Offer！有CAS！还有宿舍合同！流水在这，自己看！”
-        Ghost瞄了一眼你的屏幕，懒洋洋地划了划，慢条斯理地点评，“嗯……撑不到圣诞节。”
-        你被气得差点骂出来，“你管得着吗？！”
-        啪——
-        他给你盖了章，把护照推回来，“当然管得着。我就是要管你能不能留在这。”
-        你拎起行李落荒而逃，留学生活还没正式开始就被这么个边检官蒙上了一层阴影。                    </div>
-<!-- 章节导航按钮 -->    <div class="chapter-navigation">
-        <a href="chapter3.html" class="nav-btn">
-            <span>←</span>
-            <span>上一章</span>
-        </a>
-        <a href="chapter5.html" class="nav-btn">
-            <span>下一章</span>
-            <span>→</span>
-        </a>
-    </div>
 
-    <script src="../../../js/password-protection.js"></script>
-    <script>
-        // 页面加载完成后的初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('文章页面加载完成');
-            
-            // 添加右滑返回手势支持（兼容iOS和Android）
-            let startX = 0;
-            let startY = 0;
-            let isSwiping = false;
-            let startTime = 0;
-            
-            // 防止页面滚动冲突
-            document.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                startTime = Date.now();
-                isSwiping = false;
-            }, { passive: true });
-            
-            document.addEventListener('touchmove', function(e) {
-                if (!startX || !startY) return;
+<body>
+
+<div class="article-container">
+
+<div class="chapter-title">钱辈，请和我约会吧！</div>
+<div class="separator"></div>
+
+<!-- 你的正文内容原封不动放这里 -->
+<div class="content-area">
+    熊回到了他的巢穴。
+    关门的声响回荡在黑暗的屋内，打破了这片死寂的空间。
+    双目在极短时间内便适应了缺少光线的环境，Nikto一边向房间走去，一边摘下面罩，几簇暗淡的智能感应灯带终于亮起色彩饱满而浓郁的霓虹灯光。呼吸灯在休眠模式下缓缓地变换着颜色，从深蓝到紫，再到冷红，把那半张布满伤痕、近乎毁容的脸照得忽明忽暗，更显赛博朋克般非人的诡异。
+    他将摘下的面罩搁在桌上，顺手按开主机。随着电竞主机的启动，同色系的灯带也为这个房间增添了一抹存在感不强的光，却足以看清桌面：一个动作幅度极其夸张且有张力手办占据了视觉中心的位置，透过防尘罩依然能看清令人发指的精致细节——那是你和工作室三渲二处理过后发布的同人手办，原作是Nikto最爱的游戏之一，而他本人则是因为你cos了这个角色，才对游戏内的人物爱屋及乌。
+    其他的动漫官方手办被放在角落的展示柜里，有大有小，从EVA到进击的巨人，连娘口三三也趴在了星野爱的脚边；而最引人注目的，是墙上的那一整面照片。
+    灯光的变幻映在那些照片上，给它们蒙上了一层诡异的光晕，令人震撼。照片大多是你发布在社交媒体上的自拍，或者是你在漫展上的抓拍，每一张都异常清晰，精准捕捉你笑着的、冷着脸的、俏皮的各种表情，将他死死钉在名为“你”的牢笼里
+    Nikto走上前，动作沉重而缓慢，如同某种大型食肉动物在巡视领地。将头轻轻抵在那面墙上，粗糙的皮肤纹路与平滑的塑封摩擦出令人牙酸的声响。他像是在嗅闻猎物的余温，又像是在通过这种病态又近乎自虐的方式，试图在那些二维的影子里寻找到你的体温。
+    照片之间还夹杂着一些小卡片，上面是你的To签或者祝福语。满是老茧的指尖拈起一张你在某次直播中送出的随机签名卡——他等了整整三个月才从某个拍卖网站上买到。
+    目光在照片墙和那张签名卡之间游离，面罩下的呼吸声逐渐变得沉重而浑浊。
+    他思考着，用那些最阴暗、最疯狂的战术去推演，无数次模拟该如何入侵你的生活，如何才能让你不再是一张冰冷的纸片。
+    你已经近在眼前。
+    电竞椅的皮革在沉重的压力下发出沉闷的挤压声，Nikto缓缓向后靠去，整个人陷进了一片由显示器荧光构筑的幽蓝色阴影里。
+    屏幕上，是你那张极具视觉冲击力的cos正片设置成的壁纸——精致、圣洁、被无数滤镜和打光堆砌成的“二次元女神”。但在他视网膜的余像里，那个在冷风里缩着肩膀、踩着平底拖鞋、正毫无形象地跟一团乱麻的耳机线博弈的女孩始终挥之不去。
+    他不会看错的，骨相不是靠化妆和滤镜能伪装的东西，今天他确确实实遇到了身为主播的你。
+    更重要的是，那个包裹。
+    他亲眼看着你那双被快递箱边缘压出红痕的手，将那张贴有OOA工作室专用快递封口贴的重物递给邮局柜台。那张单子上，清清楚楚地印着他那个足以让快递员退避三舍的、属于“怪物”的收货地址。
+    因此，他也遇到了身为老板的你。
+    他的指尖在桌面上规律地敲击着。
+    嗒、嗒、嗒。</div>
+
+<!-- mental-abyss 第一段 -->
+<div class="mental-abyss">
+    <div class="voice voice-mocking">她是老板，也是模型本身。</div>
+    <div class="voice voice-hunter">但这还不够解释……那个变态。</div>
+    <div class="voice voice-provoke">她是寄件人，说明她会拿到快递单号。</div>
+    <div class="voice voice-lust">今天和她通话的那个男人是谁？</div>
+    <div class="voice voice-hunter">涂装师。</div>
+    <div class="voice voice-mocking">……啊，是的。他叫了她“老板”。所以——</div>
+    <div class="voice voice-cold">“涂装师”是真实存在的，“老板”也是。</div>
+    <div class="voice voice-defend">可那个该死的“操遍全世界大奶男”男同客服去了哪儿？</div>
+</div>
+
+<div class="content-area">
+    按理说，像OOA这种小规模的工作室，物流这种琐碎的体力活应该是那位“大奶男”客服的职责。可为什么在今天这个关键节点，那家伙彻底缺席了？
+    Nikto的目光缓缓从屏幕移向那面贴满了你照片的阴暗墙壁。
+    对于一个规模紧凑、主打梦向定制的私人工作室而言，所谓的“客服”和“物流”往往意味着最大的秘密。既然那个“大奶男”在交流中展现出了对你身体数据近乎变态的了解，既然他表现得那么像你的“守门人”……
+    答案只有一个。
+    根本没有什么“大奶男”。
+    那个在屏幕后用极其粗犷的语气调戏他、甚至故意用某种扭曲的姿态挑战他忍耐底线的家伙，就是你本人。
+    “Боже мой...（我的天啊）”
+    一声低沉的、混合了震撼与某种病态快感的笑声从他喉咙深处溢出。
+    你是高高在上的主理人，是屏幕里被万众簇拥的梦中情人，也是那个在键盘后对着他肆意嘲讽、甚至故意让他以为自己正对着一个“肌肉男”发情的恶劣骗子。
+    你亲手捏造了一个虚假的化身来玩弄他，却又因为太过了解自身而露出马脚。
+    就在这时，显示器右下角弹出一条突兀的提示音。
+    “物流信息已更新，请注意包裹查收。”
+    单号上传了。这意味着你作为“客服”的那个分身已经完成了今天的谢幕，正打算收工回到你那安全的王座上。
+    Nikto盯着那封邮件，指尖不安地交叠在一起，显得有些笨拙。
+    归根结底，他只是个被战火与硝烟喂大的斯拉夫直男。那颗被碎片化的记忆割裂的大脑里，偶尔会浮现出自己属于FSB时代的残影。在那些岁月里，他的灵魂和肉体都被封印在冰冷的制服与无止境的审讯室里，浪漫对他而言是比核武器还要陌生的词汇。他懂得如何潜伏、如何狙击、如何从敌人的喉咙里撬出秘密，却唯独没学过该如何追求一个现代社会的女性——尤其是你，如此一个骄傲的、对幻想有着偏执掌控欲的造梦者。
+    现在，虽然身为PMC雇佣兵的他拥有了前所未有的自由，但真到了无需假意逢场作戏、追求心爱的人的这块领域，他依然像个刚从西伯利亚冻土层里挖出来的、笨拙得可笑的毛头小子。
+    Nikto盯着那个代表在线的绿点，深吸一口气。既然不能直接暴力爆破，那他决定启动一种在他看来最为文明且得体的“接头方式”。</div>
+
+<!-- 第二个 abyss -->
+<div class="mental-abyss">
+<div class="voice voice-hunter">直接去她公寓门口。这种骨架的女性承受不住我们的物理封锁。把她塞进车里，带到基地，我们有足够的时间让她承认所有的马甲。</div>
+<div class="voice voice-cold">那是绑架，蠢货。这种行为只会让她应激，从此把我们列为头号恐怖分子。</div>
+<div class="voice voice-mocking">……要送花吗？我看过那些电影……玫瑰？</div>
+<div class="voice voice-cold">别用那些对付普通女人的招数去羞辱她的智商。</div>
+<div class="voice voice-sadist"> 那你说说，什么才是“不普通”的方法？</div>
+</div>
+
+
+<div class="content-area">
+        你走过一个街口，差点被雨后湿漉漉的地砖滑倒在地，他看得清清楚楚。
+        他不是第一次跟踪目标。但他第一次意识到，自己的目光会在你快跌倒时泛起一阵纯粹的保护欲，不再是像出于任务期间那样的功利性，只是单纯想扶你一把。
+        以及那一个小小动作背后的肢体接触。  
+        Nikto拢了拢夹克，又有些烦躁地扯了扯面罩，脑内的细碎的声音却开始拔高了音量。  
+</div>
+
+
+<div class="mental-abyss">
+    <div class="voice voice-sadist">直接下达指令。</div>
+    <div class="voice voice-mocking">既然她是老板，那就用商业规则。支付一笔她无法拒绝的钱，强迫她派遣那名“cosplayer”出来。只要她出现在我们指定的坐标，捕获就完成了。</div>
+    <div class="voice voice-hunter">不对，我们要“聘用”她。</div>
+    <div class="voice voice-cold">你是说所谓的“cos线下委托”？</div>
+    <div class="voice voice-mocking">对，让她穿着那套照片里的衣服，坐在凯宾斯基的餐桌对面。就像那些照片里一样，她只能看着我，只能对着我笑……</div>
+    <div class="voice voice-defend">放屁，明明是看我、对我笑！</div>
+    <div class="voice voice-core">闭嘴！</div>
+</div>
+
+    <div class="content-area">
+        在这笔巨款的备注栏里，Nikto一字一顿地敲下了他认为最“得体”的约见词，冷硬得像是一份停火协议：
+        【给主理人的“技术指导费”】
+        点击发送。
+        显示器上跳出的“转账成功”提示，在Nikto看来就像是发射了一枚精准引导的导弹。他靠回椅背，胸膛微微起伏，心中竟涌现出一种久违的、执行高难度任务时的亢奋感。
+        
+        你盯着那一串数不清的零，原本因为修图而干涩的眼睛瞬间瞪得滚圆。那一刻，你脑子里甚至已经开始计算这笔钱能给工作室换几台顶配的工业级3D打印机，或者干脆把下半年的房租一次性付清。
+        ……哪来的神仙甲方？只听说过给奶茶钱的，一下子给这么多，到底是在搞慈善还是洗黑钱？
+        你小声嘀咕着，心脏不争气地加速了。
+        然而，还没等你的嘴角彻底咧开，下一秒跳出的聊天框内容，就让你的笑容僵在了脸上。    </div>
+    
+        <div class="chat-interactive-area">
+            <div class="chat-tip">【点击此处查看聊天内容】</div>
+            <div class="chat-container">
+                <div class="chat-msg chat-left">
+                    <div class="chat-avatar">
+                        <img src="../../../img/t90.png" alt="t90">
+                    </div>
+                    <div class="chat-content">
+                        <div class="chat-name">T-90_Vanya</div>
+                        <div class="chat-bubble">【线下特殊委托确认案】<br>
+                            委托对象：（*你的cosplay ID*）<br>
+                            着装要求：《生化危机》——艾达·王（Ada Wong）重制版红色旗袍<br>
+                            时间：明晚19:00<br>
+                            地点：凯宾斯基餐厅</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+        <div class="content-area">
+            Nikto觉得自己做得完美极了：既展示了财力（诚意），又没有采取暴力（文明），还精准切中了你的职业领域（专业）。然而他完全没有意识到，这笔带着“强买强卖”性质的巨款，在那个正准备收工休息的你眼里简直是一枚充满了“有钱了不起”挑衅意味的深水炸弹。        </div>
+    
+            <div class="chat-interactive-area">
+                <div class="chat-tip">【点击此处查看聊天内容】</div>
+                <div class="chat-container">
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">
+                            <img src="../../../img/bara.png" alt="bara">
+                        </div>
+                        <div class="chat-content">
+                            <div class="chat-name">OOA-SlavicTiddyDestroyer</div>
+                            <div class="chat-bubble">哎哟喂，Vanya先生，我这手抖得差点没拿稳咖啡杯。首先代表OOA全体员工（包括本可这个卑微的打工人）感谢您的厚爱，您的这份“喜爱之情”我们一定会加粗、加黑、加红地转达给主理人本人的</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">
+                            <img src="../../../img/bara.png" alt="bara">
+                        </div>
+                        <div class="chat-content">
+                            <div class="chat-name">OOA-SlavicTiddyDestroyer</div>
+                            <div class="chat-bubble">不过呢，有些原则问题本可还是得硬着头皮跟您同步一下，不然这月的奖金可就保不住了🙏</div>
+                        </div>
+                    </div>
+
+
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">
+                            <img src="../../../img/bara.png" alt="bara">
+                        </div>
+                        <div class="chat-content">
+                            <div class="chat-name">OOA-SlavicTiddyDestroyer</div>
+                            <div class="chat-bubble">工作室有明文规定，不能收受任何来历不明、数额异常的大额私下转账，毕竟咱们是做正经梦向定制的，不是搞什么洗钱中心。这“奶茶钱”我得强忍着心痛给您原路退回了，您还是留着给自己多买点营养品吧</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">
+                            <img src="../../../img/bara.png" alt="bara">
+                        </div>
+                        <div class="chat-content">
+                            <div class="chat-name">OOA-SlavicTiddyDestroyer</div>
+                            <div class="chat-bubble">咱们家这位头牌Coser性质比较特殊，她除了拍摄和直播基本不出门，工作室也从不接关于她的任何形式的线下委托。如果您真的支持她，建议关注下周的周年庆特别直播，到时候拼手速抢个签名卡，没准儿还能让她在直播里念一下您的ID？</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">
+                            <img src="../../../img/bara.png" alt="bara">
+                        </div>
+                        <div class="chat-content">
+                            <div class="chat-name">OOA-SlavicTiddyDestroyer</div>
+                            <div class="chat-bubble">顺带说一句，先生，虽然王阿姨那身红裙子确实挺顶，但我个人还是觉得您的审美稍微有点……单调了。天天盯着红裙子看多没劲啊？像您这样有实力的甲方，真不考虑看看那种胸肌能夹碎苹果、穿战术背心的硬核大奶男吗？相信我，比起捉摸不透的间谍，那种能把你整个人举起来的纯爷们儿才是真正的新世界大门啊！👉👈</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-msg chat-right">
+                        <div class="chat-avatar">
+                            <img src="../../../img/bara.png" alt="bara">
+                        </div>
+                        <div class="chat-content">
+                            <div class="chat-name">OOA-SlavicTiddyDestroyer</div>
+                            <div class="chat-bubble">好了，退款已发起，请注意查收。祝您用餐（一个人）愉快😘💅</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="content-area">
+                你狠下心按下了退款键，心痛得像是被人打了一记重拳。
+                “老己别怕，尊严比显卡重要……尊严比房租重要……”你捂着胸口瘫在床上，眼角甚至挤出了一滴真情实感的泪水。
+                他妈的，世界上到底哪来那么多有钱人？凭什么就不能再多你一个呢？！
+                太奇怪了，这个客户。从接待他的第一天起，他对你似乎就有超乎常人的执念——但如果考虑到他是你的梦男，这一切似乎又能说得通。
                 
-                let currentX = e.touches[0].clientX;
-                let currentY = e.touches[0].clientY;
-                let diffX = startX - currentX;
-                let diffY = startY - currentY;
+                那个幽暗的宅男基地里，Nikto盯着倒数第二条极具攻击性、甚至带着某种“哲学”力量的回复，直男之心又被狠狠地赛博骚扰了一下，差点宕机。但紧接着，手背上的青筋却因为一种异常的亢奋而微微跳动——你竟然一次性亲手为他打了这么多字。哪怕是嘲讽，哪怕是恶毒的驱逐，哪怕是顶着那层令自己避之不及的皮，这对他这种长期处于情感真空的疯子来说，也算是一场淋漓尽致的恩赐。   </div>     
+        <div class="mental-abyss">
+            <div class="voice voice-hunter">我们已经给了她一切。最好的餐厅，最多的钱，最明确的指令。为什么她还不出现？</div>
+            <div class="voice voice-sadist">事实证明，“外交手段”在面对这种级别的独立主权目标时毫无意义。</div>
+            <div class="voice voice-defend">她只是在测试我们的耐心。</div>
+            <div class="voice voice-lust">还是说……她需要我们用更直接的方式，去她的领地里亲手把她抓出来？</div>
+            </div>
                 
-                // 检测是否为水平滑动（水平距离大于垂直距离）
-                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
-                    isSwiping = true;
-                    // 如果是边缘滑动，阻止页面滚动
-                    if (startX < 50) {
-                        e.preventDefault();
-                    }
-                }
-            }, { passive: false });
-            
-            document.addEventListener('touchend', function(e) {
-                if (!isSwiping) return;
-                
-                let endX = e.changedTouches[0].clientX;
-                let diffX = startX - endX;
-                let endTime = Date.now();
-                let duration = endTime - startTime;
-                
-                // 从左边缘开始向右滑动（返回手势）
-                // 支持iOS和Android的返回手势
-                if (startX < 50 && diffX < -80 && duration < 500) {
-                    window.history.back();
-                }
-            }, { passive: true });
-        });
-    </script>
-  <script src="../js/password-protection.js"></script>
+
+
+
+<div class="chapter-navigation">
+<a href="chapter3.html" class="nav-btn">← 上一章</a>
+<a href="chapter5.html" class="nav-btn">下一章 →</a>
+</div>
+
+    
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+
+const chatAreas=document.querySelectorAll('.chat-interactive-area');
+chatAreas.forEach(area=>{
+const chatMsgs=area.querySelectorAll('.chat-msg');
+const chatTip=area.querySelector('.chat-tip');
+let currentMsgIndex=0;
+
+area.addEventListener('click',function(){
+if(currentMsgIndex<chatMsgs.length){
+chatMsgs[currentMsgIndex].classList.add('active');
+currentMsgIndex++;
+
+if(currentMsgIndex>=chatMsgs.length){
+chatTip.innerText='【聊天记录已全部加载】';
+area.style.cursor='default';
+}else{
+chatTip.innerText='【点击继续查看】';
+}
+}
+});
+});
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('active');
+observer.unobserve(entry.target);
+}
+});
+},{
+threshold:0.15
+});
+
+document.querySelectorAll('.mental-abyss')
+.forEach(el=>observer.observe(el));
+
+});
+</script>
+
 </body>
 </html>
