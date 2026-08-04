@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>第二十五章 - 驯化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第二十五章 - Feel it（下）</div>
+
+            <div class="author-info">BGM: Michele Morrone - Feel it</div>
+
+                        
+            <div class="separator"></div>
+            
+    <div class="content-area">
+        我的感官并不迟钝，却始终无法细细辨认人类情感的纹理。
+        十一岁那年，那场变故之后，世界对我而言换了一种质地，但并没有变得更难理解——它只是变得不再值得理解。此后的一切，杀戮、命令、权力，都是可以被计算的东西。
+        直到她。
+        “Geh und sieh dir die Rosen wieder an. Du wirst verstehen, dass deine Rose einzigartig ist. （去看看那些玫瑰吧。你会明白，你的玫瑰在世界上是独一无二的）”
+        “...Die Menschen haben diese Wahrheit vergessen. Aber du darfst sie nicht vergessen. (人们已经忘记了这个真理，但你不能忘记它）
+        她在我的声音里渐渐沉入睡眠。我的手指插进她乌黑的发间，丝绸的河自我指尖流淌，漫过那张脸，遮住了大半。
+        那张脸。
+        当初，我在狙击镜里只看了一眼。
+        不完整的一眼。
+        或许世界上真的存在着什么东西，更接近于某种前于语言存在的确认，像是某个我从不知道自己在等待的方程式，忽然在那一秒找到了唯一的解。
+        我就要这个，不可替代。
+        除此之外，什么都不行。
+        或许世界上真的存在这样的东西。或许它一直存在，只是大多数人一生都不会遇见，而在那个阴郁的午后，在马里乌波尔的废墟上方，我恰好遇见。
+        我依旧无法忘掉那双警惕中夹杂着惊恐的双眼。她悄然入网，闯入我的生命，我的精准射击范围。每每回想起那个瞬间，我依然难以自抑，心潮澎湃。
+        她对我来说便是这种感觉。
+        比杀戮更原始。
+        我太熟悉杀戮的感觉——敌人温热的血喷在我的面罩上，一头一脸，从滚烫到温热，最后冷却的黏腻渗过布料间隙，扒在我的脸上，就连干瘪的红细胞都在冲我的耳膜哀嚎；
+        但她撞入我的怀中的那一秒，是相似有不同的血液沸腾之感，是由内迸发出来的。
+        鲜活的生命，让我活过来的感觉。不是自外部夺取，而是从内迸发出来，几乎要撑破这副躯壳，却又只有她能平衡这种热烈。
+        我非她不可。
+        命运以它惯用的、不讲道理的方式，在我最不设防的时候，替我做了决定。
+        “Du bist für das verantwortlich, was du dir vertraut gemacht hast.（你要对你所驯化的东西负责)”
+        我不太记得这句话是什么时候读到的，大概是在她睡着之后。
+        她总是这样，根本不懂德语，却缠着我念给她听，又总在我念到一半就睡着，待我看向她时，她已在我怀中安然入梦。
+        圣埃克苏佩里不懂战场，但这句话他说对了。
+        我在黑暗里坐了很久。
+        审讯室的墙壁不薄，或许是我的听觉太敏锐，又或许我很清楚，自己听见的是感官告诉我她在那里。清醒剂的效果退去后，躯体会先于意识投降，呼吸变得又浅又慢，像蜷缩的小动物在那短暂的一秒内脱离了警觉，又像平日里她睡在我身侧的节奏。
+        我必须在她彻底醒过来之前想清楚该怎么办。
+        这个问题本身不复杂。我做过更棘手的战术评估，处理过更恶劣的政治残局，我能活到今天，坐在这个位置上，不光只是运气好，而且我从不在该动脑子的时候动感情。
+        “哪怕你之后不要我了。”
+        我深吸了一口气，试图把她从方程式里剥离出来，单独放在一边。
+        我需要工作，而不是想她。
+        
+        首先是她的性质。
+        从第一天就不对。她不是情报资产——如果是，我早就该把她交给审讯部门榨干了；她也不是谈判筹码——自那日起，没有人向我赎买她与她的队友，他们早已被遗弃；她更不是任何一份任务档案里可以被合理解释的“留置理由”。
+        我把她带回来，是因为我想要。
+        这个理由在PMC的账目里不存在对应的栏目。
+        四个月了，所有人睁一只眼闭一只眼。我的战功撑着这份沉默，她也没有给任何人制造麻烦。
+        没有人质疑。
+        至少没有人敢当面质疑。
+        我知道背后有人在谈论，我知道那些目光意味着什么，我选择不在意。
+        
+        她，她、她。
+        说来说去，这件事还是绕不开她。
+        
+        我在脑子里过了一遍那份事故报告。
+        两个警卫在医务室，伤情轻微但足以构成事故报告。你制服他们的方式我早在监控里看过了，干净，灵巧，用了那种不属于任何标准体系的……
+        怎么说呢？舞蹈。
+        那两个人甚至没搞清楚发生了什么就倒下了。
+        我看的时候在笑。但我现在不觉得好笑了。
+        CFO（财务总监）今天下午找过我，他把你称为我的“安全漏洞”。
+        我不喜欢这个词，精准得像一把术后缝合刀，不多不少，恰好切在我最不想被碰的地方。我很清楚，他是在通知我：你的时间不多了。
+        我知道他背后站着谁，也那些赞助商和客户的逻辑。他们不关心一个女人的命运，只关心合同和回报率，关心“是否还值得继续投资”。对他们来说，我和一个俘虏同吃同住同睡这件事本身就已经是一个需要被审计的风险项了，更何况，这个俘虏刚刚证明了自己可以在我不在的时候造成实质性的安全事故。
+        而其他的内部人员，也同样虎视眈眈。
+        我了解这个系统，了解这里面的每一个人，他们的弱点、价码和临界点。我参与建立了这套规则，比任何人都清楚，利益在感情之上，秩序在执念之上，结果在一切之上。
+        而现在，我正坐在这套逻辑的对面。
+        他们面对着你，所有的目光却集中在我身上。
+        
+        我把选项逐一过了一遍。
+        隐瞒？不可行。目击者太多。我堵不住所有的嘴。就算堵住今天，明天会有新的冒出来。雇佣兵群体里没有秘密，只有还没被卖出去的情报。
+        重新囚禁？不够。这件事发生在我出外勤期间，单纯的重新关押解决不了那个根本问题：“她在你缺席时依然能造成威胁”。各方要的不是一个姿态，是一个他们能写进风险评估报告里的、具有约束力的处置结果，确保她不会再生事。
+        或许，是投诚证明……
+        他们会要求她杀自己人。
+        我知道，她不会做，否则这一切也不会发生。这个选项不是不可行，但对她来说不可行。
+        
+        处决。
+        
+        这个词在我脑子里停的时间比其他所有选项加起来都长。
+        最干净，最彻底，最符合PMC的标准处置逻辑。如果她是任何一个别的人——任何一个——这会是第一个被执行的方案，而不是最后一个被考虑的选项。
+        我必须让她消失。
+        这个结论落地的方式比我预想的平静。大脑自动走了一遍流程，时间，地点，人员，尸体处置，记录封存。我清楚那套成熟的程序，可以让这件事在七十二小时内变得干净，干净到像从未发生过。
+        但她不是别的人。
+        我又回到了那片废墟，再一次看到了那双面罩后的眼睛。
+        我用了四个月的时间在她身上搭建了一个我自己都不完全理解的东西。它不在任何战术手册或者心理评估报告里，只存在于我的手触碰到她头发时手指会自动放轻力度，以及我在监视器前看着她那可笑的、毫无计划的、莽到让人生气的救援行动时心跳频率升高，但我没有下令拦截这个事实里。
+        她让我活过来。
+        而且……
+        客观地说，就算我决定处决她，我也无法把她的尸体交出去。交出去意味着备案，备案意味着承认，承认意味着我在所有人面前确认了一件事：我失控过。
+        我不能在任何人面前承认这一点。不能。
+        我烦躁地将烟蒂按进那过于茂盛的烟灰缸里。
+        她将我推到这个位置上，留给我的选择不多了。我不能丧失主动权，主动推出，也做不到眼睁睁地看着我的东西沦为谈判工具。
+        我不能让她死，但也不能让她不死。
+        对外宣布她在审讯中死亡。备案，封档，销毁所有生物识别记录。这个变量从所有人的视线里彻底消失。这是唯一一个能同时满足所有条件的方案：给所有人一个交代，而她能继续活着。
+        代价是……我必须把她送走。
+        她不能再留在我身边。这个基地里的每一双眼睛都认识她，她的脸、她的身份、她走路的样子和她脖子上的痕迹……只要她还在这里，她就是一颗随时会被引爆的炸弹，她的存在本身就是证据。
+        我看着烟灰缸里那根压扁的烟蒂，这种不熟悉的情感让我失控，让我痛苦。
+        
+        爱从来不是无辜的。它总在权力与责任之间徘徊。
+        
+        我需要一个我完全信任的人。
+        整个KorTac能处理这种级别的事，同时不会把它变成把柄的人，用一只手就数得完。
+        Hans。
+        他跟了我很多年。哈尔施塔特那次我把整个基地的运转交到他手上，他处理得当，没有任何纰漏，甚至连通讯协议都保持了我要求的标准。军官世家的教养在他身上留下了一些有用的东西，做事有章法，执行力强，知道什么话该说什么话不该说。
+        他见过我的脸，今晚又看见了一次。
+        我站起来，走到窗口。
+        窗外是黎明前最后的黑暗，再过几个小时天就亮了。我看着夜幕压住的黑森林，呼吸在面罩内侧凝出一层薄薄的潮气。
+        那张今晚第一次在她面前暴露过的脸，重新消失在两层织物后面。
+        我得在天亮之前做完所有准备。
+                
+                <!-- 章节导航按钮 --><div class="chapter-navigation">
+<a href="chapter24.html" class="nav-btn">
+    <span>←</span>
+    <span>上一章</span>
+</a>
+<a href="catalog.html" class="nav-btn">
+    <span>下一章</span>
+    <span>→</span>
+</a>
+</div>
+
+<div style="height: 40px; width: 100%;"></div>
+
+</div>  
+
+
+<script>
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('文章页面加载完成');
+    
+    // 添加右滑返回手势支持（兼容iOS和Android）
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+    let startTime = 0;
+    
+    // 防止页面滚动冲突
+    document.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+        isSwiping = false;
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (!startX || !startY) return;
+        
+        let currentX = e.touches[0].clientX;
+        let currentY = e.touches[0].clientY;
+        let diffX = startX - currentX;
+        let diffY = startY - currentY;
+        
+        // 检测是否为水平滑动（水平距离大于垂直距离）
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+            isSwiping = true;
+            // 如果是边缘滑动，阻止页面滚动
+            if (startX < 50) {
+                e.preventDefault();
+            }
+        }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+        
+        let endX = e.changedTouches[0].clientX;
+        let diffX = startX - endX;
+        let endTime = Date.now();
+        let duration = endTime - startTime;
+        
+        // 从左边缘开始向右滑动（返回手势）
+        // 支持iOS和Android的返回手势
+        if (startX < 50 && diffX < -80 && duration < 500) {
+            window.history.back();
+        }
+    }, { passive: true });
+});
+</script>
+</body>
+</html>
+
+
