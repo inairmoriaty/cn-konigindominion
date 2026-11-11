@@ -28,7 +28,7 @@
       "width": 2048,
       "height": 2048,
       "nsfw": false,
-      "articleUrl": "../../article/public/domestication/catalog.html"
+      "articleUrl": "../../article/domestication/catalog.html"
     },
     {
       "id": "name",
@@ -53,7 +53,7 @@
       "width": 2048,
       "height": 2048,
       "nsfw": false,
-      "articleUrl": "../../article/public/domestication/chapter1.html"
+      "articleUrl": "../../article/domestication/chapter1.html"
     },
     {
       "id": "2049",
@@ -78,7 +78,7 @@
     "width": 2048,
     "height": 2048,
     "nsfw": false,
-    "articleUrl": "../../article/public/domestication/chapter3.html"
+    "articleUrl": "../../article/domestication/chapter3.html"
     },
     {
       "id": "shower",
@@ -91,7 +91,7 @@
       "width": 2048,
       "height": 2048,
       "nsfw": false,
-      "articleUrl": "../../article/public/domestication/chapter5.html"
+      "articleUrl": "../../article/domestication/chapter5.html"
     },
       {
         "id": "scream",
@@ -104,7 +104,7 @@
         "width": 2048,
         "height": 2048,
         "nsfw": false,
-        "articleUrl": "../../article/public/scream.html"
+        "articleUrl": "../../article/scream.html"
       },
       {
        "id": "johnwick",

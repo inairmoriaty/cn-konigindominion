@@ -215,6 +215,14 @@
       opacity: .9;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,.5));
     }
+    /* 白底图片图标（如 other.png）：用滤镜染成金色 */
+    .qa-icon .qa-img {
+      display: block;
+      height: 28px;
+      width: auto;
+      filter: brightness(.82) sepia(1) saturate(1.7) hue-rotate(-8deg) drop-shadow(0 2px 6px rgba(0,0,0,.5));
+      opacity: .9;
+    }
     .qa-en {
       font-size: 15px;
       letter-spacing: .28em;
@@ -469,7 +477,7 @@
         <span class="qa-zh">收藏室 · 喜欢的文章</span>
       </a>
       <a class="qa-card" href="guestbook.html">
-        <span class="qa-icon" aria-hidden="true">❧</span>
+        <span class="qa-icon" aria-hidden="true"><img class="qa-img" src="../img/other.png" alt=""></span>
         <span class="qa-en">THE PARLOUR</span>
         <span class="qa-zh">会客厅 · 留言板</span>
       </a>
@@ -478,7 +486,7 @@
 
   <div class="site-footline">
     <span>© 2024 KÖNIGIN · ALL RIGHTS RESERVED</span>
-    <span>MADE BY MIMI · FOR MY OWN DOMAIN</span>
+    <span>MADE BY INAIR · FOR MY OWN DOMAIN</span>
   </div>
 
   <!-- Featured Works 侧滑面板 -->
@@ -523,14 +531,21 @@
         title: "驯化 · TAME",
         desc:  "小王子长大成国王，遇到了属于他的狐狸。",
         tag:   "R18",
-        href:  "../article/public/domestication/catalog.html"
+        href:  "../article/domestication/catalog.html"
       },
       {
         cover: "../img/public/moscow.png",
         title: "莫斯科变态坏房东",
         desc:  "纯肉",
         tag:   "R18",
-        href:  "../article/public/moscow/catalog.html"
+        href:  "../article/moscow/catalog.html"
+      },
+      {
+        cover: "../img/berlin.png",
+        title: "柏林无圣徒",
+        desc:  "架空二战AU",
+        tag:   "历史向正剧",
+        href:  "../article/berlin/catalog.html"
       }
     ];
 

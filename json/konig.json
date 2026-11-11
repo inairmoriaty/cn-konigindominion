@@ -22,7 +22,7 @@
     "status": "连载中",
     "copyright": "原创",
     "length": "长篇",
-    "link": "/article/public/domestication/catalog.html"
+    "link": "/article/domestication/catalog.html"
   },
   {
     "id": "scream",
@@ -39,7 +39,7 @@
     "status": "完结",
     "copyright": "灵感来源于同名电影",
     "length": "短篇",
-    "link": "/article/public/scream.html"
+    "link": "/article/scream.html"
   },
   {
     "id": "gooddog",
@@ -56,7 +56,7 @@
     "status": "完结",
     "copyright": "原创",
     "length": "短篇",
-    "link": "/article/public/gooddog.html"
+    "link": "/article/gooddog.html"
   },
   {
     "id": "woof",
@@ -74,7 +74,7 @@
     "status": "完结",
     "copyright": "原创",
     "length": "短篇",
-    "link": "/article/public/woof.html"
+    "link": "/article/woof.html"
   },
   {
     "id": "baby",
@@ -94,7 +94,7 @@
     "status": "完结",
     "copyright": "原创",
     "length": "短篇",
-    "link": "/article/public/baby.html"
+    "link": "/article/baby.html"
   },
 
   {
@@ -111,7 +111,7 @@
     "status": "完结",
     "copyright": "原创",
     "length": "短篇",
-    "link": "/article/public/valentine.html"
+    "link": "/article/valentine.html"
   },
   {
     "id": "shortcollection",
@@ -127,6 +127,27 @@
     "status": "连载中",
     "copyright": "原创",
     "length": "短篇",
-    "link": "/article/public/shortcollection/catalog.html"
+    "link": "/article/shortcollection/catalog.html"
+  },
+  {
+    "id": "berlin",
+    "title": "柏林无圣徒",
+    "author": "Inair",
+    "rating": "Mature",
+    "warnings": [
+      "二战",
+      "架空历史",
+      "黑色幽默",
+      "‘纳粹’",
+      "剧情",
+      "原女"
+    ],
+    "summary": "人人都可能成为恶魔，包括你。",
+    "description": "BG ｜ 伪二战AU，架空世界观，代入向.当你成为第三帝国的宣传部长，该怎么在吃人不眨眼的帝国活下去？",
+    "originalDate": "2026-06-28",
+    "status": "连载中",
+    "copyright": "原创",
+    "length": "长篇",
+    "link": "/article/berlin/catalog.html"
   }
 ]

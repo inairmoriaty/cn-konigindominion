@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>第二十七章 - 驯化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+    </style>
+  <link rel="stylesheet" href="../../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第二十七章 - 飞地极夜（1）</div>
+
+            <div class="author-info">飞地极夜篇相当于甄嬛传的凌云峰，没有arachnid正面出场的剧情。
+                有需要可以直接跳转至30章阅读。
+            </div>
+
+            <div class="separator"></div>
+            
+    <div class="content-area">
+        有一种能够解释大部分灵异梦境的说法是：如果你在梦中闻到了某种气味，那是现实中有某个人，或者某个东西从你身边切身实际地经过，你才会意识到自己在做梦的同时，也嗅到了味道。
+        你睁开眼。
+        天花板上是德式工艺的深色木横梁，被一百二十年的雪和盐风浸透，纹理如古老的、停止流动的水。这栋德式小屋在Cranz这个名字消失之后，以Zelenogradsk和“猫镇”的存在继续活着——德国人留下了房子，俄罗斯人接管了门牌号，游客们亲切地给予这里更易于记忆的昵称，只有屋梁还记得自己最初的模样。
+        你看着那些木纹，想着这是第几个躺在这张床上凝视这个天花板的白日。
+        从你住进来的那一天起，超过一个月，窗帘就没有被拉开过。在那之前，时间只是模糊的还没有结束的部分。
+        你从床上坐起，走到窗前，手指悬在窗帘上方停了很久，才终于像是下定某种决心一般拉开了窗帘。
+        早春的薄雪覆盖了前院与铸铁围栏，覆盖了通向海边的那条小路，再远一点的，就是灰蓝色的波罗的海。
+        明明雪地反射的光不算刺眼，你也已经在意识里反复排练过这一刻无数次，但海水总会让你想到那个人的眼睛，胸腔里的某一根弦就会被莫名的力量拨动，沿着食道往上爬，最后卡在喉咙的某个位置，以至于你很长一段时间内不敢拉开这间房间的窗帘。
+        你已经习惯了这种疼痛是无法被绕过的，就像呼吸一样无法被绕过。但这一次，却只是像是有什么东西习惯性地压在胸口，又在今晨轻轻移开，最后只剩下一种淡淡的、几乎温柔的酸胀感。
+        屋内室温恰好，俄式薄饼的焦香混合着鲜蘑菇的咸香、酸奶油与乳酪的甜弥漫了整个小屋。
+        你下楼，推开通向前廊的玻璃门，在前廊的秋千处坐下。这个角度看出去，海水比从卧室窗户里更近、更大、更完整。一两只海鸥在低空盘旋，黑色的身影如同被剪刀从天空里剪下来的影子碎片。
+        “О, моя дорогая-”
+        Elena——或者叫别的什么名字的俄罗斯女人——她是Arachnid派来照顾你，或者来监视你的五十六七岁的中年俄罗斯妇女，你告诉自己不要去记忆或者叫她的名字，便只称呼她为“Тётя（阿姨）”。
+        她的脸上带着惊讶的、近乎小心翼翼的笑，甚至不敢让那个笑容太大，怕吓回去你这只刚从洞穴里走出来的小动物。
+        “Завтрак готов. Зайди, пока тёплое.（早餐好了。趁热进来吧）”
+        用过早餐后，阿姨在你出门前把保温杯塞进你的手里，里面是她按照她自己那套从不解释的比例煮的红茶，加了一点点蜂蜜、一片柠檬，浓得近乎黑色。她总是在你出门前往你手里塞点什么，你已经停止抗议了。
+        车库里停着一辆灰扑扑的深色日牌车，挂着加里宁格勒本地的车牌，行驶证、保险、登记信息一应俱全。你倒车，驶出院子，左转上公路。
+        公路沿着海岸线一路向南，左手边是松林和零散的村落，右手边是波罗的海。今天的你忽然有一股冲动，将头转向右边，再一次将目光投向那片海，有意识地训练自己去适应——
+        胸腔里的那根弦再次颤动。你以为在一个多月的时光里被慢慢磨钝的痛又以锋利的姿态折回来，疼得你的心跳从平稳状态瞬间飙到一百三，握着方向盘的手指蓦地握紧。
+        你立刻把视线撤回正前方的路面，深深地吸了一口气，胸口却像是被什么压住了似的，气进不去，心脏跳动得你几乎一张嘴就要将它呕出来。你不得不腾出手，用力地扯了扯安全带，似乎只要松开那条尼龙织带你就能呼吸。
+        公路在你身后继续延伸，化作一条连接海平面的灰黑色织带，你调大了车载蓝牙的音乐，将注意力放在逐渐显现的加里宁格勒市区的轮廓，那被一层薄雾笼罩的低矮苏联时代建筑，和零星德国遗骸一并渐渐接近。
+        你在那条以“国王大道（Königsallee）”命名的街道上找到一个停车位。这条街是这座城市少数几条还保留着德式街道名的，2010年之后市政府允许了一些德国旧名的非官方使用，因此现在的Калининград-Кёнигсберг的地图上是一种新旧叠加的、双语暧昧的地名生态。
+        西里尔字母在你的脑海中转化成对应的德文，你的唇微微颤动，在即将发声的前一秒，那个音节又被你咽了回去。
+        沿着街道走两百米，左手边第三栋楼的二层有一扇深绿色的木门，门上没有招牌，只有一个用德文Fraktur字体雕刻的、很小的、几乎被冬天的霜遮住的“Salon”。你还记得自己第一次推开这扇门时的场景：照顾你的俄罗斯阿姨和你请假，要去见一个朋友，你也不想一个人在猫镇的房子里待上一整天，便开车进了市区，漫无目的地在市中心闲逛，直到经过了这扇门。
+        深色的木门和硬朗的德文黑体小字本能地呼唤你靠近，你如着魔一般推开了那扇门，头顶的铃铛轻响的那一刻，你被一股似曾相识的味道从头到脚包裹——咖啡、烟草、皮革、还有某种你说不出来的、温暖的、深的、带着一丝甜味的木质香气，它们在那一秒钟里击中了你身体里某个你以为已经被你封闭的地方。
+        你不知道的是，只有嗅觉是直接连接情绪记忆和长期记忆的感官。
+        奶油色的灰泥墙面挂着一些不张扬的、半昏暗的旧油画，宽板橡木地板被一百年的脚步磨出了温润的光泽。沿着窗户一排深绿色丝绒的卡座，房间中央是几张独立的圆桌，每张桌子旁边是两到三把皮革扶手椅。最深处的墙边是一个长长的吧台，吧台后面有一个白发的男人抬头看了你一眼，没有热情地迎上来问你要什么，只是点了一下头，像是默许了你的存在。
+        这样的一切都让你感觉很舒服。
+        你那天点了一杯黑咖啡，坐在窗边的卡座安安静静地喝完，又安安静静地离开，没有想过自己会回来。
+        但是第二天你回来了，第三天也是。
+        你已经停止数自己来了多少次。
+        你从一开始那种“我只是路过、偶尔来一次”的自我说服，过渡到现在的每周有至少三天在这里呆上四五小时的固定节奏，再到今天，这里的老板瓦西里在你为他解围救场后，头发半白的苏联老头对你道“Если уж ты здесь живёшь, давай я тебя оформлю.（你既然都住这儿了，让我给你个名分吧）”。
+        习惯就像一颗种子在你的体内生根，自然而然地生长，根茎逐渐与血管相连。你过去的训练经验在告诉你拒绝。任何稳定的身份、任何长期的位置、任何被定义的归属，对一个像你这样的人来说都是危险。
+        但你现在是一个新的人了，不是吗？
+        瓦西里也没有仔细打探你的过往，只是用一种对老朋友才会用的、半开玩笑的，几乎带着一丝粗糙的温柔的语气邀请你留下。
+        你看着Vasily的眼睛。
+        他的眼睛是灰色的，不是冰蓝色，而是真正的、北方退伍军官那种被几十年雪和炮火浸染成的烟灰色。他的眼睛和你认识的任何一双眼睛都不像。
+        这件事在一秒钟里救了你。如果他的眼睛是蓝的，你可能会逃。
+        “Что я буду делать?（我要做什么？）”幸好，你的俄语还够用，在这段时间与阿姨相处的过程中又捡回来了一些。
+        瓦西里的嘴角动了一下，露出一个接近于笑的表情，“То, что ты только что сделала. Чувствовать. Я плачу за нос.（你刚才做的那样。感知。我为你的鼻子付钱）”
+        他端起他自己的那杯酒，你刚才没注意到他给你也倒了一杯，朝你的方向微微抬了一下，等着你。
+        你看着那杯亚美尼亚白兰地。
+        这将是你第一次在没有他人在场的情况下，主动接受一个陌生人给你的东西。
+        玻璃和玻璃在桌子上方相触，发出一声清脆而短暂的响声。
+        
+        接下来的几个月，时间在你身上慢慢浸染出一种奇怪的纹理。像是某种被反复折叠的布，每一天的折痕都和前一天的几乎重合，只有偶尔某一处的针脚错开了一点点，你才会意识到原来时间在不断流逝。
+        你比从前更早出门了。
+        照顾你的俄罗斯阿姨发现这件事之后开始把早餐准备得更早。你出门的时候她站在门口，轻轻抱抱你，像是欣慰自闭症的孩子终于学会与外界接触。
+        从你记不起的某一天起，你发现自己已经不再刻意把视线限制在左侧。你的眼睛可以自然地扫过右侧的海面，平静地继续往市里的方向开。
+        到了春夏交接时，你甚至开始故意看。清晨，阳光洒落海面，海鸥贴近水面低掠而过，远处的渔船慢慢驶进视线边缘，你会把车停在路边某个观景台，下车，站在围栏前看几分钟，呼吸凉爽的海风，再回到车上。
+        而你适应沙龙的节奏比自己想象中的更快，在你加入的第二周就几乎稳定下来了。
+        瓦西里在吧台旁边的一张小桌子上放了一台精密天平、一组探针式湿度计，还有一本他自己手写的进货登记册——这就是你的工位。
+        从那一天起，每一批进货都由你做二次确认：温度、湿度、品相、初步气味评估。
+        你写得很慢。你的俄语书写在最开始的两个星期里几乎是灾难性的。过去你随已经陨落的前公司活跃在世界各地，最近的几年是东欧地区，再后来就没有什么可以用到俄语的地方了，毕竟你去了……
+        ……
+        你的心抽了抽，重新提起笔，试图专注于面前的册子。
+        算了。
+        总之，你的俄语水平能听能说，但写下来和阅读是另一回事。你把字写得太大，间距错乱，有时候同一个词在同一页里出现两次错误的变格。
+        但好在瓦西里并不是一位严厉的老师，他只是偶尔在你写错的地方旁边用铅笔轻轻写出正确的拼法，加强你对词性的二次记忆，下次你便不会再错。
+        这对你来说几乎是一个新的语言系统，和过去你被灌输的俄式战术术语截然不同——但你喜欢现在这样。
+        你的手在这几个月里变得忙起来。
+        雪茄的处理需要一套你从来没有学过的精细动作。你需要用一种钝头的小镊子检查每支雪茄的缠绕叶有没有裂痕；指腹轻轻地、沿着雪茄长度滚动，去感受里面填充的均匀度；最后再把一整盒雪茄放在掌心里掂量，好的批次重量分布是均匀的，差的批次会有某几支明显偏轻或偏重。
+        这些动作对你的手来说不陌生。毕竟，你过去训练里的那些手部动作是关于精确的破坏——拆解、瞄准、伪装、切断，这和你现在正在做精确的维护对肌肉控制的要求在本质上几乎是一样的，但是它们在你身体里激活的是不同的神经回路。
+        你过去的专注全部是有任务目标的、有时间限制的、是被外部强加的。现在的专注是你自己选择沉浸下来投入的，没有人会因为你专注或者不专注付钱给你。Vasily付的那点工钱和你做的活相比几乎是象征性的，这件事本质上不是工作。
+        气味在你身上慢慢成为一种你不再需要警觉的存在。
+        最初，你每每走进沙龙都会下意识地被那种极具成熟男性氛围的复合香气冲击，沙龙里无处不在的雪茄、咖啡、烈酒总会拉着你的身体回到过往。你告诉自己，这是暴露疗法，这里的气味也不完全相同，不要把所有的东西都与过去的事物绑定。
+        日子一天天过去，那股气味回归了它原本的所有权——这家俄式乡绅俱乐部。咖啡豆被磨碎之后释放的那层油脂感、烈酒混合着雪茄在湿度盒里发酵的草本和泥土、橡木地板被擦过之后散发出来的某种几乎不可察觉的蜡香、远处壁炉里烧着的木头……这些气味已经不再被你的鼻子识别为敏感的信号，只是你所处的空间的客观一部分。
+        这里的客人大部分是退伍军人、知识分子、本地生意人和现役军官，他们之中有的人也开始记住你了。
+        你没有刻意去留意这件事是从什么时候开始的。可能是某天另一个客人在选雪茄的时候，看了Vasily一眼之后又把视线移到了你身上，征求第二意见；也可能是某天有人走进沙龙问“Где та девушка?（那个姑娘在哪里？）”——虽然他被告知你今天没来。
+        你的存在成为了沙龙的一部分。你坐在吧台旁边的那张小桌前，做你的事，不服务任何人，也不和客人说话，但没人再像过去那样赤裸地轻视你。有时候，有的客人会在离开之前从口袋里掏出一些东西放在你的桌子边上：一颗包装精美的糖、一小瓶西伯利亚松针香水……这些东西似乎不完全是给你的礼物，而更像是一种这个空间里的、几乎已经消失的属于上世纪的男性社交礼节。
+        你不知道该怎么回应。你最初的反应是把这些东西放在瓦西里的吧台上，希望他知道怎么处理，但他每次都用一个不耐烦的手势把这些东西推回到你面前。
+        后来，你干脆把这些东西放进你那张小桌子下方的抽屉里。
+        那个抽屉慢慢满了。
+                <!-- 章节导航按钮 --><div class="chapter-navigation">
+<a href="chapter26.html" class="nav-btn">
+    <span>←</span>
+    <span>上一章</span>
+</a>
+<a href="chapter28.html" class="nav-btn">
+    <span>下一章</span>
+    <span>→</span>
+</a>
+</div>
+
+<div style="height: 40px; width: 100%;"></div>
+
+</div>  
+
+<script>
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('文章页面加载完成');
+    
+    // 添加右滑返回手势支持（兼容iOS和Android）
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+    let startTime = 0;
+    
+    // 防止页面滚动冲突
+    document.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+        isSwiping = false;
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (!startX || !startY) return;
+        
+        let currentX = e.touches[0].clientX;
+        let currentY = e.touches[0].clientY;
+        let diffX = startX - currentX;
+        let diffY = startY - currentY;
+        
+        // 检测是否为水平滑动（水平距离大于垂直距离）
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+            isSwiping = true;
+            // 如果是边缘滑动，阻止页面滚动
+            if (startX < 50) {
+                e.preventDefault();
+            }
+        }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+        
+        let endX = e.changedTouches[0].clientX;
+        let diffX = startX - endX;
+        let endTime = Date.now();
+        let duration = endTime - startTime;
+        
+        // 从左边缘开始向右滑动（返回手势）
+        // 支持iOS和Android的返回手势
+        if (startX < 50 && diffX < -80 && duration < 500) {
+            window.history.back();
+        }
+    }, { passive: true });
+});
+</script>
+<script src="../../js/swipe-back.js"></script>
+<script src="../../js/reading.js" defer></script>
+</body>
+</html>
+

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>魔力麦克(上)</title>
+    <link rel="stylesheet" href="style/article.css">
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 8px 12px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: background-color 0.2s;
+            width: 25%;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+        /* 收藏按钮样式 */
+        .favourite-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .favourite-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .favourite-btn:active {
+            transform: scale(0.95);
+        }
+
+        .favourite-icon {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+    </style>
+
+  <link rel="stylesheet" href="../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">魔力麦克(上)</div>
+            
+            <div class="author-info">Ghost & y/n</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        灯光暧昧，音乐旖旎，如梦似幻的舞台上，数个男人随着节奏或急或缓地舒展年轻的肉体。坐在离舞台最近的互动座位是这场脱衣舞秀最好的选择，每一次领舞的男人俯身贴着地面滑动，模拟着性交的动作仿佛是为自己而来，只为那一人而舞，但是主位上的女人看起来似乎有些疲惫了。
+        “你怎么了？”朋友注意到你一脸平静的表情，“不喜欢吗？我可是为了庆祝你生日特意给你订的座位，之前你一直嚷嚷着要来，现在又不跟人家互动的。”
+        “不。”你兴致缺缺地看着舞台上突然滑跪到面前的中东裔领舞，手里的打火机差点掉了下去烧着了桌布，“我好像……”
+        枯燥无味，日复一日的生活消磨殆尽你的激情，明明还不到三十岁就时常感到大脑放空，对很多事情提不起兴趣。社交、性、男人……七情六欲，一个不剩。
+        上半场演出结束，舞男们向台下挥手致意，抛了几个飞吻便施施然退场。看你还是没有什么特别的反应，朋友试图挑起一点你的情绪
+        “冲多了？她调笑道，“天天冲天天冲，身体不要了天天冲。”
+        “不是！”你恼羞成怒，修长的手指拿起小几上的烟盒磕了磕，拈起一根细长的烟放在唇间点燃，“这些看起来都……”
+        “那你喜欢什么样的？”
+        “不知道，但是我看到他们那副油腻的表情就想呼叫美军过来把他们抓走，否则我有点反胃。”话音刚落，后勤工作人员操控升降台运作，几根钢管便伫立在舞台上。你低头呼出一口袅袅香烟，再次抬起头来时，舞台上的光晕鲜红如血，你忽然意识到面前的舞者换了人。
+        那个戴着骷髅面罩的男人遮住了他的下半张脸，但是露出的半张脸眉眼深邃，鼻梁高挺，那种犹抱琵琶半遮面的神秘感反而勾起了你的兴趣。血脉偾张的肌肉，人鱼线在若隐若现的灯光下深入低腰的牛仔裤，他身上的伤疤不仅没有影响那仿佛雕塑般的肉体的美观，反而令人想入非非。你直勾勾地盯着那男人，灼热的视线仿佛实质性地落在他的身上，让那男人本就不熟练的动作更加僵硬了。
+        看上去是个新来的。
+        你忍不住出神地想着，眼睛彻底黏在他身上，走不动道了。
+        一小截烟灰落在了你的短裙上，在乳白色的裙摆上留下黑灰色痕迹。
+        “烟。”朋友出声提醒。
+        你才注意到自己的失态，低下头掸去那一小撮灰烬，心里暗暗地骂自己怎么就被一个男人勾走了魂，太没出息了。
+        一曲结束，男人们谢幕离场，重新换回原本的舞者。你的眉毛拧在了一起，“什么，这就完了？不是互动座位吗？为什么不和我互动？！”
+        “冷静点！”朋友按住你，“刚刚那些不是正式成员，只是中场上来跳一下，不互动的。”
+        “凭什么，我就要和刚刚那个骷髅脸互动。”你差点要气得掀桌子了。
+        “……”朋友说不出话来，只好转头再次看向舞台，叹了口气。
+        这座伦敦城，多了几个心事重重的人。首先是今天的主角，你，因为得不到近在咫尺的男人而抓耳挠腮；其次是俱乐部的老板，你可是今天最重要的客人，可是看你一脸冷漠地坐在那里，对首席舞者的挑逗毫无反应，这让老板的心都沉了下来，恨不得自己上去跳给你看，只要你能满意。但明显，你的心思并不在这里。
+        好不容易挨到下半场结束，舞者下场与客人们互动。领舞的男人先来到互动的主位上，向你和你的朋友打招呼，便熟络地与她寒暄起来。
+        你随意地敷衍着那些男人们的问候，试图在人群之中找到那个男人的身影，但是一无所获。“你们那个戴着骷髅面罩的人呢？”
+        “Ghost？”领舞愣了愣，想了想，“啊，他是新来的，您是想……”
+        朋友眯了眯眼，敏锐地察觉到了你的想法，“对，就他。”
+        领舞有些为难，纠结了一下，还是转身去了后台。
+        你的手不自觉地又摸向烟盒，火星在指缝间忽明忽灭，薄荷的气息在唇齿间弥漫，但这并不能让你的头脑清醒些，反而更加烦躁。
+        那个男人踏着迷蒙的烟雾和颓靡的夜色来了，跟在领舞的身后，似乎不太情愿。他的手里挽着一件夹克，上半身被一件黑衬衫紧紧包裹着，蓬勃的肌肉将布料撑得鼓鼓囊囊。他咽了咽口水，心想这个男人就算不跳脱衣舞，去当模特也是首屈一指的程度。
+        
+        Ghost靠在后台的金属墙上，满脸的不耐。白天还在战场上顶着子弹和炸药，晚上就得靠脱衣舞养活自己——这换谁都得心里骂娘。每个月领完工资补贴自己的装备之后剩下的根本不够开销，他才不得不来这种地方“卖艺”的，谁知道这地方女人比子弹还黏人。
+        这里的客人一个个都像是提前喝了十杯伏特加，人傻钱多还好色，只要他配合着灯光节奏慢悠悠地脱掉上衣、随便扭两下腰顶两下胯，台下立马爆发出尖叫、口哨声，还有飞舞的钞票雨。虽然他这种“临时工”拿不到正式舞男的分成，但赚到手的数字也足够惊人——一晚顶得上前线一个星期。
+        白天在营地里教新兵如何做男子汉，晚上兼职跳钢管舞，他的生活节奏堪称“充实”。
+        Ghost发誓，自己绝对只是跳舞，绝对不卖身。
+        他发誓自己不是自愿的。
+        嗯，包括此时他被主座上的漂亮女人揪住了衣领、半强迫地俯下身靠近她，他也不是……自愿的。
+        “你叫什么名字？”漂亮的大眼睛被上挑的眼线勾勒，纤细瘦削的身体被高级的衣裙勾勒出曲线，让他想起了他们国家博物馆里收藏的安德森猫雕像。
+        他闭了闭眼，努力让自己抛去这种莫名其妙的联想，“问这个做什么。”
+        “我又不想砸错钱啊。”你笑了起来，薄薄的嘴唇勾起狡黠的弧度，身上好闻的香气一个劲儿地往他鼻子里钻。
+        Ghost的心中警铃大作，“什么意思？”
+        他的呼吸透过面罩，若即若离地轻触着你的面颊，让你感觉比烟与酒的提神效果更好，你能感觉到自己的肾上腺素在不断分泌，大脑开始清醒。你笑了，纤细的手指滑入他的衬衫，从敞开的衣领中随意又熟练地挑出他的“项链”，居然是一块刻有他名字的狗牌。
+        “Hm, Simon Riley...”你低声品尝着他的名字，无限接近一个危险的秘密。娇俏的声音落入他的耳中，让他像是被针扎了，他从你的手中抢回自己的狗牌，往领口一塞，冷哼一声，“Ghost——听好了，要叫就叫Ghost.”
+        “哎呀，真没礼貌。”你翘起唇角，不疾不徐地抬起一只手，拍了拍他结实的肩膀，趁机捏了捏鼓起的肱二头肌，心中暗自掂量，“我可是给你打赏最多的人欸，Simon.”
+        面罩下传来一声轻哼，刻意压低的声音却透着一丝咬牙切齿，“我说了，别那样叫我。”
+        你歪头看他，笑得像只掐着老鼠尾巴的猫，就是不吃掉到嘴的猎物，“但我已经知道你名叫什么了，不是吗？”
+        他低声咒骂一句，甩开身体往后退，像是在逃离某种沾满糖浆的陷阱。
+        “You little bastard.（混账）”他说。
+        “甜心。”你笑得更开心了，“我出双倍，但是你以后只能跳给我看。”
+        
+        “说到做到？”当你被压在俱乐部的洗手台上时，你脑子有些蒙蒙的。
+        怎么会这样呢？明明只是想调戏他一句，开开玩笑，怎么这家伙就好像当真了一样？
+        俱乐部的洗手间也装修得优雅华丽，空气中弥漫着柑橘香氛的味道，暖金色的灯光下，你看着镜子里相拥的两人，心跳加速。与其说Ghost是站在你的身后，不如说他是紧紧地贴着你的身体。你能用后背感受到他饱满结实的胸肌，那热烈的心跳，和再往下……抵住自己腰部的灼热。
+        你咽了咽口水，忽然不知道怎么回答。
+        他的大手抚上你的纤腰，暧昧地摩挲裸露的那一小片肌肤，上半身欺身向你，几乎是将你桎梏在自己的怀中。“你以为可以随便逗我？”他低下头，在你的颈间呢喃着，声音闷闷的，被面罩压抑得一点都不温柔，“还说什么双倍……”他把面罩推上去一点露出棱角分明的下巴与线条性感的唇，隐忍地咬着你的耳垂，像是克制又咬牙切齿地低哼，“我现在只想让你为这句话负责。”
+        “呃……”你被他贴得太紧，难以挣扎，也欲拒还迎，只能从喉间哼出意味不明的音节。镜子里的你几乎完全被他笼罩。呼吸滚烫，像是空气都被点燃了。
+        “别再用那种语气跟我谈钱。”他抵住你，咬字清晰地说道，像是在羞辱你，也像是在提醒自己，“你付不起我一晚。”
+        你轻轻笑了，声音故意贴着他的耳根，“三倍？”
+        Ghost沉默了一瞬。他的身体明显绷紧，被这句话击中了什么最不想被提起的软肋。他的手收紧了一点，指节贴到你肌肤上，几乎扣进肉里。
+        然后他又开始低声咒骂，骂你，也在骂他自己。“……成交。”
+        随着一声轻微的声响，你感觉到下裙的拉链被拉开，他的手顺着你柔和的身体线条一路往下，自小腹探到隐秘的禁忌地带，隔着薄薄的布料抚摸着。你颤抖着，狠狠地呼出一口气，想要挣扎，却被他肌肉发达的手臂紧紧抱在怀里，无法动弹。
+        他继续在你的光洁如玉的肩上留下自己的齿痕，带着茧子的大手不老实地隔着那一小块屏障摩挲着，将那一点水痕揉出更大的面积。他摸索着拨开花瓣，去寻找藏匿其中的小豆。蕾丝略有些粗糙的质感蹭在那一点上加大了快感，你呜咽着绷紧了身体，大口地喘息，几乎想要尖叫的那一瞬间，他忽然轻柔地扳过你的脸，强硬地和你交换了一个粘稠色情的吻。
+        “Fucking woman…”他在你的唇边低哑地咒骂，却还是不舍得离开，唇舌黏腻地纠缠，“You always get what you want, don’t you？”他如野兽般亮出獠牙，如饥似渴地咬住你的下唇，用力地吮吸着。他知道如何进攻，并且他非常善于这么做，在你不由自主地张开双唇任由自己侵犯时，他探入舌，像是模拟性交一般顶着你的舌尖，与你共舞，直到你发出脆弱乞求的呜咽声，他才恋恋不舍地抽回，又吻了吻你的嘴角。
+        趁你还因为刚才的吻而凌乱地呼吸以找回状态时，他有些粗暴地扯下你的内裤，满是老茧的粗糙手指毫无阻碍地抚上水乎乎的柔软肉花，两种极端的碰撞让你狠狠地抽搐了一下，深深地埋下头去。“Ah..no no...”Ghost的喉咙里发出低沉而意味不明的哼哼，扶着你的下巴强迫你抬头看向镜子，同时手指顺着肉缝磨蹭着，寻找着那隐秘的入口。
+        妈的，好不容易该死的一天都快要结束了，自己突然又被那臭屁如同孔雀的领舞给抓了回来，让他见一见“重要的客人”。上了一天班的Ghost本来就烦，面对你的挑逗更加有些火大。但是美人总是有特殊优待的，更何况你还提出“双倍”。他表面谦和平静地应着，在自己被你拉住衣领的那一瞬就已经想好了一会儿要怎么收拾这个有钱的……婊子。
+        他缓缓插入一根手指，如偿所愿地收获了你的颤抖和隐忍的尖叫。他轻笑着强迫你抬起头，看向镜子里的你们。两个人的身体紧紧相贴，似乎只是衣衫有些凌乱。但仔细看去，你的口红晕开了，红肿的唇无力地张合着；而裙摆之下，能够隐隐约约地看到他的手在缓缓地运动着。仅仅只是手指，他却让你感觉比那些小玩具更好，粗糙的指腹在小穴内四处探索抠挖。
+        如此大胆的一幕落入眼中，你清晰地感知并且见证自己是如何被这个男人侵犯的，实在是过于羞耻。
+        “挺享受的，是吧？”寂寞已久的软肉前赴后继地缠上来，挤压着他的手指，从最初的难以行动转变成了较为顺利的抽插。他浅褐色的双眼紧紧地盯着镜子里的画面，始终注意观察着你的反应。在他的指尖按压到某一处时，你的身体抽搐着，喉咙爆发出更为明显的尖叫。即使你在有意地压抑着自己的声音，但还是被你发现了。“睁眼。”他加速了戳弄那一点的速度，另一只手执意地掐住你的下巴，“好好看看你这副表情。”
+        真骚啊……哪还有刚刚在台下那副端坐着的优雅模样，明明就是个荡妇。那尽数名牌的衣衫和名贵香水都无法掩盖你真实的那骚浪的一面……他有的是办法激发出你原始的本能。这么想着，他看着你迷蒙的双眼，忽然狠心地抽出手指。他能感受到那饥渴的穴肉在依依不舍地挽留他的手指，但他依然离去。穴口被微微拉扯，高潮在半路上被推了回去，让你难受得快哭了出来。“你……”你难以置信地看着他，下一秒就被他抱了起来，让你坐在光滑的大理石洗手台上，面对着自己。
+        他喘了口气，再次吻上你的双唇。你在他深厚的吻中窒息，粗重的呼吸掩盖了他解开牛仔裤拉链的响声。他将你的裙子撩上去，分开你细长的双腿，那条被淫水浸透的内裤可怜地挂在一边脚踝上，取代了它原本位置的是他粗壮的性器。只是看一眼，你就觉得头晕目眩。那棕粉色的巨物上青筋在隐隐跳动，粉大的伞头不断溢出清透的前液。他在穴口来回磨蹭着，用你的淫水涂满自己的男根，却迟迟不愿进入。你被情欲迷蒙的双眼与他的视线相撞，在空气中变得粘稠拉丝，他盯着你看了几秒，低低地笑了，那笑意里透着不甘和调侃，“想包人，也该拿出点诚意……女士。”
+        他顿了顿，靠近你的耳边，几乎贴着你低声道，“先付个定金，嗯？”
+        你咬住自己的唇，差点被他给气死。这种时候谈钱，是生怕自己跑单了吗？！你生气地伸手去抓洗手台边的手包，双腿因为动作而收拢，却被他强硬地分开，架在他的腰间。你从钱包里掏出一沓英镑，顺手塞进他的腰带，“够了吗？！”你的声音稍稍拔高了些，那是对欲望本能的渴望和追求。
+        他垂眸看了一眼那沓纸币，深吸一口气，那声音像压抑的嘶吼，又像认命的低叹，“够了。”他低声说着，贴着你的耳廓沉下身，将那滚烫的欲望缓缓没入。只是刚进了一个头部，他就感觉你的身体紧张地绷紧了，硕大的龟头卡在甬道中不上不下的，让两个人都很难受。他不得不腾出一只手来揉了揉那柔软的肉花和腿根，声音低哑得几乎要咬碎牙关，“Hope you enjoy every penny.”他咬着牙继续挺进，花穴本能地为了保护身体的主人而分泌出更多黏腻的汁水，这倒也成了良好的润滑剂，帮助他一路推进到最深处。
+        “Tight as hell…”他的呼吸中充满克制的情欲，腰却诚实地沉下去，缓缓地抽送着，坚定而强势地操开你身体的防御，像是强迫自己适应这种交易的规则。“You really don’t make this easy for me, do you?”
+        你抓紧了洗手台的边缘，不受控制地向后倒去，在后背撞上水龙头的那一刻被他眼疾手快地揽住腰拉了回来。你开始享受他粗大的尺寸和深度，像狐狸一样眯起双眼，却发出猫儿一样柔软的呻吟。你的声音对他来说是极好的催情剂，他开始加快撞击的速度，另一手将你的一条腿扛在肩上，方便自己入得又快又深。粗硬的耻毛拍打在纤细而不失肌肉力量的腿根，将本就每一次拔出带出的一点媚肉和穴口摩擦得通红。
+        “Is that what you want? To pay me off and keep me around like your private toy?”他拉近两人的距离，感受着自己在那狭窄的甬道中开拓耕耘的感觉。那湿软的嫩肉紧紧地包裹着他的性器，明明是被侵犯的那一方，却好像是在欢迎自己一般，每一次的抽插都让它们小小地位移，又迅速归位。他故意用力地顶入一下，操得你的回答变成一声抑制不住的尖叫，“You wanna be my sugar mommy that bad?”
+        他的“sugar mommy”已经被他操昏了头，翻着白眼说不出话来，甚至不能辨识他在说什么。不过没关系，这正是Ghost计划内的。他轻轻地拍了拍你的脸，让你的视线重新聚焦在自己的脸上，“If you want to keep me by your side, you...”他故意放慢了速度，慢吞吞地磨着那一个点，让你在高潮的边缘徘徊，却又迟迟达不到。
+        你终于在快感的边缘颤声喊出来，打断他那句话，“I know！”
+        他这才满意，唇角勾起一点笑意，在你耳边低语，“Good. Then I’m all yours tonight.”他重新加快速度埋头苦干起来，每一下都轻而易举地碾过你最爽的那一个点，换来你一声比一声高亢的甜腻的尖叫。你修剪圆润的指甲死死地抓住他肌肉发达的小臂，正如你下身的那张小嘴，也在紧紧地咬着他的分身，让他感觉自己坚持不了多久。
+        “Yeah...Fuck — Mistress... Take it...fucking take it all!”他低吼着将他的全部顶入那紧致的花穴，在最深处狠狠地操了几下，甚至没有碰你的阴蒂，就生生把你干到了高潮。你尖叫着，一股股的淫水喷在他的龟头上。Ghost咬着牙狠狠地冲刺了几下，便猛地拔出，用手撸动着，将大量的精液喷射在你的腿根，看着那腥臭的液体顺着你的腿缓缓流下。
+        两人对视着，无言地喘着气，回味着这场激烈疯狂的性爱。沉默最终被Ghost先打破，他俯身向你，献上一个不太情愿但还算温柔的吻作为安抚，便主动地为你清理狼藉的下半身。
+        他单膝下跪捡起因为过激的动作而掉落的皮鞋，轻轻套在你的脚上。头顶传来你略微有些沙哑的声音。
+        “会开车吗？”
+        “会的。”
+        “行。送我回家。从今往后你就是我的所有物了。”一串钥匙掉在他面前的地上，夹着几张大额的钞票。Ghost的下颌绷紧了一瞬，随后他沉默地捡起车钥匙和钞票握在手里，吻了吻你的脚踝，表示同意。                                                            
+                            
+            </div>
+            <a href="magicmike2.html" class="nav-btn">
+                <span>下一章</span>
+                <span>→</span>
+            </a>
+        </div>
+    
+</div>
+</div>
+
+<!-- 收藏按钮 -->
+<div id="favourite-button-container"></div>
+
+<script src="../js/favourite-manager.js"></script>
+<script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 初始化收藏按钮
+            const articleInfo = {
+                title: '魔力麦克(上)',
+                url: window.location.href,
+                author: 'for 麦麦',
+                category: 'public'
+            };
+            
+            const favouriteContainer = document.getElementById('favourite-button-container');
+            if (favouriteContainer && window.createFavouriteButton) {
+                const favouriteBtn = createFavouriteButton(articleInfo);
+                favouriteContainer.appendChild(favouriteBtn);
+            }
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+<script src="../js/swipe-back.js"></script>
+<script src="../js/reading.js" defer></script>
+</body>
+</html>
+
+                            

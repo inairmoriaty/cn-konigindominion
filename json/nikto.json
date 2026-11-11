@@ -18,7 +18,7 @@
       "status": "不定时更新",
       "copyright": "原创",
       "length": "短篇",
-      "link": "/article/public/moscow/catalog.html"
+      "link": "/article/moscow/catalog.html"
     },
     {
       "id": "ooa",
@@ -36,7 +36,7 @@
       "status": "连载中",
       "copyright": "原创",
       "length": "中篇",
-      "link": "/article/public/ooa/catalog.html"
+      "link": "/article/ooa/catalog.html"
     },
 
     {
@@ -54,7 +54,7 @@
       "status": "完结",
       "copyright": "人设来自夜鸦老师",
       "length": "短篇",
-      "link": "/article/public/marriage.html"
+      "link": "/article/marriage.html"
     },
 
 
@@ -73,7 +73,7 @@
       "status": "连载中",
       "copyright": "原创",
       "length": "中篇",
-      "link": "/article/public/sailorgirl/catalog.html"
+      "link": "/article/sailorgirl/catalog.html"
     },
     {
       "id": "shortcollection",
@@ -89,7 +89,7 @@
       "status": "连载中",
       "copyright": "原创",
       "length": "短篇",
-      "link": "/article/public/shortcollection/catalog.html"
+      "link": "/article/shortcollection/catalog.html"
     }
   ]
   

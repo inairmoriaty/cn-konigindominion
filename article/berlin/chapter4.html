@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>柏林无圣徒 - 第四章</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+    </style>
+  <link rel="stylesheet" href="../../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第四章 两个世界</div>
+                        
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        宴会厅内沉香木长桌延伸向深处，最上方那个象征着至高无权的雕花高靠背椅依然冰冷地空着。烛光在墙壁上挂着的鹰徽镀金边缘镀上一层冷硬的光泽，哪怕主人尚未现身，那种无处不在的权威依然如巨石般压在每个人头上。
+        戈林在离主位最近的首位一屁股坐了下来，庞大的身躯让木质餐椅发出轻微的吱呀声。他熟练地将白丝绸餐巾塞进领口，俨然已经默认自己承担起了今晚主持宴会的职责。
+        侍者随即开始引导其余宾客入席，长桌两侧被泾渭分明地切分成两个阵营：军官们按照军衔和职务依次落座，另一边则是各部门部长与高级官员。
+        桌上的名牌排列得精确得近乎刻板，连彼此之间的距离都经过严格计算。你刚一坐下，抬眼的瞬间便撞进了一双冰蓝色的眼睛里。
+        Konig坐在你的正对面。
+        两人隔着摆满银质餐具和烛台的长桌遥遥相对。Konig背脊挺拔得像是一支插在桌沿的枪刺，面对你那带有几分狡黠的注视，他只是面无表情地将餐巾铺在膝头，那双眼睛在烛光下沉静如水，仿佛刚才在角落里任由你挽着手臂的人根本不是他。
+        晚宴正式开始，你端起酒杯，若无其事地抿了一口。
+        第一道菜还没上，右手边的对话就已经开始了。财政部长正在和他旁边的工业部长说话，用一种“可以被适当听到”的音量作为表态，“听说东部工厂又停了一批生产线。”
+        “不是‘又’，是第三批。”
+        “原料？”
+        “上周的情报说三个主产区已经全部落入叛军手里，精炼厂被炸了两座。”工业部长的叉子戳着盘子里一块被薄荷酱覆盖的鹅肝，没有吃的意思，“铬矿和钨矿的价格从上个月开始已经翻了四倍。我们的合金钢产线下周开始就要断供了。”
+        你原本只是随意听着，直到那几个词钻进耳朵，才不动声色地放慢了切牛排的动作。
+        内阁席那边，一位财政官员压低声音，“山地联盟那边的局势还是没有稳定下来？”
+        坐在他旁边的教育部长摇了摇头，“稳定不了。矿区已经打了这么久。矿山停产，铁路中断，港口也不敢接货。现在所有人都拿不到矿。”
+        那种工业所依赖的稀有金属，原本是整个世界制造业链条中不起眼、却无法替代的一环，山地联盟的内战却像一把突然卡进机器里的铁棍，先是矿山停产、铁路断裂、船运减少，然后便是工厂停工，像瘟疫一样从边境一直蔓延到联盟和帝国的本土，无一幸免。
+        财政部长抿了一口酒，放下杯子，水晶杯底在桌布上留下一个圆形的湿痕，“冻结物价的指标已经下来了。冻结物价和国家配给制的范围下个月还要扩大，黑市的问题让安全局去处理。”
+        他提到“安全局”的时候，目光却没有看向Konig的方向，而是希姆莱，“国家配给制的方案我明天送到阁下的办公室。民用消费品按户籍配额发放，所有非军事必需的进口通道全部冻结。经济恢复期的一切非必要开支。”
+        “包括我的部门预算？”你突然插了一句。
+        财政部长转头看你，显然没有预料到新任宣传部长会在这个时间点加入这个话题。但他的反应足够快，嘴角甚至挂上了一个近乎温和的弧度，“部长阁下的部门预算走的是元首特批拨款，不在我的削减清单上。”
+        显然你的晚宴预算还是在的。
+        长桌的另一侧，军方的话题更直接。一位陆军少将正在和海军的人聊联盟，声音比内阁这边低。但在你偶尔转头去夹面包的间隙里，断断续续的片段像电台信号一样飘进了你的耳朵。
+        “……东大那边到现在还没拿出一个统一方案。三个月了，最高财政委员会开了十二轮全体会议，加盟国代表吵得比我们的炮兵还热闹。”
+        “东大主张什么？”
+        “货币宽松，放水刺激。南亚联邦不干，说通胀会先烧到他们头上。非洲联盟说没人管他们。白人自由派自治区说你们都别吵了先把失业率控制住再说——结果她们自己的失业率已经到百分之十四了。”
+        “不是说她们已经开始救了吗？”
+        “救？”那人放下酒杯，嗤笑一声，“要不是东亚联合体体量大、底子厚，源源不断地给那些岛链小国输血，联盟的金融市场早崩溃了。”
+        有人低低地附和着笑了一声，笑声在银质餐具的碰撞声里很快散了，“那港口共和国呢？”
+        “那帮移民后代倒是两头下注。上周他们跟联盟签了一份长期援助贷款，利息很低，条件是调整关税结构，降低联盟商品的入境门槛。”
+        “他们的港务局局长上个月不是才秘密飞了一趟柏林，问我们要工业订单？”
+        全球经济危机并没有因为任何一个国家关起门来就消失，它沿着贸易、金融和工业链，一层层向外传导。
+        “我们真给了？”
+        “给了一部分。但我们的条件也不便宜——他们得把北航道的优先通行权让出来，至少五年。”
+        “北航道？”海军军官微微前倾，语气里第一次带上了某种超出闲聊范畴的兴趣，“那可是联盟的补给线核心……”
+        这句话被一阵更响的声音打断了——长桌尽头，戈林举起了他的酒杯，侍者专门为他倒的波尔多红在比标配整整大了一圈的水晶杯里晃荡，
+        “Auf das Reich!（敬帝国！）”
+        所有人举杯，“Heil dem Reich!（帝国万岁！）”
+        水晶杯相互碰撞。短暂的仪式后，众人重新落座，桌上的气氛重新松弛下来，第一道热菜也恰到好处地被呈上。
+        那位海军军官明显还想追问什么，只是话到嘴边，视线却下意识扫向了长桌另一端。
+        和全桌所有人都在或明或暗地进行社交不同，帝国的总参谋长看起来对北航道、联盟财政危机、港口共和国，乃至整张桌子上正在发生的一切，都没有表现出任何兴趣，此刻正以一种近乎沉浸式的专注力与他盘子里的鹿排搏斗。淡红色的肉汁顺着刀口缓缓渗出来，入口、咀嚼、吞咽，动作流畅而高效，间隔均匀，和他录制装甲师突破防线的教学节奏大概是同一个效率。
+        “再来一杯。”古德里安把空了的啤酒杯推到桌边侍者立即替他斟满。帝国标准的皮尔森啤酒呈现出金黄色，泡沫细腻，被他一口气灌了小半杯，然后抹了一下嘴角，继续低头对付盘子里被他整齐地留到最后的芦笋。
+        你忍不住多看了他两眼。
+        总参谋长今晚是不是……胃口特别好？
+        对面的Konig似乎察觉到了你的视线，他抬起眼，顺着你的目光看过去，只见自己的直属上司在一桌帝国最有权势的人中间，把晚宴开成了一个人的深夜食堂，而且看起来毫不在意。
+        “……所以港口共和国同意了？”
+        “哼，摇摆不定的墙头草，迟早要选边站。”
+        “如果他们愿意接受，我们可以把一部分停产线转过去——”
+        哪怕隔着一张桌子，几名内阁次长与军方的中阶将校罕见地达成共识，越说越兴奋，甚至有人试图将身子前倾，探向离他们最近的两位核心大鳄，“博士，如果北航道的优先权真的交出来，宣发口是不是要配合做一波关于‘中立区和平协议’的舆论引导？还有争议经济区……”
+        前任宣传部长、如今的外交部长戈培尔正慢条斯理地用布巾擦拭着手指，语气依旧温和儒雅，“今晚是晚宴，不是外交部与军部联席的战术推演会。”
+        “当然，我只是——”
+        “所以才更应该让我们的新任宣传部长先好好吃顿饭。”他侧过脸，看向你，“不是吗？”
+        所有人的目光短暂地落到你身上。你握着刀叉的手指微微收紧，想起了上午在办公室里翻到的那份预算报告——军工部门的拨款数字后面那一串零，比上一个财年膨胀了将近三倍。冻结物价、国家配给制、强制就业、削减一切非必要开支，还有古德里安办公室里那个沙盘……坦克模型在侧翼阵地和中央突破口之间来回推移，帝国的总参谋长不会在和平时期摆弄沙盘，除非他在准备某种不是和平的东西。
+        但那不是你现在能拼图的时候，知道得越多，能装傻的时间就越短，当下的你选择赶紧咽下嘴里的食物，露出一个得体的笑，“是。”
+        “经济部和工业部的事情，明天自然有的是时间讨论。”
+        桌上的话题被轻巧地带向了其他领域。你插不上话——或者说你不想在上任的第一天就哗众取宠，将过多的注意力全揽在自己身上绝不是什么高明的生存之道。嘴里咀嚼着嚼劲十足的鹿肉，借着咽下食物的空档，你悄悄抬起眼帘，观察着对面的Konig。
+        他的用餐姿势如此标准，随着咀嚼的动作，脸颊侧边的面部肌肉极其规律地收紧、松弛。那张典型的皮贴骨的面廓在雕花烛台摇曳的冷光下勾勒出极其硬朗的线条，每一处转折都在高调地宣示着某种原生骨相的优越与冷酷，简直赏心悦目得让人胃口大开。
+        也许是你的视线过于直白，Konig在切下一块切面整齐的鹿肉时，动作极其微小地停顿了一下。
+        他毫无征兆地抬起头，将你偷窥他的现行抓了个正着。那双冰蓝色的眼眸里带着生人勿近的审视，似乎试图用上位者的威严让你感到困窘。
+        可你被抓住时，脸上露出了一个不是对面前的菜肴，而是对他露出近似于“我要吃了你这只美味的小点心！”的神秘微笑。
+        安全局局长破天荒地感到了一丝难以捉摸的被动。他面无表情地顿了两秒，最终垂下眼帘，拿起餐巾，动作极其矜持而沉稳地拭了拭唇角。
+        你装作无辜地挑挑眉，低下头去，用叉子拨弄着盘子里的百里香。
+        桌布下面，一只鞋尖悄悄伸过去，轻轻碰了一下对面的黑色军靴。
+        男人低头看了一眼，又抬头看你，只见你正端坐着，非常认真地听着内阁那边的谈话，仿佛刚才那一脚只是桌下无意的误触。
+        Konig沉默两秒，干脆地把脚往回收，划清界限。
+        你顿时不乐意了，非但不退，反而不死心地又蹭过去，这次没有收回，甚至带着某种近乎恶作剧般的戏谑，顺着那硬挺的军裤缝线缓缓向上滑动。
+        ……宣传部长在撩拨自己。
+        这种程度的身体暗示，对一个长期处于军队和高压环境中的成年人来说，并不难理解。Konig不傻，他比谁都清楚面前这个外来小姑娘打的是什么主意，也清楚她眼里的狡黠与欲念。
+        Konig放下了刀叉，把餐具整齐地并排放在盘子的右侧四点钟方向，暂停用餐，那双蓝眼睛越过烛台和白玫瑰花束，沉沉地落在你地脸上。
+        你毫不避讳地回望他。隔着长桌中央那一小片被烛光切割出来的暖色地带，两个人的目光在白玫瑰的花瓣间交汇了一秒。
+        他的视线往下滑了一寸，落在你空荡荡的脖颈上，又将目光收回。他端起那杯从晚宴开始就没碰过的酒，抿了一口，重新拿起刀叉，继续用餐，却没有再往后退或者避开你依然贴在他小腿上的脚。
+        你低下头，盯着自己盘子里被切得乱七八糟的鹿肉，对于Konig这种无动于衷却又暗中放任的反应感到了一丝挫败，有些沮丧地撇了撇嘴。
+        这微小的表情变化并没有逃过坐在你身边的导师的眼睛。
+        戈培尔眼角的余光悄无声息地将这一切收进眼底。从刚才桌底那极其隐蔽的衣料摩擦，到你嘴角那抹转瞬即逝的娇嗔，这位帝国最敏锐的宣传老狐狸眼中闪过了一丝精光。
+        ……她什么时候和安全局局长熟到这种程度了？            
+            </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="chapter3.html" class="nav-btn">
+            <span>←</span>
+            <span>目录</span>
+        </a>
+        <a href="chapter5.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+    
+    <div style="height: 40px; width: 100%;"></div>
+
+</div> 
+
+    <script src="../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+<script src="../../js/swipe-back.js"></script>
+<script src="../../js/reading.js" defer></script>
+</body>
+</html>

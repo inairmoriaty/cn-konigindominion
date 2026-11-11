@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>第二章 - 莫斯科变态坏房东</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+    </style>
+  <link rel="stylesheet" href="../../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第二章·牛奶早餐</div>
+            
+            <div class="author-info">Krueger & 你</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        你有些庆幸第二天一早从自己的小床上醒来时，家里静悄悄的，Nikto似乎已经出门上班了，这样你就不用挑选一个扭曲而僵硬的表情去面对那个昨天疯了似的对你动手动脚的变态坏房东。
+        你的坐在床沿上，看着被收进盒子里摆放整齐的小玩具，脑子糊糊的，感觉思绪像是被猫咪玩乱的毛线球一般。你猜测估计是昨天Nikto送你回房间时顺手帮你收拾了一片狼藉，应该感谢他吗？不过他昨天才那么强硬地口过你耶……
+        你机械式地洗漱穿衣，从衣柜里拎出一套看起来还算纯良的小裙子，理了理裙摆便走到厨房去准备早餐。
+        你拉开冰箱的那一刻，Krueger刚好也用钥匙打开了大门。他看着你穿着水手服，垫着脚去够被Nikto顺手搁在顶层里面的牛奶麦片，不禁感觉有些好笑。他走过去轻松地帮你从顶层拿出你需要的食品，放在岛台的大理石面上却没有立马离去。你下意识地退后一步关上冰箱门，却刚好撞进他肌肉发达的怀里。他似乎刚刚从晨练回来，赤裸着上半身，只用一层网眼而透气的面罩裹住大半张脸，露出漂亮的金琥珀色眼睛，而它们的主人正虎视眈眈而热烈地盯着你，让你有一种被金钱豹盯上的错觉。
+        勃发的肌肉和淡淡的汗水气息让你脸颊有些发烫，你不由得想起昨天晚上被同屋里另一个覆面男压在办公桌上舔穴的亲密画面，脸上烧得更烫了。低声和Krueger道了谢，你想和他拉开些距离，明明手指已经触摸到了瓶罐，他却像樽雕塑似的杵在原地，甚至不挪动一下脚步，执意将你禁锢在自己的胸膛和冰箱之间。
+        “昨晚开心吗？”
+        他突然开口。
+        “？”
+        这是什么问题？你猛地抬头，还没来得及说什么，就先沦陷在他那双金色的眸子里。他的一只手轻轻按住你想要拿起牛奶罐的那一只手，顺着手腕与手臂的曲线一路慢慢抚摸着柔软的绵绸布料，粗糙的指尖滑到了上衣的边缘，勾了勾百褶裙的腰带。“我饿了。”他低下头，网眼状的面罩与你的头发纠缠在一起。他轻轻嗅了嗅你刚刚打理整齐的头发，让你有一种似曾相识的感觉，就像Nikto昨夜准备吃掉你之前那样。
+        “那你吃早餐啊。”你不敢去看他的眼睛，想要拨开他的手，却被他握住了手腕，将比他那纤细小巧不少的手送到嘴边轻轻吻了一下，“早餐不就在这吗？”他轻笑起来，空闲的一只手顺着你背部的线条向下勾勒出东方女性特有的温柔的曲线，撩开了百褶裙便向柔软细腻的腿心摸去。
+        “Krueger！”你挣扎的力度在他的面前不值得一提，他甚至好心地放开了你的手腕，只是用膝盖顶着你的下半身就让你乖乖向他敞开大门。他从裤袋里摸出手机随意地点了几下，调出一段小视频递到你的面前，语气里的恶意和兴奋根本无法掩饰，“你和那个哑巴毛子都能这么做，为什么我不能？”
+        你的视线只是微微瞟到画面的一角，便认出了画面中交叠的身体和颓靡的景象是昨夜里你和Nikto在书房是搞出的动静。你尖叫起来想去夺他的手机，却被他轻巧地躲开，甚至让你像是投怀送抱一般跌入他的胸膛。发达而光滑的胸肌起伏着，柔软的感觉不至于你把鼻子撞痛。“你偷拍我？！”
+        “嘘嘘，宝贝，别生气，我只是无意中发现了这段监控而已。”Krueger嬉皮笑脸地把她往怀里按了按，意有所指地重复道，“正好我们可以一边共进早餐，一边欣赏这段有趣的小视频，不是吗？”
+        你气得想要去踩他的脚，却被他顺着你的力道带了你一下，把你给绊倒，大手好心又恶意地握住你瘦弱却绵软的胸部防止你彻底跌倒，“Nikto都可以，为什么我不可以？”
+        他的大手在你的臀上拍了一下，你狠狠地颤抖着抓紧了他的小臂，却根本不是这个浑身都是肌肉的男人的对手。大手暧昧地顺着裙褶再次滑向裙底的棉质内裤，只是稍稍用指尖勾勒一下肉缝的形状，他立马就敏锐地感觉到你的小穴已经因为他的触碰和挑逗湿了。
+        知道你已经是欲拒还迎的Krueger忽然感觉好笑，毕竟他已经无数次“无意”间抓到你在手机上浏览那些胸肌发达的男人的场合了，你总是脸不红心不跳地切出屏幕，想装作什么都没发生，但这一切都被他看在眼里。他轻轻捏了捏你腰侧的软肉，故意用露出的那一点高挺的鼻梁去蹭你的脸颊，又对着你的耳根故意地低低地“嗯”了一声，一下子让你软了身子，就这么任由着他将你抱到了开放式厨房的餐桌上。
+        这样你们的高度就差不多了。
+        他引导着你柔软的小手，故意往自己的身上摸，从宛如雕塑般利落的锁骨和肩颈处的肌肉一路摸到他发达的胸肌上，又绷紧了肌肉，让你的一切幻想化为现实的感受，小嘴不自觉地因为震惊和羞耻微微张开。Krueger咽了咽，倾斜身子，隔着面罩吻了吻你的唇。明明动作那么露骨大胆，吻却轻得让你怀疑自己的嘴唇是不是只是被他的面罩扫了一下，让你欲言又止。“你怎么不说话，不喜欢我的胸吗？”他故意问道，甚至按了按你的手，让你的手指微微陷入柔软又富有弹性的肌肤中。那一刻你只感觉晕头转向，突然理解了为什么猫咪会不自觉地踩奶。“是我练得不好吗？你一直在tiktok上看别的男人。”
+        你的脸一下子爆红，想了大半天才憋出一句“你的斜方肌好性感”。Krueger的动作一顿，面罩下的嘴角微微抽搐，“是吗。”
+        他猛地把你往自己的方向拽了一下，你还没来得及反应过来，打开的双腿就直接和他已经在迷彩裤下鼓胀起的性器来了个亲密接触。你慌乱地想要合拢双腿，却被他按在桌上，另一手干脆利落地把那条微微浸润出一条小缝的内裤扯了下来。指甲修剪干净的大手精准地按上覆盖着蜜豆的两片小阴唇，你的身体直接一麻，后仰着倒下去，只能用手肘勉强撑着自己不完全躺倒在桌面上，“喂……”
+        Krueger对你细若蚊呢的抗议直接表示了忽视，只是微微用拇指挑逗了一下肉花，你的花核便老实地屈从于欲望而挺立起来。酥麻顺着脊椎一路窜上大脑，待你回过神来的时候，他已经解开了腰带，和他的乳头同样粉色光洁的性器正抵着你敏感的入口，似有若无地顶弄。
+        “不是，我今天还有课……”
+        “翘了。”Krueger专注地盯着那微微颤抖的花瓣，对穴口颤抖的软肉恶意地研磨的同时强势地替你做了决定。
+        你意识到他是故意的，他明明就知道你有课，看着你穿得像个好好学生又收拾好了一切，才不紧不慢地开了家门开始挑逗你，到现在把你按在餐桌上都没有除掉你身上的水手服，只是将裙摆掀了上去，像是在侵犯一个娇小的东方女学生一样。可恶的白男的恶趣味啊……你在心里腹诽Krueger是不是实际上是个死宅男，天天收集萝莉手办的那种，刚想开口嘲讽他，你就感觉他那硕大光滑的龟头迫不及待地往花穴里埋。被撑开的痛苦让你惊醒过来，必要时刻选择了求饶，“你还没润滑……”
+        你以为这样的借口就能让你暂时逃过一劫，趁着他去拿润滑液什么的时候就可以直接夺门而逃，谁知他直接从岛台上拿过那罐牛奶，就这么直接淋在了你光滑的小腹和小逼上。你被这冰凉的感觉刺激得尖叫，却被他死死地掰开两腿，隐隐透出血管的鸡巴随意地就着牛奶在你的腿心蹭了蹭，“这不就有了吗。”他吹了声口哨，不紧不慢地往你的小穴内挺。原本冰凉的牛奶被你们两人的体液温热，这种程度的“润滑”竟然也能发挥些作用，他微微调整了一下姿势，试探性地在甬道的前半段抽插了一下，没看到你的脸上又过于痛苦的表情，便干脆地一挺没入。
+        你被他这么突然的一下顶的两眼一翻，虽然早有心理准备，知道西方人的玩意儿都很大，但是当你真真实实地感觉到内壁上的褶皱是怎样被另一根粗壮的肉棒抚平的时候，你还是忍不住呻吟尖叫出声。又痛又爽的感觉让你的腿根都在发抖，几滴牛奶挂在你们两人的交合处，像极了精液。Krueger被你如同处子一般的小穴夹得头皮发麻，看着你忍不住翻白眼的表情忍不住感觉心里暗爽，总算给他吃到了东方小女孩小逼，果然如他想象中的又紧又软。
+        哦，重点是他看Nikto昨晚折腾了大半夜，搞到最后居然还只是用手和嘴在那里缓解自己的欲望，他真的忍不住想要笑出声。同性之间的竞争心理此刻在他的心中不断膨胀，他一边慢慢地在你的小穴里挺腰顶弄，一边摸出手机按开摄像功能，挑着角度对着你们两人的交合处来了个特写。粉嫩的小穴紧紧地咬着他的男根，过量的牛奶随着他操弄的频率沿着你小腹和大腿的弧度滴落，彻底搞砸了你心爱的裙子。他“啧啧”两声，一边享受着你的小穴带来的快感，一边搜索着Nikto的对话框，“嗯，让你的好房东看看，他的小房客一天天都在他的屋子里干什么勾当。”
+        他的信息刚发出去一秒，收信的提示音便在大门外响起，可惜你的耳朵被你自己的尖叫声所充满，根本没留意这小细节。Nikto非常不合时宜又非常合适地开门，Krueger将你按在餐桌上操干的景象尽数落入他的眼中。
+        Krueger倒是不惊讶他的突然折返，反而感到有些失落，“噢，看来还是有些慢了。”
+        FSB新任部长Nikto站在门边闭了闭眼，脑海中的几个人格开始喋喋不休起来。他目前有以下几个选择：1.拉开Krueger；2.拉开Krueger自己上；3.加入Krueger。
+        貌似最后一个选项对他们的小房客不太公平。                                            </div>
+<!-- 章节导航按钮 -->    <div class="chapter-navigation">
+        <a href="chapter1.html" class="nav-btn">
+            <span>←</span>
+            <span>上一章</span>
+        </a>
+        <a href="chapter3.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+    
+    <div style="height: 40px; width: 100%;"></div>
+
+</div> 
+
+    <script src="../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+<script src="../../js/swipe-back.js"></script>
+<script src="../../js/reading.js" defer></script>
+</body>
+</html>

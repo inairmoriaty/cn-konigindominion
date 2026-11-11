@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>柏林无圣徒 - 第五章</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+    </style>
+  <link rel="stylesheet" href="../../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第五章 舞步</div>
+                        
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        晚宴在沉香木餐具的碰撞声中渐渐落下帷幕，侍者们悄无声息地收拾好残局，主宴会厅侧面的雕花木门被推开，露出了内部早已布置完毕的小型舞厅。水晶吊灯的光芒折射在打磨得如镜面般光滑的木质地板上，管弦乐队在台阶上方严阵以待。
+        戈林点燃了一根硕大的雪茄，浓郁的烟草味在空气中弥漫开来，红光满面地拍了拍你的肩头，力道沉得让你半边肩膀微塌，目光却越过你，落在已经开始为舞会做准备的管弦乐队身上，“不过，在开始之前……今晚是不是还排了那首《蓝色多瑙河》？”
+        乐队领队连忙点头，“是的，元帅阁下。按照晚宴惯例，第一支舞——”
+        “知道。”戈林不耐烦地摆了摆手打断他，光是想到那首曲子的前奏就已经开始头疼，“今晚元首又不在，难道还非得一板一眼地照着节目单来？”
+        他转过头看向你，夹着雪茄的手指慷慨一挥，“福克斯莱茵小姐，今晚是你的就任晚宴。去告诉那群乐手，今晚别再给我弹那首该死的《蓝色多瑙河》或者《帝国军佐进行曲》了！老天，每年国宴开场都是这几首，我的耳朵都要起茧了。我特许你过去……让他们换一首。”
+        “换一首？”这正是你梦寐以求的特权，连声音都忍不住因为某种跃跃欲试的雀跃而微微提高，“什么都可以？”
+        “当然——但是不包括联盟那些充斥着电音、吵得人偏头痛的乱七八糟的东西。”戈林说着，夹着粗壮的手臂，煞有介事却又极其夸张地扭了扭肥胖的身躯，做了个源自联盟街头、带有某种电子感的rave动作，“什么节拍——砰、砰、砰——所有人自己乱跳。”他嫌弃地皱起脸，“那种东西留给他们自己折腾。”
+        周围传来几声压低的笑，你也忍不住笑了，“明白了，谢谢您，戈林元帅。”
+        你几乎没有任何犹豫，转身拎起黑色的真丝鱼尾裙摆，像一只脱缰的小狐狸般轻快地小跑到了台阶旁边的管弦乐队前。你越过领队递过来的标准曲谱，熟练地伸出手指，抽出了早就被压在谱架第二份、带着几分爵士与叛逆色彩的探戈舞曲笑着塞到了首席手的手里。
+        安排好一切，接下来你得找个舞伴。
+        在帝国的这场高层夜宴上，“找谁跳第一支舞”绝不仅仅是个社交问题，更是一场写在明面上的政治站队，以及一场生存博弈。
+        你矜持而快速地将全场的男士在脑海里过了一遍——
+        安全局局长Konig？
+        不错，非常不错，虽然身高差确实有一点大——不，是相当大，但这似乎也不是什么无法解决的问题；而且相比全场其他肥硕或阴鸷的老登而言，安全局局长实在是年轻有为，尤其是那身黑衫军礼服笔挺冷硬，衬得他身材高大威猛；更不用说那张卸下了战术面罩的脸，骨相优越，棱角分明，那双冰蓝色的眼睛在烛光下沉静如深渊，专注得近乎蛊惑人心——绝对是全场最赏心悦目的高品质打卡选项！
+        但问题是……你们表面上“似乎”还不太熟悉，而从政治和事业角度考量，名义上你似乎还有其他更顺理成章的选择……
+        你的导师戈培尔？
+        作为将你一路破格提拔、扶你上位成为自己接班人的恩师，在公开场合与他共舞无疑是最具政治正确性的理想选择。但你的目光不自觉地落在了他手里的那根低调的手杖上。哪怕他早已精明地调整了身体重心，单从站姿上几乎看不出他的足部畸形，只让人觉得那手杖是某种知识分子阶级的涵养装饰物，但要求你可怜的导师在众目睽睽之下和你跳完一整首切分音爵士舞，无异于是在全帝国高层面前公然挑衅他的生理机能。
+        这种恩将仇报且极度危险的蠢事，你可绝对做不出来。
+        下一个……希姆莱？
+        “……”你闭了闭眼，从未见过如此令人绝望的选项。
+        按官僚层级理应是他——你的直系顶头上司、帝国帝国领袖、权力体系中无论如何都绕不过去的人物——但你太清楚那副圆框眼镜和皮笑肉不笑的眼神后面隐藏着怎样的嫌弃与阴毒了。
+        你抬起头，正好与他隔着人群对上视线。
+        四目相对的瞬间，希姆莱甚至懒得维持那种虚伪的礼貌，非常直白地翻了个白眼，毫不掩饰那种“怎么又是你”的内心OS。
+        你脑海里立刻浮现出另一个画面：劳动教育改造营、黑色铁门、登记表，然后是你的名字从帝国官僚体系里——不，是人口登记簿——被彻底划掉。
+        你迅速收回视线。还是算了吧，命要紧。
+        看起来很好说话的戈林？
+        你看向那位正叼着雪茄、心情显然相当不错的帝国元帅。
+        不不不，绝不！切不谈体格，你可不想在履新宣传部长的第二天就因为恶劣的社交圈桃色新闻登上全帝国的八卦头条——“年轻的联盟裔女部长与庞大的帝国元帅在国宴暗度陈仓”——这种新闻光是想想都让人眼前一黑。
+        要不……戈林今晚带来的那个挺拔少校？
+        你的视线在那个小少校脸上停留了半秒，随即撇了撇嘴收回——气场软得像块小面包，还不如Konig呢。
+        挑来拣去，全场居然只剩下那尊死板又迷人的帝国机器最为“安全”。
+        所有的矜持与犹豫瞬间烟消云，隔着半个舞厅，你遥遥地冲着站在古德里安身侧的Konig抬起手臂，极其大咧咧地挥了挥手，甚至还带了几分下达指令般的骄纵，冲他高声喊道，“Konig！来，陪我跳第一支舞！”
+        这毫无礼仪规范、甚至带有几分嚣张的打招呼方式，让原本充满上流社会矜持氛围的宴会厅瞬间安静了一秒。
+        “咳……咳。”一声极其克制却充满威严的轻轻咳嗽在你身侧响起，戈培尔看着你，极力用疏离克制掩盖语气中的无奈，“Eine etwas formellere Bitte, Frau Ministerin.（请稍微正式一点邀请，部长女士。）”
+        这句话如同一把冷水，瞬间浇醒了你那点因为奸计得逞而忘乎所以的小得意。
+        你后知后觉地意识到全场高官与将军们的视线都落在了你的身上，混合着尴尬与局促的热气瞬间爬上了你的耳根，但你很快拿出了宣发官员应有的极佳心理素质，顺势收回了挥舞的手臂，理了理有些微乱的裙摆，重新挺直了脊背，迈开极其优雅而沉稳的步伐，踩着红底高跟鞋，重新走回到了Konig面前。
+        你微微仰起头，迎着他那双沉静如水的眼睛，深吸了一口气，伸出戴着黑丝绸长手套的手掌，极其“矜持”且符合标准社交礼节地向他伸出，“局长阁下……不知我是否有这个荣幸，能请您共舞一曲？”
+        看着你从刚才那个按捺不住雀跃的小姑娘，瞬间切换成一身傲骨、强装矜持的宣传部长，Konig那张向来面无表情的雕塑脸上，眼角极其微小地抽搐了一下。你所有的尴尬与伪装在敏锐的情报头子面前无处遁形，他内心深处某种被你这副佯装镇定的娇作姿态勾起的一丝极其罕见且荒谬的愉悦正在缓缓蔓延。
+        虽然并非传统贵族出身，Konig并未自带旧时代那种浑然天成的浮华气质；但由于曾在古德里安主持的军校中接受过最严苛、最标准的古典普鲁士军人教育，他还是把这股笑意死死压在了冰蓝色的瞳孔深处。表面上的线条依然冷硬如铁，甚至连嘴唇都没有弯曲半分。
+        他没有立刻回答，而是极其缓慢地抬起右手，“当然，部长阁下。”
+        他的声音低沉而干燥，带着普鲁士军人独有的干脆与礼节。随着五指贺龙，你的手被他牢牢握进掌心，顺势被拉入了悠扬而叛逆的舞曲之中。
+        音乐的前奏已经开始流淌，第一声小提琴不是圆润柔和的旋律，一道高亢、纤细，几乎带着割裂感的长音，从乐队深处骤然划过大厅。你们尚未迈步，上半身却已然严丝合缝地贴在了一起。你的左臂顺着他硬挺的军服肩膀攀上去，手掌贴在他冰冷冷硬的肩章旁；而他粗粝的手掌则沉稳地按在你裸露的后背上，掌心的灼热透过了薄薄的衣料，直抵脊椎。
+        谁都没有先动，只有脚下极轻的换重心。左，右，左，停顿……
+        他在判断你的步幅，你也根本没有打算老老实实等他告诉你下一步往哪里走。
+        下一道小提琴长音拔高时，你忽然向后打开身体，舒展肩背，露出空荡荡而修长的脖颈，像是猎物主动向猎食者献上脆弱的喉管，却抬眼看他——挑衅，或是以此为陷阱；脚尖在光滑的大理石地面随意画圈，丈量着步距的同时，也是在似有若无地擦过他黑色的军靴；他却始终只是用手臂极其稳定地托住你的重心，让你可以继续向后延伸，而不至于真正失去平衡。
+        合奏爆发的那一瞬间，节奏骤然陡峭！
+        在传统的阿根廷探戈中，男方是绝对的掌控者与引导者（Leader），女方只需顺从地响应（Follower）。然而就在音乐切入主拍的刹那，你却反客为主——抢先一步剥夺了他的引导权，以极度利落的女步为主动，裙摆擦过他的裤腿，强行带着他向你习惯的方向横滑而出。
+        几乎就在你迈出第一步的同时，Konig已经读懂了你的重心。他没有把你硬生生拉回原来的轨道，只是顺着你的动作改变自己的步伐后退半步转身，让出空间，然后重新切入，令你原本准备好的第二个变化因此落空。
+        你抬眼，正撞上他的目光。
+        哦，原来他不是在等你而是在等你先出招。
+        你忽然笑了，再次改变方向。这一次更快，可他依旧能跟上。
+        你退，他进；你进，他退，在每一次重心交换中，不断重新划定彼此的边界。
+        你在舞步中试他的控制，试图把舞蹈从他的节奏里夺走，他却不阻止你，只是让自己足够快、足够稳，以至于你的每一次越界，都能被他接住。
+        “帝国难道也培训安全局的人跳舞吗？”
+        “军校课程。”Konig低沉而带有磨砂质感的嗓音贴着你的耳畔炸开，带着普鲁士军人独有的严谨与冰冷。
+        “军校还教你这样的老古板跳探戈？”
+        “华尔兹和狐步。”管弦乐短暂停顿了一瞬，重心重新落入待争夺的间隙。
+        “那探戈呢？”你追问道。Konig没有回答，手掌在你后背微微施压，引导你进入第一个侧步，“保密？”
+        “不值得一提。”
+        “盖世太保的标准回答。”
+        他的手臂在你的腰间陡然收紧，掌控力如铁钳般将你牢牢锁死在怀里，“你的步子不是学院派的。”
+        “毕竟起源在我家。”你的嘴角扯出一个懒洋洋又骄傲的弧度，“对你来说太快了？我以为您跟得上呢。”
+        “当然。”
+        这反而让人更加不服气，你又向前一步，几乎贴着他的身体掠过去。
+        “您刚才明明慢了。”
+        “是您突然改变了方向。”
+        “探戈不就是这样？”
+        “所以我没有抱怨。”
+        小提琴的节奏愈发狂乱，两人的步子都极其精准地踩在每一个重音点上。他的舞步沉稳而侵略性极强，黑色的军服在旋转中如同一头张开羽翼的猎鹰；而你则像是一只在风暴中心起舞的狐狸，在每一次旋转与勾脚间，用高跟鞋尖在他的腿缝与靴筒旁划出惊心动魄的弧度。
+        你微微仰起头，迎着他那双沉沉的眼睛，轻声笑出来，“局长阁下，你跳舞可比说话讨人喜欢多了。”
+        Konig低头看你，蓝眼睛在头顶的水晶灯折射出来的光里闪了一下，疤痕在这个角度几乎看不见了，只剩下一张棱角很深的、几乎称得上好看的脸，“你说话比跳舞好。”
+        “这算是在夸我，还是在骂我？”
+        “陈述事实。”
+        “明明我两个都好。”你偏过头低声嘟囔了一句，眼角挂着一丝毫无悔意的傲慢。
+        旋律即将切入高潮前的短暂停顿，你借着贴身交错的瞬间，极其自然地将真话夹杂在废话里吐了出来，“——明天宣发口选人的时候，来帮我站一下版。”
+        Konig的眼神极其微小地凝固了半秒。他显然没料到在这个时刻、在全场高官的眼皮底下，你依然能随时随地将话题拐回你的工作与野心上，“……你居然还没有放弃那个荒谬的宣传片计划。”
+        你笑了，唇边那两个浅浅的弧度再次勾起，“我字典里可没有‘放弃’这个词。”
+        Konig罕见地侧身让开，让你误以为自己终于抢到了主动权，正要借着惯性便要向外滑出，却在旋转的交错位上方向被他微微收紧的手臂重新改变，借着你刚才自己留下的惯性，顺水推舟将你强行送回他预设的轨道。
+        踩着小提琴爆发的重音，他猛地向前压上了半步！那沉稳而带有些许军事压迫感的进退步，直接让硬挺的膝盖径直顶入了你的双腿之间，强行截断了你所有的退路与滑行。
+        裙摆在半空中如墨汁般旋开，你被迫戛然而止，后背撞进了他那结实的胸膛里。军服纽扣的金属硌着你的肩胛骨。他的下巴刚好在你的头顶上方，呼吸与小提琴的尾声一同拂过发顶，像一根极细的银线在空气里悬了三秒，断在了空中。
+        你被他困在怀里，却依然顽固地微微侧过头，贴着他的领口执拗地低语，“三十秒……真的不算当模特。”
+        隔着冰冷的勋章与沉重的心跳声，你感觉到身后男人那严丝合缝的唇角，极其微小地动了一下。
+        “……我考虑一下。”
+                </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="chapter4.html" class="nav-btn">
+            <span>←</span>
+            <span>目录</span>
+        </a>
+        <a href="catalog.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+    
+    <div style="height: 40px; width: 100%;"></div>
+
+</div> 
+
+    <script src="../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+<script src="../../js/swipe-back.js"></script>
+<script src="../../js/reading.js" defer></script>
+</body>
+</html>

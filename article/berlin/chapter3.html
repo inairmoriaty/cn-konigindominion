@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>柏林无圣徒 - 第三章</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+    </style>
+  <link rel="stylesheet" href="../../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第三章 帝国元帅</div>
+                        
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        空气中原本维持得极好的伪饰与紧绷，在宴会厅厚重双开雕花大门被轰然推开的瞬间骤然破碎，一阵近乎浮夸的喧闹声伴随着昂贵雪茄与浓烈古龙水的混合气味席卷而入。
+        “让一让——让一让！我说了不用这么麻烦，我自己进去就行！”
+        那道洪亮得几乎能震动水晶吊灯的嗓音还没落下，一个庞大的身影已经大步跨进门槛。军靴踩在大理石地面上，浅蓝色的常礼服和所有人的深灰黑色系形成反差，胸前一排排勋章随着他的动作叮叮当当地相互碰撞，生怕在场的任何一个人不知道这位帝国元帅刚刚抵达。
+        赫尔曼·戈林显然完全没有意识到自己迟到了，至少他对此毫无歉意，反而像是一个巡视领地的暴君，极其夸张地张开双手，红光满面上写满了自矜与傲慢。
+        “我们的新部长在哪里？快让我瞧瞧——戈培尔那个瘸子退下来之后，到底换了个什么样的人物来操盘我们帝国的脸面？！”他一边往里走，一边毫不客气地环顾整个宴会厅，仿佛宴会厅里根本没有一百多号人，而是一群必须靠他提高音量才能听见的聋子。
+        你听到他对导师的如此形容，几乎是两眼一黑，下意识地想要抬起手自掐人中，却为了不破坏今天的妆容生生忍住了这股冲动，只能窝囊而用力地指尖用力，将所有的生理性绝望发泄在Konig无辜的小臂上。
+        Konig不明所以，低下头来看了你一眼。
+        你面无表情，仿佛什么都没有发生。
+        “人呢？今天那个新任宣传部长！不是说已经到了吗？”戈林这一嗓子下去叫原本还在各自交谈的人群顿时安静了些许，刚才还各自维持着体面社交距离的帝国高官在此刻像是突然达成了某种无需沟通的默契，齐刷刷地看向了你。
+        你保持着脸上的微笑，真的很希望自己能够端着酒杯缓缓沉入地底。
+        很好，非常好，你甚至不用自我介绍了。
+        戈林顺着众人的视线看过来，目光终于落在了你身上。
+        一个年轻得甚至有些出乎他预料的女人，穿着剪裁利落的黑色礼服，安静地站在宴会厅中央；而她身边，那位高得近乎有些夸张的安全局局长正微微低着头，不动声色地看着她。
+        他挑了挑眉，“这就是？”根本不需要任何人回答，沉默就足以说明一切，戈林顿时笑了起来，“哈哈！原来就是你！戈培尔的小跟班！”
+        “戈林。”一道低沉、严肃而毫无起伏的声音从他身后传来。
+        帝国元帅身后的古德里安终于从这场盛大的个人入场仪式里找回了一点存在感。
+        与前面那个勋章叮当作响、恨不得把整个宴会厅的注意力都吸引过来的庞然大物相比，他显得安静得近乎朴素。他的夫人挽着他的手臂，两人站在门口，看起来简直像是专门来参加一场正常的晚宴，而不是戈林的个人秀。
+        “别堵门。”
+        整个宴会厅安静了半秒。希姆莱在远处微不可察地皱了皱眉，转身退入了更深的光影里；而戈培尔则微笑着端起酒杯抿了一口，欣赏着一场早已预料到的滑稽戏。
+        戈林回过头，“什么？”
+        “我说，”总参谋长面无表情地重复了一遍，“别堵门。”
+        “我正在跟新部长讲话。”
+        “那也别堵门。”
+        “……”戈林低头看了一眼自己的位置，他庞大的身躯正好横在宴会厅入口中央，身后还有古德里安夫妇，以及一位试图抱着酒瓶从门缝里挤进来的侍者。
+        古德里安甚至没有再看他，只是非常自然地牵着夫人的手往旁边挪了一步，“让开。”
+        戈林终于侧了侧身，那位可怜的侍者立即端着酒瓶从他旁边飞快地溜了进去。
+        你实在没忍住，肩膀轻轻颤了起来，葡萄酒几乎要从杯口洒出来。
+        Konig垂眼看你，“很好笑？”
+        你赶紧抿住嘴，压低了眉，眼睛瞪得溜圆，“没有。就是觉得……总参谋长阁下很有道理。”
+        “确实。”
+        门口的戈林显然已经重新找回了自己的状态，根本不在意刚才那段小小的插曲，甚至还顺手拍了拍自己的腹部，笑得震天响，“好了好了！别管这个！今天可是新部长的晚宴！”他终于走到了你面前，张开双臂，摆出一副老朋友重逢般的架势。
+        你把酒杯往Konig手里一塞，和帝国元帅礼节性地抱了抱，“初次见面，元帅阁下。”
+        “不错。”他退开半步，满意地打量了你一眼，“比我想象中年轻。”
+        还不等你说些客套话，戈林将那只戴着巨大红宝石戒指的肥厚右手大手一挥，直到这一刻才终于想起宴会厅里还站着一百多个人，“好了！既然人都到齐了——我宣布，诸位，入席吧！别让厨房里那些可怜的烤乳猪等得太久！”
+        在长桌的另一侧，死板地直立着如同一根冰柱的希姆莱，眼角极其微小地抽搐了一下。
+        作为同样高居帝国权力顶峰、手握整个内务系统的宠臣，希姆莱最看不惯的就是戈林这种将国宴当成个人戏台的剧场化作风。他面无表情地抬起左手，掀开袖口，露出手表，那双藏在圆框眼镜后的灰褐色眼睛冷光闪烁，“按照内务部与宗室事务局核准的流程表，正式开席时间是八点三十分，帝国元帅阁下，”他刻意停顿了一下，将表盘朝戈林的方向略微倾斜，“现在是八点二十七分。我们还有整整三分钟。”
+        戈林盯着他两秒，笑了，“帝国领袖阁下，”他拍了拍自己的肚子，“你不会真打算让我这个时候再站在这里等三分钟吧？我们的元首还在与柏林的砖石图纸苦战，今晚就由我全权筹办今晚晚宴。”
+        希姆莱紧紧抿着嘴唇，死死盯着戈林，镜片背后的杀意几乎要溢出来。在政治图腾面前，戈林恪守边界，但在世俗权力与声势上，戈林那“指定继承人”的压迫感依然碾压全场，自己那套繁复、僵硬的官僚教条在此刻根本无处施力。
+        在长达数秒的死寂后，希姆莱极其缓慢地将袖口拉下，盖住了手表。
+        “……既然帝国元帅坚持。”他从牙缝里挤出这几个字，声音僵硬得像是在读判决书，“请。”
+        场面上的暗斗以戈林的完胜告终。
+        戈林得意地向全场扬了扬下巴，眼神扫过站在Konig身侧的你，“还愣着干什么？新部长，带着你的‘护卫’入座吧！今晚的酒，可全等着你来敬呢。”
+            
+            </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="chapter2.html" class="nav-btn">
+            <span>←</span>
+            <span>目录</span>
+        </a>
+        <a href="chapter4.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+    
+    <div style="height: 40px; width: 100%;"></div>
+
+</div> 
+
+    <script src="../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+<script src="../../js/swipe-back.js"></script>
+<script src="../../js/reading.js" defer></script>
+</body>
+</html>

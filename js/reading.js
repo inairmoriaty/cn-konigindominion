@@ -10,6 +10,18 @@
   if (window.__kgReadingReady) return;
   window.__kgReadingReady = true;
 
+  // 动态加载 bookmark.js（相对路径跟随 reading.js 本身）
+  try {
+    const self = document.currentScript ||
+      Array.from(document.scripts).find(s => /reading\.js(\?|$)/.test(s.src));
+    if (self && !window.KGBookmark) {
+      const s = document.createElement('script');
+      s.src = self.src.replace(/reading\.js(\?.*)?$/, 'bookmark.js$1');
+      s.defer = true;
+      document.head.appendChild(s);
+    }
+  } catch (_) {}
+
   const root = document.documentElement;
   root.classList.add('rd-ready');
 
@@ -194,28 +206,16 @@
       let data = null;
       try { data = JSON.parse(localStorage.getItem(key) || 'null'); } catch(_){}
 
-      const chip = document.createElement('span');
-      chip.className = 'rd-chip';
-
+      if (!btn.querySelector('.rd-chip')) {
+        const chip = document.createElement('span');
+        chip.className = 'rd-chip';
+        btn.appendChild(chip);
+      }
       if (data && data.p != null) {
         const pct = Math.round(data.p * 100);
-        if (pct >= 97) {
-          btn.classList.add('is-read');
-          chip.textContent = 'READ';
-        } else if (pct >= 3) {
-          chip.textContent = pct + '%';
-        } else {
-          chip.textContent = 'NEW';
-          chip.style.opacity = '.45';
-        }
-        if (data.t > mostRecent.t) {
-          mostRecent = { btn, t: data.t };
-        }
-      } else {
-        chip.textContent = 'NEW';
-        chip.style.opacity = '.45';
+        if (pct >= 97) btn.classList.add('is-read');
+        if (data.t > mostRecent.t) mostRecent = { btn, t: data.t };
       }
-      btn.appendChild(chip);
     });
 
     if (mostRecent.btn) {

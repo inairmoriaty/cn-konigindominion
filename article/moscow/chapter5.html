@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>第五章 - 莫斯科变态坏房东</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+    </style>
+  <link rel="stylesheet" href="../../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">第五章·克里姆林宫钻石库</div>
+            
+            <div class="author-info">你 & Nikto</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        [Telegram]
+        死变态1号 30000🦌/mon：你现在在克里姆林？
+        
+        你看着手机上来自Nikto的短信，不明白Nikto对你的控制欲为什么这么强，哪怕你是他的房客，他的关心似乎也太超过了应有的界线。
+        
+        [Telegram]
+        你：关你什么事。
+        
+        你飞快地敲下这行字，在负责安检的年轻近卫军的注视下将手机扔进了篮子里，将随身物品推进安检机器中。你越过金属探测门，张开双臂站在士兵的面前，一副配合检查的样子。他的眼神飞快地掠过勾勒出你身体曲线的红色旗袍，对上你的双眼时，蓝色的瞳孔颤抖了一下。他轻咳了一声，也没继续拿仪器扫描你的身体，只是挥挥手让你过去了。
+        放在篮子里的手机屏幕再次亮起，你的余光瞥见了新信息。
+        
+        [Telegram]
+        死变态1号 30000🦌/mon：别试图引起士兵的注意。我知道你想干什么。
+        
+        你嗤笑一声，把手机调成静音，不再理会Nikto。
+        周一的克里姆林宫内十分冷清，除了你和懒洋洋巡逻的安保人员以外，钻石库内再也没有其他人；馆内除了橱窗里的内置灯光外，也再无其他光线。你倚靠在分隔开游客和展品的栏杆上，倾听着耳机里的中文讲解，视线随着指引在各色钻石文物上游移。镶嵌在叶卡捷琳娜二世登基时那顶举世闻名的大皇冠上的重达398克拉的红天鹅绒色尖晶石让你目不转睛。
+        直到这个展柜的讲解结束，你依然盯着女帝的宝物看了好一会儿。昏暗的环境削弱了你的感官，当你放下讲解器，站直了身体让双耳重新适应寂静的环境时，才后知后觉地意识到身后站了一个人。你下意识地回过头，却一头撞进了他的怀里，鼻尖轻轻磕在浆洗过的军服上，缭绕着家里熟悉的洗衣粉的气味。
+        “Aw...”他收紧了双臂，将你紧紧拥入怀中，让你轻轻哼了一声。你被他禁锢在他的胸膛和栏杆之间，所幸俄罗斯人们贴心地在金属表面装了一层柔软的皮制靠垫，让你的后腰不至于被硌得太难受。你抬起头来，Nikto的那双蓝眸在钻石的反射出的光芒下流动着隐晦的欲望。
+        “Well well... Look what the cat dragged in.”他低沉的嗓音掠过你的耳畔，带着一种难以言喻的磁性，像是电流沿着你的脊柱窜过，他收紧了双臂，将你紧紧困在怀中。低沉的嗓音带着呼出的热气拂过你的脸，他长长的睫毛上冻结的霜已经开始融化，仿佛有水珠要从他的眼眸间滴落，“You shouldn’t have come here alone, Киска.”
+        他的制服还带着冷空气的低温，轻微的机油和雪的味道让你忍不住颤抖。你眯了眯眼，语气很不好，“你怎么知道我在这？”
+        “I always have my ways to find you.”红色的真丝旗袍在柔和的灯光下流动着一层莹莹的光，他的大手不安分地下滑，一如既往地按着你的后腰，“……你不回复我信息的原因很简单——只有钻石库是严禁使用手机的。”
+        
+        天真的小东西，那些面包屑一样的小痕迹到处都是——关于她的帖子早就传遍俄网的各个群组了。
+        只要随便问一个博物馆的警卫，没人对你没有印象……
+        噢，还有那个在门口被你调戏过的小子……
+        每一个人都在故意激怒我们，不是吗？
+        
+        他有些粗暴地拉住你的发尾，让青丝和发饰凌乱地纠缠的同时暴露出你的脖颈。一个饱含欲望的吻从你的耳根一直游移到脖颈，摸索着拉开了后背的拉链，顺着暴露出的颈部曲线一路啄吻，留下凶狠而又隐忍的痕迹。
+        你忍不住呜咽着，展示柜中的钻石反射的璀璨的光将你的视线角落模糊，也同时模糊了你对现实和幻想的边界，让你忍不住沉沦在他带来的亲密之中。紧紧相拥之间，你能感觉到小腹被硬挺的东西挤压着，即使隔着制服与轻薄的真丝，他的欲望依然难以忽视。你的双臂下意识地环住他的脖子，“Sir...”
+        他感受你在他的怀中颤抖着，你那声试探性的呼唤激起了他心底的欲望。大手半褪下旗袍，顺着敞开的衣裙向你胸前的软肉摩挲去。手套粗糙的防滑纹刺激得乳尖敏感地挺立，你在他的怀抱中扭动着，极力压抑着呻吟，试图挽起凌乱的衣服来遮掩自己的身体，“等一下……！他们会看到……”你推搡着他的胸膛，余光瞥向馆内，却没有发现本应坚守在岗位上的两位安保人员。
+        Nikto将你更加用力地压在栏杆上，你的身体被折成一个美妙的弧度，像是垂死的天鹅一般，无力地与他的力量对抗，“我已经叫他们滚了。”
+        “可是我们还在博物馆……”
+        “对。”高挺的鼻梁让你无法察觉他面罩下的嘴勾起的一个恶意的弧度，属于军人的那一份责任感在脑海中的几个人格争吵中逐渐淡去，他可管不了他们此时身在何处，他只知道每当你用那双漂亮而罕见的黑眼睛自下而上地悄悄打量他时，总会让他有一种施虐的欲望——尤其是现在你穿着他们只在电影中见过的传统东方服饰，线条流畅的腿在开衩的裙摆下若隐若现，只会加剧他对异国情调与未知的渴望，“就是现在，就在这里，在克里姆林宫的心脏——你喜欢吗？”他的手指恶意地勾住吊袜带并拉了一下，回弹在你的肌肤上发出响亮的声音，回荡在不大的钻石库，却足以让你羞耻得把头低下去。“Let’s see where else would a naughty little thing like you end up.（我们拭目以待你的结局）”
+        “……我要举报你。”你的腿忍不住地在他的触摸中颤抖，尤其当他的手坚定地插入你并拢的大腿之间时，你毫不怀疑他已经察觉到你已经湿透的内裤，以及难以被香水掩饰的发情的麝香味。你咬住唇，努力不呜咽出声，余光环顾着钻石库，期待不可能出现的帮助。
+        “你上次已经试过了。”他的笑声在你耳边响起，反而带着令你恐惧和兴奋的刺激感，“需要我再提醒你一次吗？”他用牙齿将已经浸透了你的气味的手套摘下，粗暴地将碍事的内裤扯到一边，粗糙冰冷的大手直接摸上你近乎滴水的穴，就连阴户上也浮着一层薄薄的水。熟练地顺着肉缝来回抚摸，惹得你的腿根都在颤抖，身体早已在过去几次的交合中被他本能地吸引，小腹深处竟然生出了几分期待，希望他能够抚慰你的空虚。
+        但他并没有让你如愿，只是观察着你快要翻过去的双眼，在你几乎要开口求饶时，突然扇了可怜的小穴一巴掌。即使他收着力道，充血肿胀的小豆依然被小小地虐待了一下，传递着又痛又麻的快感，让你再也无法控制住自己，在他的怀中拼命挣扎着，尖叫声回荡在室内，下一秒便被他捂住了嘴。你瞪大了双眼，漂亮的黑色眼睛里满是不解，无法预测他的下一步动作。
+        “你想让整个克里姆林宫都听到你的尖叫吗，婊子。”他咬牙切齿地在你的耳边威胁，“转过去，手放在腰上。”
+        你深知两个人力量的悬殊，为了让自己好过些，你半推半就地在他的推力下转过身去，趴在了栏杆的皮革垫子上，面前是苏联时期制造流传下来的一整串钻石勋章。双头鹰和苏联国徽让你忍不住羞耻得闭上了双眼，真的不想在这样的情况下膜拜这些荣誉类的东西，仿佛是亵渎一般。
+        他将你的旗袍下摆塞进了你的手心，强迫你背对着他主动撩起裙子向他暴露出最隐秘的部位。你似乎能够感觉到他的视线如同实质性地落在你的臀部，身体忍不住为这种羞耻的感觉轻轻颤抖着，下意识地挣扎，却被他一巴掌抽了过来。昏暗的环境下看不清你苍白的皮肤在他的粗暴对待下已经开始泛红，指尖微微陷入红肿的花瓣之间，让你再一次颤抖。你已经无暇顾及自己和Nikto是否身处于博物馆又或是其他地方，当下的欲望让你忍不住撅起屁股，向小狗那样摆尾乞求更多。
+        像是被你臣服的模样所取悦，他终于将一根手指慢慢探入那娇嫩而富有弹性的阴道之中。粗大的指节缓解了一丝空虚的感觉，让你勉强得到了一些安慰。你忍不住轻哼一声，小幅度地往后蹭了蹭，希望得到更多的关爱。他被你这副淫荡的模样逗笑了，决定给你一点甜头吃。两根手指施加了些许力气在嫩穴里抽插着，比刚才的试探性的逗弄粗暴了不少，时不时地抵在深处的软肉上抠挖几下，他的拇指碾着你的阴蒂，恰到好处的压力给你带来更多的快感。你甚至能听到自己体内被搅动发出的水声，羞耻得让你忍不住低下头去，抵着软垫小声地尖叫，紧握住裙摆的指节也因为用力而发白。“Sir... Sir...”你呜咽着，却忍不住收紧了小穴，将他的手指吃下更多。
+        下一秒，他突然毫不留情地抽离，用沾满了你的淫液的手指大力握住你的脸，拇指扣进了你的唇间，“You like this smell? Huh? Feel excited?”
+        你想说什么，但是因为嘴里塞着他的手指，所有的话语都变成了模糊不清的呜咽。被麝香味冲昏了头脑的你完全没有听到他在身后宽衣解带的声音。他握住性器的根部，用勃发的柱头戏弄着你不断张合的小穴入口，像是再拖延时间——或者，他在刻意等待。每一次柔软的龟头与你敏感的阴蒂短暂接触，都将你置于欲望之火中灼烧。“Please... please Sir...  don’t torture me... It’s itchy inside...”你快要哭出来了，好不容易才找回了自己的声音，上气不接下气地哀求。
+        Nikto在你身后沉默地挑眉，终于将顶部缓缓顶入你的身体，但却没有更进一步，只是用硕大的蘑菇头操着你的入口。浅层的刺激并不能让你满足，你开始讨好地吮吸着他的手指，用舌尖去勾他的指腹，呜咽着喊他“Дорогой”。身后的人明显僵住了一瞬，你感觉不出他的喜怒情绪，刚想回头时，他像是惊醒过来，猛地往里一顶，瞬间将你贯穿。你甚至还没来得及做好心理准备，就被他这么长驱直入地占满，忍不住爆发出一声娇媚的尖叫。他一手捏着你的下巴，另一手握住你依旧乖巧而服从地抓住裙摆的手腕，开始像骑马那样鞭挞你可怜的屁股。你的腰肢弯折成一个柔软美妙的弧度，酸痛和身后的饱胀感一次又一次地冲昏了你的头脑，让你再也控制不住自己的呻吟与尖叫，彻底沉沦在他给你带来的快乐之中。
+        “Itchy? Well. I think I can scratch it for you.”他抓着你的头发把你拉了起来，旗袍凌乱地缠绕在你的身上，遮盖不住他在你身上留下的点点痕迹。他松开了你被禁锢住的手腕，转而握住了你的乳房，将柔软的乳肉从精致的蕾丝内衣中掏出，大力揉捏的同时也借力抽插地更加凶猛。你被他在身后的冲撞顶得向前，每一次肉棒都将你钉在几净无瑕的展示柜，让你张嘴呻吟时呼出的气息模糊了冰凉的玻璃，视线被钻石折射的光模糊。
+        他用力地掐你的乳尖，俯下身来把你嵌入他的怀中，在你耳边隔着面罩压抑地呼吸着。依然还算完整的军服与你被揉得乱七八糟的旗袍形成了鲜明的对比。你呜呜咽咽地被动承受着他的操弄，觉得自己像是被他随意使用的飞机杯一般，没有丝毫互动，这让你感觉屈辱。“你怎么……怎么都不喘气的……也不说话……”
+        他蓝色的眼睛危险地眯起，对于你质疑俄罗斯男人在性爱过程中的哑巴人设非常不满。他直接伸手抓住你垂落在胸前的珍珠项链并往后拉，迫使你不得不直起身子来，不安感也让你开始反抗，却被他拉紧了“缰绳”，窒息的感觉加大了快感。“你想我说什么？”
+        你一时语塞，被情欲蒸腾的大脑一时间无法给出一个准确答案。在你还在犹犹豫豫时，他低沉的嗓音再一次在你的耳畔响起。“你是不是想听‘我想用这些该死的钻石装饰你的身体，从乳头到你的阴蒂都闪闪发亮’这种话？还是说你想让我把这些珍珠全部塞进你的小穴里，再一点点拉出来，让每一颗珠子都沾满你的淫水？”
+        他说出的每一个字无一不在刺激着你的神经。像是魔咒一般，你忍不住在脑海中想象着他描绘的画面。赤身裸体但只被名贵的珠宝装点身体的曲线，像是高高在上又堕落淫靡的女神，只被他一个人占有和亵渎。
+        你忍不住颤抖起来，生理性的快感加上颅内高潮让你本能地追逐前往天堂的边缘。你的小穴不规律地收缩，紧紧地挤压绞杀着依然在你的体内做着活塞运动的性器。这一次轮到你没有什么精力来回应他的脏话了，只能紧紧地扶着冰凉的防弹玻璃，深处被操得敏感红肿的软肉颤抖着，在无数快感的堆积下，终于吐出了珍藏许久的蜜液。
+        Nikto被你这么一夹，也是差点没把守住精关就要射出来。他的一只手撑在你脑袋旁的玻璃展示柜上，另一手攥紧了你的珍珠项链，将你往后拉，暴露出你纤细脆弱的喉管。他俯下身，隔着面罩用力咬住你颈侧的软肉，留下一个模糊的牙印。“知道我为什么这么快就找到你吗？小家伙。你现在已经很有名了。”他放开了你的脖子，加快了冲撞的力度和速度，感受着你的花穴紧紧拥抱他的粗壮的感觉，像是要把他榨干。饱满的阴囊拍打在你湿漉漉的腿根，肉体和肉体的碰撞声响彻整个钻石库。
+        “什……什么……”透过玻璃的倒影，你模糊地看到你的脸被高潮和情欲浸透，羞耻感让你更加紧张而兴奋地接受他，忍不住用甜丝丝的异国语调呼唤他的名字。
+        他听着你那独特的说俄语的方式，柔软却错乱的重音让他感到好笑又兴奋，一不留神间，自制力已经崩溃。“да, моя маленькая шлюшка, это все для тебя.”他低吼着对着嫩穴的深处狠狠凿弄，卵蛋开始收紧，温热的精华争先恐后地涌进温暖的巢穴，在你的身体深处扎根发芽。
+        你被他后入射了一肚子，大脑都开始因为过度消耗体力变得模模糊糊，忍不住趴在被你的身体温暖的玻璃上喘息着。他将你的脸转了过来，眨眼之间，你好像看见了他拉起了面罩的下沿。他噬咬着你的唇，从上到下仔细地蹂躏着，像是在品尝被自己折磨到近乎休克的猎物。
+        “You know what they call you now? The ‘Military Hooker’.（你知道他们现在都叫你什么吗？小军妓）”
+        你总算是听清了他的话语，差点没被气晕过去。这可不是什么好词，再者，你什么时候被扣上了这么一个帽子了？！     </div>           
+
+                <!-- 章节导航按钮 -->    <div class="chapter-navigation">
+        <a href="chapter4.html" class="nav-btn">
+            <span>←</span>
+            <span>上一章</span>
+        </a>
+        <a href="chapter6.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+    
+    <div style="height: 40px; width: 100%;"></div>
+
+</div> 
+
+    <script src="../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+<script src="../../js/swipe-back.js"></script>
+<script src="../../js/reading.js" defer></script>
+</body>
+</html>

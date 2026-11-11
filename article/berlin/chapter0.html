@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>序幕 - 柏林无圣徒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: "SimSun", "宋体", serif;
+        }
+
+        .app-frame {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-container {
+            width: 100%;
+            height: 100%;
+            padding: 0 8.2%; /* 32px / 390px ≈ 8.2% */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 20%;
+        }
+
+        .article-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .article-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .chapter-title {
+            width: 80%;
+            height: 80px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-info {
+            width: 60%;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0;
+            border-top: 3px solid #000;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .content-area {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #000;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .chapter-navigation {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 8.2%;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "SimSun", "宋体", serif;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-btn:active {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        .nav-btn.disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+    </style>
+  <link rel="stylesheet" href="../../style/reading.css">
+</head>
+<body>
+        <div class="article-container">
+            <div class="chapter-title">序 柏林无圣徒</div>
+            
+            <div class="author-info">赛博复古世界观。待考据修改细节。</div>
+            
+            <div class="separator"></div>
+            
+            <div class="content-area">
+        “公民们。一个民族不会因为财富而伟大，一个国家不会因享乐而长存。文明建立于纪律，繁荣建立于责任。”
+
+        秋分过后，太阳继续沿着既定的轨道运行，昼渐短，夜渐长，首都的天空像蒙着一层脏灰色的纱，自入秋以来便鲜少放晴。晨雾是这个季节的早餐，浓稠得如牛奶，将街道、路灯和行人的轮廓一并吞没。
+        红底高跟鞋踏上平整的柏油马路，鞋跟敲击声干脆而利落。
+        路旁的一辆帝国出租车门被拉开，驾驶座上的司机被蓦地惊醒，手忙脚乱地用袖口擦了擦快要滴下来的涎水，领口解了两颗扣子。
+        “Ich möchte ins Reichsministerium Erea gehen（去政府区）”
+        司机怀疑自己听错了诧异地通过狭窄的后视镜看向径直落座于后座的女人。那面后视镜太小了，只够框住后座乘客的半张脸，小巧而柔和，却隐藏于半遮半掩的黑纱后，唯有一双深色的眼睛犀利如雌鹰。
+        
+        “——你的工作、你的守时、你的服从，并非微不足道的小事。软弱的民族谈论权利。伟大的民族履行责任。”
+        
+        
+        “Reichsministerium für Propaganda. Bitte. （政府区的帝国国民宣传部）”
+        乘客的声音平静，甚至称得上是温和，却透着不容置疑的强势，似乎不愿意再多做攀谈。日耳曼如的习惯让司机选择保持沉默，熟练地一踩油门，手腕一打方向盘，驶向大路，黄铜计价器在昏暗晨光下泛着微光。
+        广播仍在继续。
+        
+
+        “你的纪律，就是文明的基石。当每一个人都履行自己的职责，国家便坚不可摧。”
+        
+        
+        越临近政府区，街道便越发空旷，大道两旁的梧桐和旗杆逐渐多了起来，大道两侧更是戒，严每隔数十米便有一名穿着灰色制服、戴着钢盔的卫兵站岗。
+        “例行检查，先生。”
+        车窗降下，纤长的两根手指夹着通行证翻开，递出去。仅仅只是扫了一眼，晨起站岗的卫兵便如先前的出租车司机一般从昏昏欲睡中惊醒过来，后背绷直，靴跟一磕，“Guten Morgen, Herrin Ministerin.（早上好，部长阁下）”
+        司机闻言，顿时瞪大了双眼，失态地扭过头看向后座。后视镜里那双眼睛现在彻底醒了，瞳孔放大了一圈。
+        你淡淡地将通行证收回包中，抬起眼看着他，不打算多做解释。
+        这是帝国的规矩，上级不需要向下级解释任何事。
+        轿车继续行驶，向着目的地奔驰而去，卫兵挺拔的身影在后视镜里缩小，逐渐与大道两旁的树木融为一体，成为灰绿色背景的一部分。
+        “今天，继续工作；今天，继续创造；今天，无愧于帝国。”
+        机械的女声接在元首的演讲语录之后，毫无温度，“秩序创造文明。早安，帝国公民。”
+        计价器跳到最后一个数字的时候，车停了。你掏出钱夹，抽了两张纸币放在前排座椅的皮面上，金额比计价器显示的多出一倍——是小费，也是封口费。
+        罗马柱支撑的宣传部大楼正面有十二根柱子，你每次来都忍不住再数一遍，像强迫症患者确认门锁一般，那个数字与石柱的角度规整得令你满意。
+        推开铜制旋转门，暖气和地板蜡的气味迎面扑过来。门厅里已经有人了。
+        “Guten Morgen, Herrin Ministerin.”
+        “Guten Morgen, Herrin Ministerin...”
+        “Guten Morgen...”
+        你微笑着，对每一个向你打招呼的人点头致意。嘴角的弧度刚好，不过分热情以至于显得轻浮，不过分冷淡以至于显得傲慢。
+        穿过大堂，电梯门合上的瞬间你才允许自己的表情松下来。金属墙面冰冷，隔着大衣贴在后背上，让你想起第一次坐帝国的火车从边境进入柏林时，额头抵在车窗玻璃上的温度。
+        可现在，同样的温度，却既然不通的两个人。
+        六楼。门开了。
+        你踩着高跟鞋走出去，走廊尽头是一扇深色木门，门牌上的铜字在日光灯下泛着黄铜色的光泽——
+        Reichsministerin für Propaganda.
+        
+        “欢迎，帝国宣传部部长。”
+                
+    </div>
+    </div>
+
+    <!-- 章节导航按钮 -->
+    <div class="chapter-navigation">
+        <a href="catalog.html" class="nav-btn">
+            <span>←</span>
+            <span>目录</span>
+        </a>
+        <a href="chapter1.html" class="nav-btn">
+            <span>下一章</span>
+            <span>→</span>
+        </a>
+    </div>
+    
+    <div style="height: 40px; width: 100%;"></div>
+
+</div> 
+
+    <script src="../../js/password-protection.js"></script>
+    <script>
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('文章页面加载完成');
+            
+            // 添加右滑返回手势支持（兼容iOS和Android）
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
+            let startTime = 0;
+            
+            // 防止页面滚动冲突
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startTime = Date.now();
+                isSwiping = false;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!startX || !startY) return;
+                
+                let currentX = e.touches[0].clientX;
+                let currentY = e.touches[0].clientY;
+                let diffX = startX - currentX;
+                let diffY = startY - currentY;
+                
+                // 检测是否为水平滑动（水平距离大于垂直距离）
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    isSwiping = true;
+                    // 如果是边缘滑动，阻止页面滚动
+                    if (startX < 50) {
+                        e.preventDefault();
+                    }
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', function(e) {
+                if (!isSwiping) return;
+                
+                let endX = e.changedTouches[0].clientX;
+                let diffX = startX - endX;
+                let endTime = Date.now();
+                let duration = endTime - startTime;
+                
+                // 从左边缘开始向右滑动（返回手势）
+                // 支持iOS和Android的返回手势
+                if (startX < 50 && diffX < -80 && duration < 500) {
+                    window.history.back();
+                }
+            }, { passive: true });
+        });
+    </script>
+  <script src="../js/password-protection.js"></script>
+<script src="../../js/swipe-back.js"></script>
+<script src="../../js/reading.js" defer></script>
+</body>
+</html>
