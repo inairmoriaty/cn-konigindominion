@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>KÖNIGIN · The Parlour · 留言板</title>
+  <style>
+    :root{
+      --gold: #c9a24a;
+      --gold-soft: #d8b968;
+      --ink: #0d0a07;
+      --paper: #ece0c7;
+      --paper-dim: #b8a884;
+      --serif: "Cormorant Garamond", "EB Garamond", "Playfair Display", "Times New Roman", "Songti SC", "SimSun", "宋体", serif;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--serif);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(201,162,74,.08), transparent 60%),
+        radial-gradient(900px 500px at 100% 100%, rgba(201,162,74,.06), transparent 60%),
+        var(--ink);
+      background-attachment: fixed;
+      padding: calc(28px + var(--safe-top)) 24px calc(40px + var(--safe-bottom));
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 820px;
+      margin: 0 auto 56px;
+    }
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--paper);
+    }
+    .logo-link img { height: 110px; width: auto; display: block; }
+    .back-link {
+      text-decoration: none;
+      color: var(--gold-soft);
+      letter-spacing: .25em;
+      font-size: 12px;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,162,74,.35);
+      padding: 8px 14px;
+      transition: border-color .2s ease, color .2s ease;
+    }
+    .back-link:hover { border-color: var(--gold); color: var(--paper); }
+
+    .parlour { max-width: 720px; margin: 0 auto; }
+    .parlour .eyebrow {
+      color: var(--gold-soft);
+      letter-spacing: .4em;
+      font-size: 11px;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+    .parlour h1 {
+      font-weight: 400;
+      font-size: clamp(36px, 6vw, 56px);
+      letter-spacing: .14em;
+      margin: 0 0 8px;
+      color: #f2e6ca;
+    }
+    .parlour .subtitle {
+      color: var(--paper-dim);
+      letter-spacing: .3em;
+      font-size: 13px;
+      margin: 0 0 32px;
+    }
+    .parlour hr {
+      border: none;
+      border-top: 1px solid rgba(201,162,74,.25);
+      margin: 32px 0;
+    }
+    .intro {
+      line-height: 2;
+      font-size: 16px;
+      color: #d8c89f;
+      letter-spacing: .04em;
+      margin: 0;
+    }
+
+    /* ---------- 留言表单 ---------- */
+    .gb-form {
+      position: relative;
+      border: 1px solid rgba(201,162,74,.35);
+      padding: 26px 24px 22px;
+      background: rgba(22,17,11,.55);
+    }
+    .gb-form::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(201,162,74,.1);
+      pointer-events: none;
+    }
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gold-soft);
+      font-size: 11px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .field label .count { letter-spacing: .1em; color: var(--paper-dim); opacity: .7; }
+    .field input, .field textarea {
+      width: 100%;
+      background: rgba(13,10,7,.7);
+      border: 1px solid rgba(201,162,74,.25);
+      color: var(--paper);
+      font-family: inherit;
+      font-size: 16px;
+      line-height: 1.8;
+      padding: 10px 12px;
+      border-radius: 0;
+      outline: none;
+      transition: border-color .2s ease;
+    }
+    .field textarea { min-height: 140px; resize: vertical; }
+    .field input:focus, .field textarea:focus { border-color: var(--gold); }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(184,168,132,.45); }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    .form-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .form-note { font-size: 12px; color: var(--paper-dim); letter-spacing: .06em; opacity: .8; margin: 0; }
+    .btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold-soft);
+      font-family: inherit;
+      font-size: 13px;
+      letter-spacing: .35em;
+      padding: 10px 22px;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, opacity .2s ease;
+    }
+    .btn:hover:not(:disabled) { background: rgba(201,162,74,.12); color: var(--paper); }
+    .btn:disabled { opacity: .45; cursor: default; }
+    .form-msg { margin: 14px 0 0; font-size: 13px; letter-spacing: .05em; min-height: 1em; }
+    .form-msg.ok { color: var(--gold-soft); }
+    .form-msg.err { color: #d98b7a; }
+
+    /* ---------- 留言列表 ---------- */
+    .list-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      color: var(--gold-soft);
+      font-size: 11px;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    .list-head .zh { color: var(--paper-dim); letter-spacing: .3em; }
+    .note-card {
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(201,162,74,.14);
+    }
+    .note-card:last-child { border-bottom: none; }
+    .note-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .note-name { color: #ead7a3; font-size: 16px; letter-spacing: .12em; }
+    .note-date { color: var(--paper-dim); font-size: 11px; letter-spacing: .15em; opacity: .7; white-space: nowrap; }
+    .note-body {
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.95;
+      font-size: 15px;
+      color: #d8c89f;
+      letter-spacing: .03em;
+      margin: 0;
+    }
+    .note-reply {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-left: 2px solid var(--gold);
+      background: rgba(201,162,74,.06);
+    }
+    .note-reply .who {
+      display: block;
+      color: var(--gold-soft);
+      font-size: 11px;
+      letter-spacing: .3em;
+      margin-bottom: 6px;
+    }
+    .note-reply .note-body { font-size: 14px; }
+    .list-state {
+      text-align: center;
+      color: var(--paper-dim);
+      font-size: 13px;
+      letter-spacing: .15em;
+      padding: 36px 0;
+      opacity: .8;
+    }
+    .more-wrap { text-align: center; margin-top: 18px; }
+
+    @media (max-width: 640px) {
+      body { padding: calc(20px + var(--safe-top)) 18px calc(32px + var(--safe-bottom)); }
+      .top-bar { margin-bottom: 36px; }
+      .logo-link img { height: 64px; }
+      .intro { font-size: 15px; }
+      .gb-form { padding: 20px 16px 18px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <a class="logo-link" href="home.html" aria-label="KÖNIGIN — 返回首页">
+      <img src="../img/logo_silver.png" alt="KÖNIGIN">
+    </a>
+    <a class="back-link" href="home.html">← Home</a>
+  </header>
+
+  <main class="parlour">
+    <p class="eyebrow">THE PARLOUR</p>
+    <h1>会客厅</h1>
+    <p class="subtitle">Guestbook · 留言板</p>
+    <p class="intro">欢迎来到 KÖNIGIN 的会客厅！留一句话给我吧——读后感、碎碎念、想看的故事，都可以。</p>
+    <hr>
+
+    <form class="gb-form" id="gbForm" novalidate>
+      <div class="field">
+        <label for="gbName"><span>NAME · 署名</span><span class="count" id="nameCount">0/24</span></label>
+        <input id="gbName" name="name" type="text" maxlength="24" placeholder="可留空，默认为「匿名访客」" autocomplete="nickname">
+      </div>
+      <div class="field">
+        <label for="gbMessage"><span>MESSAGE · 留言</span><span class="count" id="msgCount">0/1000</span></label>
+        <textarea id="gbMessage" name="message" maxlength="1000" placeholder="想说点什么呢……" required></textarea>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label for="gbWebsite">Website</label>
+        <input id="gbWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="form-foot">
+        <p class="form-note">无需登录 · 留言经站主查看后公开显示</p>
+        <button class="btn" type="submit" id="gbSubmit">留 言</button>
+      </div>
+      <p class="form-msg" id="gbMsg" role="status" aria-live="polite"></p>
+    </form>
+
+    <hr>
+
+    <p class="list-head"><span>NOTES</span><span class="zh">访客留言</span></p>
+    <div id="gbList"><p class="list-state">正在取信……</p></div>
+    <div class="more-wrap" id="gbMoreWrap" hidden>
+      <button class="btn" type="button" id="gbMore">更多留言</button>
+    </div>
+  </main>
+
+<script>
+(function () {
+  const API = '/api/guestbook';
+  const form = document.getElementById('gbForm');
+  const nameEl = document.getElementById('gbName');
+  const msgEl = document.getElementById('gbMessage');
+  const submitBtn = document.getElementById('gbSubmit');
+  const msgBox = document.getElementById('gbMsg');
+  const list = document.getElementById('gbList');
+  const moreWrap = document.getElementById('gbMoreWrap');
+  const moreBtn = document.getElementById('gbMore');
+  let nextOffset = 0;
+
+  // 记住访客署名（只存在本机浏览器）
+  try { nameEl.value = localStorage.getItem('gb-name') || ''; } catch (e) {}
+
+  function updateCounts() {
+    document.getElementById('nameCount').textContent = nameEl.value.length + '/24';
+    document.getElementById('msgCount').textContent = msgEl.value.length + '/1000';
+  }
+  nameEl.addEventListener('input', updateCounts);
+  msgEl.addEventListener('input', updateCounts);
+  updateCounts();
+
+  function fmtDate(ts) {
+    const d = new Date(ts);
+    const p = n => String(n).padStart(2, '0');
+    return d.getFullYear() + '.' + p(d.getMonth() + 1) + '.' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+  }
+
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function renderNote(m) {
+    const card = el('article', 'note-card');
+    const meta = el('div', 'note-meta');
+    meta.append(el('span', 'note-name', m.name), el('span', 'note-date', fmtDate(m.createdAt)));
+    card.append(meta, el('p', 'note-body', m.message));
+    if (m.reply) {
+      const r = el('div', 'note-reply');
+      r.append(el('span', 'who', 'KÖNIGIN 回复'), el('p', 'note-body', m.reply));
+      card.append(r);
+    }
+    return card;
+  }
+
+  function setState(text) {
+    list.innerHTML = '';
+    list.append(el('p', 'list-state', text));
+  }
+
+  async function load(append) {
+    moreBtn.disabled = true;
+    try {
+      const res = await fetch(API + '?offset=' + (append ? nextOffset : 0));
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || '读取失败');
+      if (!append) list.innerHTML = '';
+      if (!append && !data.items.length) {
+        setState('还没有人留言，来做第一个吧。');
+      } else {
+        data.items.forEach(m => list.append(renderNote(m)));
+      }
+      nextOffset = data.nextOffset;
+      moreWrap.hidden = data.nextOffset == null;
+    } catch (err) {
+      if (!append) setState(err.message === 'Failed to fetch' ? '留言暂时取不到，请稍后再来。' : err.message);
+    } finally {
+      moreBtn.disabled = false;
+    }
+  }
+  moreBtn.addEventListener('click', () => load(true));
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msgBox.textContent = '';
+    msgBox.className = 'form-msg';
+    const message = msgEl.value.trim();
+    if (message.length < 2) {
+      msgBox.textContent = '留言内容太短啦';
+      msgBox.classList.add('err');
+      msgEl.focus();
+      return;
+    }
+    submitBtn.disabled = true;
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: nameEl.value.trim(),
+          message,
+          website: document.getElementById('gbWebsite').value
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || '提交失败，请稍后再试');
+      try { localStorage.setItem('gb-name', nameEl.value.trim()); } catch (e) {}
+      msgEl.value = '';
+      updateCounts();
+      if (data.status === 'approved' && data.item) {
+        const empty = list.querySelector('.list-state');
+        if (empty) empty.remove();
+        list.prepend(renderNote(data.item));
+        msgBox.textContent = '留言已送达，谢谢你来坐坐。';
+      } else {
+        msgBox.textContent = '留言已送达，站主看过后就会出现在这里。';
+      }
+      msgBox.classList.add('ok');
+    } catch (err) {
+      msgBox.textContent = err.message === 'Failed to fetch' ? '网络好像断了，请稍后再试' : err.message;
+      msgBox.classList.add('err');
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+
+  load(false);
+})();
+</script>
+<script src="../js/swipe-back.js"></script>
+</body>
+</html>
