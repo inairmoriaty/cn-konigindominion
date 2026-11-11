@@ -99,7 +99,7 @@
     }
 
     @media (max-width: 767px) {
-      .public-quick { padding: 14px 14px calc(20px + env(safe-area-inset-bottom, 0px)); }
+      .public-quick { padding: 14px 14px calc(80px + env(safe-area-inset-bottom, 0px)); }
       .public-quick .grid { grid-template-columns: repeat(5, 1fr); gap: 6px; }
       .public-quick .qcard { min-height: 76px; padding: 10px 8px 10px; }
       .public-quick .qcard .en { font-size: 11px; letter-spacing: .14em; }
@@ -108,9 +108,13 @@
 
     .page-container {
       width: 100vw;
-      height: calc(100vh - 170px);
-      min-height: 520px;
+      height: calc(100svh - 190px);
+      min-height: 420px;
       position: relative;
+    }
+    /* 老浏览器没有 svh 时退回 vh，不至于失效 */
+    @supports not (height: 100svh) {
+      .page-container { height: calc(100vh - 190px); }
     }
 
     /* --- 主框架 --- */
