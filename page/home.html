@@ -114,6 +114,129 @@
   animation-timing-function: ease-in-out;
 }
 
+/* 索引面板样式 */
+.index-panel {
+  position: absolute;
+  top: 30%;
+  left: 65%;
+  transform: translateX(-50%);
+  width: 70%;
+  max-width: 280px;
+  height: auto;
+  min-height: 200px;
+  background: url('../img/index.png') center center/cover no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 15px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.index-panel.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.index-panel .panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.index-panel .english-title {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  font-family: "Times New Roman", serif;
+}
+
+.index-panel .chinese-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-family: "SimSun", "宋体", serif;
+}
+
+.index-panel .description {
+  font-size: 10px;
+  margin-bottom: 3px;
+  opacity: 0.9;
+  font-family: "SimSun", "宋体", serif;
+}
+
+.index-panel .enter-button {
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.index-panel .enter-button:hover {
+  transform: scale(1.05);
+}
+
+.index-panel .enter-button:active {
+  transform: scale(0.95);
+}
+
+.index-panel .enter-button.clicked {
+  animation: buttonClick 0.3s ease;
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.index-panel .enter-button img {
+  width: 80px;
+  height: 28px;
+  display: block;
+}
+
+/* 遮罩层 */
+.index-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 15;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.index-overlay.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
 
     </style>
@@ -134,6 +257,35 @@
       <img src="../img/default btn.png" alt="Private Button"/>
     </a>
     
+    <!-- 遮罩层 -->
+    <div class="index-overlay" id="indexOverlay"></div>
+    
+    <!-- 公共区域索引面板 -->
+    <div class="index-panel" id="publicIndex">
+      <div class="panel-content">
+        <div class="english-title">THE LOUNGE</div>
+        <div class="chinese-title">酒廊</div>
+        <div class="description">此处汇集文字、图片</div>
+        <div class="description">是供短暂停留与小酌的区域</div>
+        <div class="description">您也可以在这里给主人留言</div>
+        <div class="enter-button" id="publicEnterBtn">
+          <img src="../img/enter.png" alt="Enter Public Area"/>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 私人区域索引面板 -->
+    <div class="index-panel" id="privateIndex">
+      <div class="panel-content">
+        <div class="english-title">GUEST ROOM</div>
+        <div class="chinese-title">客房</div>
+        <div class="description">此处为特殊客人保留</div>
+        <div class="description">访问需口令</div>
+        <div class="enter-button" id="privateEnterBtn">
+          <img src="../img/guest/enter.png" alt="Enter Private Area"/>
+        </div>
+      </div>
+    </div>
     
     <div class="bottom-mask"></div>
   </div>
@@ -148,7 +300,34 @@ document.addEventListener('DOMContentLoaded', function() {
   // 获取元素
   const publicBtn = document.getElementById('publicBtn');
   const privateBtn = document.getElementById('privateBtn');
+  const publicIndex = document.getElementById('publicIndex');
+  const privateIndex = document.getElementById('privateIndex');
+  const indexOverlay = document.getElementById('indexOverlay');
+  const publicEnterBtn = document.getElementById('publicEnterBtn');
+  const privateEnterBtn = document.getElementById('privateEnterBtn');
   
+  let currentIndex = null;
+  
+  // 显示索引面板的函数
+  function showIndex(indexPanel) {
+    // 隐藏所有索引面板
+    publicIndex.classList.remove('show');
+    privateIndex.classList.remove('show');
+    indexOverlay.classList.remove('show');
+    
+    // 显示指定的索引面板和遮罩
+    indexPanel.classList.add('show');
+    indexOverlay.classList.add('show');
+    currentIndex = indexPanel;
+  }
+  
+  // 隐藏所有索引面板的函数
+  function hideAllIndex() {
+    publicIndex.classList.remove('show');
+    privateIndex.classList.remove('show');
+    indexOverlay.classList.remove('show');
+    currentIndex = null;
+  }
   
   // 公共区域按钮点击事件
   if (publicBtn) {
@@ -156,14 +335,14 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       e.stopPropagation();
       console.log('Public button clicked');
-      window.location.href = 'public/public.html';
+      showIndex(publicIndex);
     });
     
     publicBtn.addEventListener('touchend', function(e) {
       e.preventDefault();
       e.stopPropagation();
       console.log('Public button touched');
-      window.location.href = 'public/public.html';
+      showIndex(publicIndex);
     });
   }
   
@@ -173,23 +352,101 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       e.stopPropagation();
       console.log('Private button clicked');
-      window.location.href = 'public/commission.html';
+      showIndex(privateIndex);
     });
     
     privateBtn.addEventListener('touchend', function(e) {
       e.preventDefault();
       e.stopPropagation();
       console.log('Private button touched');
-      window.location.href = 'public/commission.html';
+      showIndex(privateIndex);
     });
   }
   
+  // 公共区域进入按钮点击事件
+  if (publicEnterBtn) {
+    publicEnterBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Entering public area');
+      
+      // 添加点击效果
+      this.classList.add('clicked');
+      setTimeout(() => {
+        this.classList.remove('clicked');
+        window.location.href = 'public/public.html';
+      }, 300);
+    });
+    
+    publicEnterBtn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Entering public area');
+      
+      // 添加点击效果
+      this.classList.add('clicked');
+      setTimeout(() => {
+        this.classList.remove('clicked');
+        window.location.href = 'public/public.html';
+      }, 300);
+    });
+  }
   
+  // 私人区域进入按钮点击事件
+  if (privateEnterBtn) {
+    privateEnterBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Entering private area');
+      
+      // 添加点击效果
+      this.classList.add('clicked');
+      setTimeout(() => {
+        this.classList.remove('clicked');
+        window.location.href = 'private.html';
+      }, 300);
+    });
+    
+    privateEnterBtn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Entering private area');
+      
+      // 添加点击效果
+      this.classList.add('clicked');
+      setTimeout(() => {
+        this.classList.remove('clicked');
+        window.location.href = 'private.html';
+      }, 300);
+    });
+  }
+  
+  // 点击遮罩层或空白区域隐藏索引面板
+  function handleDismiss(e) {
+    if (!currentIndex) return;
+    
+    const clickOnButton = (publicBtn && publicBtn.contains(e.target)) || 
+                         (privateBtn && privateBtn.contains(e.target));
+    const clickOnPanel = (publicIndex && publicIndex.contains(e.target)) || 
+                        (privateIndex && privateIndex.contains(e.target));
+    const clickOnEnterBtn = (publicEnterBtn && publicEnterBtn.contains(e.target)) || 
+                           (privateEnterBtn && privateEnterBtn.contains(e.target));
+    
+    if (!clickOnButton && !clickOnPanel && !clickOnEnterBtn) {
+      hideAllIndex();
+    }
+  }
+  
+  // 添加全局点击事件监听器
+  document.addEventListener('click', handleDismiss);
+  document.addEventListener('touchend', handleDismiss);
   
   // 初始化页面元素检查
   console.log('=== Page Elements Check ===');
   console.log('publicBtn:', publicBtn ? 'Found' : 'Not found');
   console.log('privateBtn:', privateBtn ? 'Found' : 'Not found');
+  console.log('publicIndex:', publicIndex ? 'Found' : 'Not found');
+  console.log('privateIndex:', privateIndex ? 'Found' : 'Not found');
   console.log('========================');
 });
 </script>
