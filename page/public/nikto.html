@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KÖNIGIN - Nikto 公开篇目</title>
   <link rel="stylesheet" href="../../style/home.css">
-  <link rel="stylesheet" href="../../style/footer.css">
+  
   <link rel="stylesheet" href="../../style/mobile.css">
   <style>
 /* Redesigned color scheme using red-black-gold tones */
@@ -99,8 +99,6 @@ body {
    -webkit-tap-highlight-color: transparent;
    touch-action: manipulation;
  }
-
-
 
  .work-header {
    margin-bottom: 20px;
@@ -224,10 +222,6 @@ body {
    color: var(--gray-muted);
  }
 
-
-
-
-
 .work-title {
   font-size: 28px;
   font-weight: bold;
@@ -269,8 +263,6 @@ body {
    transition: all 0.3s ease;
  }
 
-
-
  .read-button:active {
    transform: translateY(0);
    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.1);
@@ -280,8 +272,6 @@ body {
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
   transform: translateY(-2px);
 }
-
-
 
  /* 触摸反馈样式 */
  .touch-active {
@@ -301,8 +291,6 @@ body {
    color: var(--red-main);
  }
 
-
- 
  /* 移动端全屏滚动优化 */
  @media (max-width: 768px) {
    .nikto-container {
@@ -341,8 +329,6 @@ body {
      font-size: 24px;
    }
 
-
-
    /* 移动端触摸优化 */
    .work-card {
      -webkit-touch-callout: none;
@@ -370,19 +356,6 @@ body {
     }
 
     /* 底部遮罩样式 */
-    .bottom-mask {
-      position: absolute;
-      left: 0; 
-      bottom: 0;
-      width: 100%;
-      height: 92px;  /* 可覆盖footer高度+阴影 */
-      background: #19171b;  /* 使用与页面背景一致的颜色 */
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      z-index: 3;
-      pointer-events: none;
-    }
-
     /* 确保底部导航栏在遮罩之上 */
     #footer-placeholder {
       z-index: 10;
@@ -404,12 +377,7 @@ body {
   </div>
 
   <!-- 底部遮罩 -->
-  <div class="bottom-mask"></div>
-
   <!-- 底部导航栏 -->
-  <div id="footer-placeholder"></div>
-
-
 
   <script>
     // 移动端触摸优化类
@@ -574,8 +542,6 @@ body {
         }, 1000);
       }
 
-
-
       // 优化滚动
       optimizeScroll() {
         const container = document.querySelector('.nikto-container');
@@ -703,6 +669,7 @@ body {
   </script>
 
   <!-- 加载底部导航栏 -->
-  <script src="../../js/footer.js"></script>
+  
+<script src="../../js/swipe-back.js"></script>
 </body>
 </html>

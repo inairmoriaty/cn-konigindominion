@@ -55,17 +55,6 @@
   transform: translate(-50%,-50%);
 }
     
-    .bottom-mask {
-      position: absolute;
-      left: 0; bottom: 0;
-      width: 100%;
-      height: 92px;  /* 可覆盖footer高度+阴影 */
-      background: #191919;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
-      z-index: 3;
-      pointer-events: none;
-    }
     .logo-btn {
       position: absolute;
       top: 42%; left: 50%;

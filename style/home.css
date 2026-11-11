@@ -51,18 +51,7 @@
       z-index: 3;
       pointer-events: none;
     }
-    .bottom-mask {
-      position: absolute;
-      left: 0; bottom: 0;
-      width: 100%;
-      height: 92px;  /* 可覆盖footer高度+阴影 */
-      background: #191919;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      z-index: 3;
-      pointer-events: none;
-    }  
-        .nav-circle-btn {
+    .nav-circle-btn {
   position: absolute;
   z-index: 10;
   display: block;

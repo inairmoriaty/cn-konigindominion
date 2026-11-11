@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>KÖNIGIN - public</title>
   <link rel="stylesheet" href="../../style/home.css">
-  <link rel="stylesheet" href="../../style/footer.css">
+  
   <link rel="stylesheet" href="../../style/wine-menu.css">
   <link rel="stylesheet" href="../../style/mobile.css">
   <script src="../../js/wine-menu.js" defer></script>
@@ -18,25 +18,105 @@
 
     /* --- 基础设置 --- */
     html, body {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       width: 100vw;
       min-height: 100vh;
-      background: #000; 
-      overflow: hidden; 
-      -webkit-tap-highlight-color: transparent; 
+      background: #000;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ---------- 底部快捷分区（替代 sidebar） ---------- */
+    .public-quick {
+      position: relative;
+      z-index: 20;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 20px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.75) 55%, rgba(0,0,0,.9) 100%);
+      font-family: "Cormorant Garamond", "EB Garamond", "Playfair Display",
+                   "Times New Roman", "Songti SC", "SimSun", "宋体", serif;
+    }
+    .public-quick .label {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      color: #d8b968;
+      font-size: 11px;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      margin: 0 0 12px 2px;
+    }
+    .public-quick .label .zh {
+      color: #b8a884;
+      letter-spacing: .3em;
+    }
+    .public-quick .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    .public-quick .qcard {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 110px;
+      padding: 14px 16px 16px;
+      text-decoration: none;
+      color: #ece0c7;
+      border: 1px solid rgba(201,162,74,.35);
+      background: linear-gradient(180deg, rgba(13,10,7,.4) 0%, rgba(13,10,7,.88) 100%);
+      overflow: hidden;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .public-quick .qcard::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px solid rgba(201,162,74,.12);
+      pointer-events: none;
+      transition: border-color .3s ease;
+    }
+    .public-quick .qcard:hover {
+      transform: translateY(-2px);
+      border-color: #c9a24a;
+      box-shadow: 0 10px 30px rgba(0,0,0,.55);
+    }
+    .public-quick .qcard:hover::before { border-color: rgba(216,185,104,.45); }
+    .public-quick .qcard .en {
+      font-size: 14px;
+      letter-spacing: .28em;
+      color: #ead7a3;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .public-quick .qcard .zh {
+      font-size: 12px;
+      letter-spacing: .14em;
+      color: #b8a884;
+    }
+
+    @media (max-width: 767px) {
+      .public-quick { padding: 14px 14px calc(20px + env(safe-area-inset-bottom, 0px)); }
+      .public-quick .grid { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+      .public-quick .qcard { min-height: 76px; padding: 10px 8px 10px; }
+      .public-quick .qcard .en { font-size: 11px; letter-spacing: .14em; }
+      .public-quick .qcard .zh { font-size: 10.5px; letter-spacing: .08em; }
     }
 
     .page-container {
       width: 100vw;
-      height: 100vh;
+      height: calc(100vh - 170px);
+      min-height: 520px;
       position: relative;
     }
 
     /* --- 主框架 --- */
     .app-frame {
       width: 100vw;
-      height: 100vh;
+      height: 100%;
       position: relative;
       margin: 0;
       overflow: hidden;
@@ -245,6 +325,7 @@
     <div class="app-frame">
       <div class="main-bg"></div>
       <div class="title"></div>
+<!-- 底部快捷分区在 page-container 外、body 末尾 -->
 
       <div class="interactive-layer">
         <button class="bottle-btn" data-id="ghost">
@@ -274,7 +355,6 @@
 
     </div>
 
-
       <div class="detail-overlay" id="detailOverlay">
         <div class="close-overlay" id="closeOverlay">✕</div>
         
@@ -293,9 +373,6 @@
 
     </div> 
   </div>
-
-  <div id="footer-placeholder"></div>
-  <script src="../../js/footer.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -362,5 +439,35 @@
     });
   </script>
 
+  <section class="public-quick" aria-label="Characters Quick Access">
+    <p class="label">
+      <span>CHARACTERS</span>
+      <span class="zh">角色速览</span>
+    </p>
+    <div class="grid">
+      <a class="qcard" href="konig.html">
+        <span class="en">KÖNIG</span>
+        <span class="zh">柯尼希</span>
+      </a>
+      <a class="qcard" href="ghost.html">
+        <span class="en">GHOST</span>
+        <span class="zh">幽灵</span>
+      </a>
+      <a class="qcard" href="keegan.html">
+        <span class="en">KEEGAN</span>
+        <span class="zh">基根</span>
+      </a>
+      <a class="qcard" href="krueger.html">
+        <span class="en">KRUEGER</span>
+        <span class="zh">克鲁格</span>
+      </a>
+      <a class="qcard" href="nikto.html">
+        <span class="en">NIKTO</span>
+        <span class="zh">尼克托</span>
+      </a>
+    </div>
+  </section>
+
+<script src="../../js/swipe-back.js"></script>
 </body>
 </html>

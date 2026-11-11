@@ -17,8 +17,8 @@
 
     .gallery-container { 
       position: relative; z-index: 2; 
-      padding: 20px 10px; padding-top: 80px; 
-      padding-bottom: calc(clamp(56px, 9vh, 72px) + env(safe-area-inset-bottom, 0px) + 50px); 
+      padding: 20px 10px; padding-top: 80px;
+      padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
       min-height: 100vh; 
     }
 
@@ -56,7 +56,7 @@
     @media (max-width:768px){
       .gallery-grid{ gap:16px; padding:0 16px; }
       .gallery-item{ max-width:100%; }
-      .gallery-container{ padding: 15px 0; padding-top: 60px; padding-bottom: calc(clamp(56px, 9vh, 72px) + env(safe-area-inset-bottom, 0px) + 40px); }
+      .gallery-container{ padding: 15px 0; padding-top: 60px; padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px)); }
       .gallery-title{ font-size:24px; margin-bottom:20px; }
       .cap-title{ font-size:15px; }
       .cap-text{ font-size:13px; }
@@ -79,17 +79,6 @@
     .empty-state h3 { font-size:24px; margin-bottom:15px; color:#888; }
     .empty-state p { font-size:16px; line-height:1.5; }
 
-    /* 底部导航（保持你的现有风格） */
-    .bottom-nav { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 8px); width: min(92vw, 430px); height: clamp(56px, 9vh, 72px); padding-bottom: env(safe-area-inset-bottom, 0px); background: #191919cc; backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 -8px 24px rgba(0,0,0,.25); display: flex; justify-content: center; align-items: center; z-index: 999; }
-    .bottom-nav nav{ width:100%; max-width:380px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap: clamp(8px, 3vw, 16px); }
-    .bottom-nav .nav-btn{ width: clamp(48px, 12vw, 56px); height: clamp(48px, 12vw, 56px); border-radius: 16px; background: #232323; display:flex; justify-content:center; align-items:center; transition: background .2s, transform .15s; text-decoration: none; }
-    .bottom-nav .nav-btn:active, .bottom-nav .nav-btn.selected{ background:#343434; transform: translateY(-2px); }
-    .bottom-nav .nav-btn img{ width: clamp(24px, 7vw, 32px); height: clamp(24px, 7vw, 32px); object-fit: contain; display: block; }
-
-    /* 左滑返回提示 */
-    #swipe-back-indicator{ position:fixed; top:50%; left:20px; transform:translateY(-50%); background:rgba(0,0,0,.8); color:#fff; padding:10px 15px; border-radius:20px; font-size:14px; z-index:1000; opacity:0; transition:opacity .2s; pointer-events:none; }
-    .swipe-hint{ position:fixed; left:0; top:50%; transform:translateY(-50%); width:4px; height:60px; background:linear-gradient(to right, rgba(255,255,255,.3), transparent); border-radius:0 2px 2px 0; z-index:100; opacity:0; transition:opacity .3s; }
-    .swipe-hint.show{ opacity:1; }
   </style>
 </head>
 <body>
@@ -102,19 +91,6 @@
       </div>
     </div>
   </div>
-
-  <!-- 底部导航栏 -->
-  <div class="bottom-nav">
-    <nav>
-      <a href="../sidebar.html" class="nav-btn"><img src="../../svg/bottombar/sidebar.svg" alt="菜单"></a>
-      <a href="../home.html" class="nav-btn"><img src="../../svg/bottombar/index.svg" alt="首页"></a>
-      <a href="../notification.html" class="nav-btn"><img src="../../svg/bottombar/notification.svg" alt="通知"></a>
-      <a href="../favourite.html" class="nav-btn"><img src="../../svg/bottombar/favourite.svg" alt="收藏"></a>
-    </nav>
-  </div>
-
-  <div id="footer-placeholder"></div>
-  <div class="swipe-hint" id="swipeHint"></div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
@@ -386,7 +362,7 @@
     document.addEventListener('DOMContentLoaded', () => new RenderGallery());
   </script>
 
-  <script src="../../js/footer.js"></script>
   <script src="../../js/mobile-optimization.js"></script>
+<script src="../../js/swipe-back.js"></script>
 </body>
 </html>

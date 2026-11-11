@@ -1,0 +1,491 @@
+/* ============================================================
+ * reading.css  —  KÖNIGIN 统一阅读模板（Warm Ivory / Editorial）
+ *
+ * 加载顺序：必须放在原文章内联样式之后，以 !important 覆盖。
+ * 保留原有 .article-container / .content-area / .chapter-title /
+ * .author-info / .separator 等现存 class，不改动文章 HTML。
+ * ============================================================ */
+
+:root[data-reading-theme="warm"],
+:root:not([data-reading-theme]) {
+  --rd-bg:        #F3EFE6;   /* 页面底色：暖米白 */
+  --rd-paper:     #F8F5EE;   /* 正文纸面 */
+  --rd-ink:       #302820;   /* 正文文字：深咖啡棕 */
+  --rd-ink-soft:  #8A7D6B;   /* 次要文字：灰褐 */
+  --rd-gold:      #A18455;   /* 暗金 */
+  --rd-gold-soft: #B59667;
+  --rd-rule:      #D9CEBC;   /* 分割线 */
+  --rd-shadow:    0 1px 0 rgba(48,40,32,.03);
+}
+
+:root[data-reading-theme="dark"] {
+  --rd-bg:        #171411;
+  --rd-paper:     #1b1814;
+  --rd-ink:       #D5CCBE;
+  --rd-ink-soft:  #9b8d78;
+  --rd-gold:      #B9965E;
+  --rd-gold-soft: #D5B07A;
+  --rd-rule:      #3a3228;
+  --rd-shadow:    0 1px 0 rgba(255,255,255,.02);
+}
+
+:root {
+  --rd-font-size: 18px;      /* 由 JS 根据设置改写 */
+}
+@media (max-width: 767px) {
+  :root { --rd-font-size: 17px; }
+}
+
+/* --------- 全局底色接管 --------- */
+html.rd-ready,
+html.rd-ready body {
+  background: var(--rd-bg) !important;
+  color: var(--rd-ink) !important;
+  min-height: 100vh !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: auto !important;
+  width: 100% !important;
+}
+
+/* 老模板 app-frame / article-container 都会强制撑满屏幕 + 自带滚动，
+   在阅读模式里全部拍平，统一走 body 自然滚动。 */
+html.rd-ready .app-frame,
+html.rd-ready .article-container {
+  all: revert !important;
+  position: static !important;
+  display: block !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--rd-bg) !important;
+}
+
+/* --------- 阅读容器（JS 包裹） --------- */
+.rd-shell {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 90px 32px calc(140px + env(safe-area-inset-bottom, 0px));
+  background: var(--rd-paper);
+  box-shadow: var(--rd-shadow);
+  transition: background .3s ease, color .3s ease;
+}
+@media (max-width: 767px) {
+  .rd-shell { padding: 72px 22px calc(120px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* --------- 作品信息 --------- */
+.rd-meta {
+  margin: 0 0 36px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rd-rule);
+  text-align: center;
+  font-family: "Cormorant Garamond", "EB Garamond", "Playfair Display",
+               "Songti SC", "SimSun", "宋体", serif;
+}
+.rd-meta .eyebrow {
+  color: var(--rd-gold);
+  letter-spacing: .35em;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.rd-meta .title {
+  font-size: clamp(26px, 4.5vw, 36px);
+  letter-spacing: .08em;
+  margin: 0 0 8px;
+  color: var(--rd-ink);
+  font-weight: 500;
+}
+.rd-meta .sub {
+  color: var(--rd-ink-soft);
+  font-size: 13px;
+  letter-spacing: .22em;
+  margin: 0 0 14px;
+}
+.rd-meta .info {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 16px;
+  color: var(--rd-ink-soft);
+  font-size: 12px;
+  letter-spacing: .15em;
+}
+.rd-meta .info span { white-space: nowrap; }
+
+/* --------- 继续阅读提示 --------- */
+.rd-resume {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 22px auto 0;
+  padding: 10px 14px;
+  border: 1px solid var(--rd-rule);
+  background: transparent;
+  color: var(--rd-ink);
+  font-size: 13px;
+  letter-spacing: .08em;
+  max-width: 480px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.rd-resume.show { opacity: 1; transform: none; }
+.rd-resume .resume-text { color: var(--rd-ink-soft); }
+.rd-resume .resume-text b { color: var(--rd-ink); font-weight: 600; }
+.rd-resume button {
+  background: transparent;
+  border: 1px solid var(--rd-gold);
+  color: var(--rd-gold);
+  padding: 6px 12px;
+  font-size: 12px;
+  letter-spacing: .2em;
+  cursor: pointer;
+  font-family: inherit;
+}
+.rd-resume button:hover { background: var(--rd-gold); color: var(--rd-bg); }
+
+/* --------- 正文 --------- */
+html.rd-ready .content-area,
+html.rd-ready .article-content,
+html.rd-ready .article-body,
+.rd-shell .content-area,
+.rd-shell .article-content,
+.rd-shell .article-body {
+  font-family: "Source Han Serif SC", "Noto Serif SC", "Songti SC",
+               "SimSun", "宋体", "Georgia", serif !important;
+  font-size: var(--rd-font-size) !important;
+  line-height: 1.95 !important;
+  color: var(--rd-ink) !important;
+  letter-spacing: .02em !important;
+  text-align: justify !important;
+  text-justify: inter-ideograph;
+  word-break: break-word;
+  max-width: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+html.rd-ready .content-area p,
+html.rd-ready .article-content p,
+html.rd-ready .article-body p,
+.rd-shell p {
+  margin: 0 0 1.2em !important;
+  text-indent: 2em;
+}
+html.rd-ready h1, html.rd-ready h2, html.rd-ready h3 {
+  color: var(--rd-ink) !important;
+  font-family: "Cormorant Garamond", "Songti SC", "SimSun", serif !important;
+  font-weight: 500 !important;
+}
+html.rd-ready .chapter-title {
+  font-size: clamp(22px, 3.5vw, 30px) !important;
+  letter-spacing: .12em !important;
+  color: var(--rd-ink) !important;
+  border: none !important;
+  margin: 0 auto 10px !important;
+  padding: 0 !important;
+  height: auto !important;
+  width: auto !important;
+  text-align: center !important;
+  background: transparent !important;
+}
+html.rd-ready .author-info {
+  color: var(--rd-ink-soft) !important;
+  font-size: 12px !important;
+  letter-spacing: .25em !important;
+  text-align: center !important;
+  margin: 0 auto 24px !important;
+  background: transparent !important;
+}
+html.rd-ready .separator {
+  border: none !important;
+  border-top: 1px solid var(--rd-rule) !important;
+  height: 0 !important;
+  width: 60% !important;
+  margin: 24px auto !important;
+  background: transparent !important;
+}
+
+/* --------- 隐藏正文图片 --------- */
+html.rd-ready .article-container img,
+html.rd-ready .content-area img,
+html.rd-ready .article-content img,
+html.rd-ready .article-body img,
+html.rd-ready .rd-shell img,
+html.rd-ready .image-container,
+html.rd-ready .cover-img,
+html.rd-ready .article-cover {
+  display: none !important;
+}
+
+/* 注：外部 .favourite-btn 等不在 reading 容器内的按钮不受影响 */
+
+/* --------- 顶部阅读进度条 --------- */
+.rd-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: transparent;
+  z-index: 9000;
+  pointer-events: none;
+}
+.rd-progress > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--rd-gold), var(--rd-gold-soft));
+  transition: width .08s linear;
+}
+
+/* --------- 悬浮工具栏 --------- */
+.rd-toolbar {
+  position: fixed;
+  z-index: 9100;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 6px;
+  border: 1px solid var(--rd-rule);
+  background: var(--rd-paper);
+  backdrop-filter: blur(6px);
+  font-family: "Cormorant Garamond", "Songti SC", serif;
+}
+.rd-toolbar button {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  color: var(--rd-ink);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: .05em;
+  transition: color .2s ease, background .2s ease;
+}
+.rd-toolbar button:hover { color: var(--rd-gold); background: rgba(161,132,85,.08); }
+.rd-toolbar .rd-sep {
+  width: 100%;
+  height: 1px;
+  background: var(--rd-rule);
+}
+.rd-toolbar .rd-home { font-size: 18px; }
+.rd-toolbar .rd-font-plus { font-size: 18px; font-weight: 600; }
+.rd-toolbar .rd-font-minus { font-size: 16px; font-weight: 500; opacity: .75; }
+.rd-toolbar .rd-theme::before {
+  content: "◐";
+  font-size: 17px;
+}
+
+@media (max-width: 767px) {
+  .rd-toolbar {
+    top: auto;
+    right: 14px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    transform: none;
+    flex-direction: row;
+    padding: 6px 8px;
+    gap: 2px;
+  }
+  .rd-toolbar .rd-sep { width: 1px; height: 22px; }
+  .rd-toolbar button { width: 36px; height: 36px; }
+}
+
+/* --------- 底部章节导航占位（当文章提供 data-prev/data-next 时才显示） --------- */
+.rd-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rd-rule);
+  color: var(--rd-ink-soft);
+  font-size: 13px;
+  letter-spacing: .15em;
+}
+.rd-nav a {
+  color: var(--rd-gold);
+  text-decoration: none;
+  letter-spacing: .25em;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: 1px solid var(--rd-rule);
+  padding: 8px 14px;
+  transition: border-color .2s ease, color .2s ease;
+}
+.rd-nav a:hover { border-color: var(--rd-gold); color: var(--rd-ink); }
+.rd-nav a.is-disabled { opacity: .35; pointer-events: none; }
+.rd-nav .rd-nav-center { flex: 1; text-align: center; }
+
+/* ============================================================
+ * 长篇目录页（catalog.html）专用布局
+ * 现有 catalog 使用 .catalog-title / .chapter-list / .chapter-btn，
+ * 这里全部覆盖为 warm-ivory 风格的居中单栏目录。
+ * ============================================================ */
+
+/* 旧的白色小方块背景藏起来 */
+html.rd-ready .catalog-bg { display: none !important; }
+
+/* 老 back-btn 重新画成暗金线框按钮 */
+html.rd-ready .back-btn {
+  position: fixed !important;
+  top: 16px !important;
+  left: 16px !important;
+  padding: 7px 14px !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--rd-rule) !important;
+  background: var(--rd-paper) !important;
+  color: var(--rd-ink) !important;
+  font-family: "Cormorant Garamond", "Songti SC", "SimSun", serif !important;
+  font-size: 12px !important;
+  letter-spacing: .25em !important;
+  box-shadow: none !important;
+  text-transform: uppercase;
+}
+html.rd-ready .back-btn:hover {
+  border-color: var(--rd-gold) !important;
+  color: var(--rd-gold) !important;
+  transform: none !important;
+  background: var(--rd-paper) !important;
+}
+html.rd-ready .back-btn-icon {
+  color: var(--rd-gold) !important;
+  margin-right: 4px;
+}
+
+/* catalog 页专用容器 —— 复用 .rd-shell 的 padding，但宽度收到 720 */
+html.rd-ready .app-frame:has(.chapter-list) {
+  max-width: 720px !important;
+  margin: 0 auto !important;
+  padding: 90px 32px calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+  background: transparent !important;
+}
+@media (max-width: 767px) {
+  html.rd-ready .app-frame:has(.chapter-list) {
+    padding: 72px 20px calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* 标题 */
+html.rd-ready .catalog-title {
+  all: revert !important;
+  display: block !important;
+  text-align: center !important;
+  margin: 0 auto 40px !important;
+  font-family: "Cormorant Garamond", "Songti SC", "SimSun", serif !important;
+  color: var(--rd-ink) !important;
+  background: transparent !important;
+}
+html.rd-ready .catalog-title > div:first-child {
+  font-size: clamp(28px, 4.5vw, 38px);
+  letter-spacing: .14em;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+html.rd-ready .catalog-title > div:last-child {
+  font-size: 12px;
+  letter-spacing: .4em;
+  color: var(--rd-gold);
+  text-transform: uppercase;
+}
+html.rd-ready .catalog-title > div:last-child::before { content: "— "; }
+html.rd-ready .catalog-title > div:last-child::after  { content: " —"; }
+
+/* 章节列表 */
+html.rd-ready .chapter-list {
+  all: revert !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid var(--rd-rule);
+  background: transparent !important;
+}
+
+/* 章节按钮 —— 每一行变成全宽的条目 */
+html.rd-ready .chapter-btn {
+  all: revert !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  width: 100% !important;
+  padding: 16px 8px !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--rd-rule) !important;
+  border-radius: 0 !important;
+  color: var(--rd-ink) !important;
+  font-family: "Source Han Serif SC", "Songti SC", "SimSun", serif !important;
+  font-size: 15.5px !important;
+  letter-spacing: .04em !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  transition: background .2s ease, color .2s ease, padding-left .2s ease !important;
+}
+html.rd-ready .chapter-btn:hover {
+  background: rgba(161,132,85,.08) !important;
+  color: var(--rd-gold) !important;
+  padding-left: 14px !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* 章节编号徽标（由 JS 注入 data-index，CSS 用 ::before 画） */
+html.rd-ready .chapter-btn::before {
+  content: attr(data-chapter);
+  flex-shrink: 0;
+  width: 36px;
+  color: var(--rd-gold);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: .15em;
+  text-align: right;
+  opacity: .85;
+}
+
+/* 阅读进度徽章（由 reading.js 根据 localStorage 注入） */
+html.rd-ready .chapter-btn .rd-chip {
+  margin-left: auto;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: .22em;
+  color: var(--rd-gold);
+  border: 1px solid var(--rd-rule);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+html.rd-ready .chapter-btn.is-read .rd-chip {
+  color: var(--rd-paper);
+  background: var(--rd-gold);
+  border-color: var(--rd-gold);
+}
+html.rd-ready .chapter-btn.is-current {
+  background: rgba(161,132,85,.12) !important;
+}
+html.rd-ready .chapter-btn.is-current::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--rd-gold);
+}
+
+/* 目录页顶部不画 reading 进度条、不出续读横幅 */
+html.rd-catalog .rd-progress,
+html.rd-catalog .rd-resume { display: none !important; }
+

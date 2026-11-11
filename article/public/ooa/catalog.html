@@ -196,6 +196,7 @@
     }
     
   </style>
+  <link rel="stylesheet" href="../../../style/reading.css">
 </head>
 <body>
   <a class="back-btn" href="../../../page/public/nikto.html"><span class="back-btn-icon">←</span><span>返回</span></a>
@@ -218,8 +219,6 @@
 
   <div id="favourite-button-container"></div>
 
-  <div id="footer-placeholder"></div>
-<script src="../../../js/footer.js"></script>
 <script src="../../../js/favourite-manager.js"></script>
 <script src="../../../js/password-protection.js"></script>
 <script>
@@ -238,8 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const favouriteBtn = createFavouriteButton(articleInfo);
     favouriteContainer.appendChild(favouriteBtn);
   }
-  
-  
+
   // 章节按钮点击事件
   const chapterBtns = document.querySelectorAll('.chapter-btn');
   chapterBtns.forEach(btn => {
@@ -266,5 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+<script src="../../../js/swipe-back.js"></script>
+<script src="../../../js/reading.js" defer></script>
 </body>
 </html>
